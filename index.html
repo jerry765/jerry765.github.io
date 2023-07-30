@@ -20,16 +20,6 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"csumoke.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="C&#39;est pour cela que je suis née">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Voilà">
-<meta property="og:url" content="http://csumoke.com/">
-<meta property="og:site_name" content="Voilà">
-<meta property="og:description" content="C&#39;est pour cela que je suis née">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="moke">
-<meta property="article:tag" content="blog csu moke frontend">
-<meta name="twitter:card" content="summary">
 
 
 <link rel="canonical" href="http://csumoke.com/">
@@ -62,6 +52,9 @@
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -83,6 +76,10 @@
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
 
 
 
@@ -110,6 +107,8 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="moke"
+      src="/images/avatar_Kazuha.jpg">
   <p class="site-author-name" itemprop="name">moke</p>
   <div class="site-description" itemprop="description">C'est pour cela que je suis née</div>
 </div>
@@ -126,17 +125,40 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jerry765" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jerry765" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2061610579@qq.com" title="E-Mail → mailto:2061610579@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
 
         </div>
       </div>
     </div>
 
     
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://space.bilibili.com/391439069" title="https:&#x2F;&#x2F;space.bilibili.com&#x2F;391439069" rel="noopener" target="_blank">Bilibili</a>
+            </li>
+        </ul>
+      </div>
+    </div>
   </aside>
 
 
@@ -155,7 +177,7 @@
     <link itemprop="mainEntityOfPage" href="http://csumoke.com/2023/07/28/advice/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar_Kazuha.jpg">
       <meta itemprop="name" content="moke">
     </span>
 
@@ -185,6 +207,13 @@
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-30 10:20:17" itemprop="dateModified" datetime="2023-07-30T10:20:17+08:00">2023-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
@@ -194,6 +223,21 @@
     </span>
 
   
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>412</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
 </div>
 
         </div>
@@ -203,27 +247,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote><p>I know nothing except the fact of my ignorance。<br>我唯一知道的就是我一无所知</p>
-<footer><strong>苏格拉底</strong></footer></blockquote>
+          <blockquote class="blockquote-center">
+<p>I know nothing except the fact of my ignorance。<br>我唯一知道的就是我一无所知</p>
+
+</blockquote>
 
 <h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><p>下列建议都出自同一个前提：各位同学对编程0基础</p>
 <h3 id="计算机概览"><a href="#计算机概览" class="headerlink" title="计算机概览"></a>计算机概览</h3><p><strong>推荐阅读：</strong><br><a target="_blank" rel="noopener" href="https://book.douban.com/subject/30200248/">普林斯顿大学计算机公开课</a></p>
 <p><strong>理由：</strong><br>通俗易懂，零基础入门，包含绝大部分所需要了解的基础知识</p>
-<h3 id="前端编程入门"><a href="#前端编程入门" class="headerlink" title="前端编程入门"></a>前端编程入门</h3><p><strong>推荐观看：</strong><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1vs411M7aT">为初学者准备的：HTML 速成</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bW411R7hg">为初学者准备的：CSS 速成</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jt411D7j6">为初学者准备的：JavaScript 速成</a></p>
-<p><strong>理由：</strong><br>足够精练，两小时通览上手的必备知识。从实践中学习，是软件工程的精髓所在。</p>
-<h3 id="后端编程入门"><a href="#后端编程入门" class="headerlink" title="后端编程入门"></a>后端编程入门</h3><p><strong>推荐阅读：</strong><br><a target="_blank" rel="noopener" href="https://book.douban.com/subject/26792521/">C Primer Plus（第6版）中文版</a></p>
-<p><strong>理由：</strong><br>风趣幽默，无需预备知识。无论是浅尝辄止或反复品味都非常推荐。</p>
-<h3 id="行业背景"><a href="#行业背景" class="headerlink" title="行业背景"></a>行业背景</h3><p><strong>推荐阅读：</strong><br><a target="_blank" rel="noopener" href="https://book.douban.com/subject/33474750/">浪潮之巅（第四版）（上下册）</a></p>
-<p><strong>理由：</strong><br>技术决定下限，变革的思想定义上限。</p>
-<h2 id="一些小建议"><a href="#一些小建议" class="headerlink" title="一些小建议"></a>一些小建议</h2><ul>
-<li>快速学习。网课、书籍、文档各有利弊，智者见智，快速入门后投入实践才是王道。<strong>实践是检验真理的唯一标准。</strong></li>
-<li>保持谦逊。<strong>永远不要说自己精通。</strong></li>
-<li>大胆提问。不耻上问，但要注意提问的礼仪。</li>
-<li>劳逸结合。不做过多评价卷与躺，选择最适合自己的方式度过大学便可。人生有梦，各自精彩，永不要用同一个标杆衡量所有人。<strong>不是每一个人都有你所拥有的条件。</strong></li>
-</ul>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/28/advice/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -256,6 +295,22 @@
     </span>
     <span class="author" itemprop="copyrightHolder">moke</span>
   </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">0k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1 分钟</span>
+  </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
