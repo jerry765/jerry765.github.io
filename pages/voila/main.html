@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/icons/favicon32x32.ico">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="main.js"></script>
+    <title>Voilà</title>
+</head>
+<body>
+    <div class="container">
+        <div class="topMenu">
+            <div class="top">
+                <span class="titleVoila">
+                    <h1 id="titleVoilaTop">Voilà</h1>
+                </span>
+                <span class="menu">
+                    <span class="MENU">
+                        <h4>MENU</h4>
+                        <i>Sit amet constetur</i>
+                        <i>Adipisicing elit</i>
+                        <i>Fugit perspiciatis</i>
+                    </span>
+                    <span class="ABOUT">
+                        <h4>ABOUT</h4>
+                        <i>Sit amet constetur</i>
+                        <i>Adipisicing elit</i>
+                        <i>Fugit perspiciatis</i>
+                    </span>
+                    <span class="EVENTS">
+                        <h4>EVENTS</h4>
+                        <i>Sit amet constetur</i>
+                        <i>Adipisicing elit</i>
+                        <i>Fugit perspiciatis</i>
+                    </span>
+                    <span class="RESERVATIONS">
+                        <h4>RESERVATIONS</h4>
+                        <i>Sit amet constetur</i>
+                        <i>Adipisicing elit</i>
+                        <i>Fugit perspiciatis</i>
+                    </span>
+                    <span class="CONTACT">
+                        <h4>CONTACT</h4>
+                        <i>Sit amet constetur</i>
+                        <i>Adipisicing elit</i>
+                        <i>Fugit perspiciatis</i>
+                    </span>
+                </span>
+            </div>
+            <div class="welcome">
+                <h1 id="userWelcome">WELCOME TO Voilà</h1>
+                <h2>We offer mouth watering <u>French cuisine</u></h2>
+            </div>
+            <div class="buttonAbove">
+                <!-- 悬浮窗口
+		        <div id="window" class="window_css">
+                    <h1>Voilà MENU</h1>
+                    <div class="menuText">
+                        <span class="menuMeal">
+                            <p>Lorem ipsum dolor</p>
+                            <p>Lorem ipsum dolor</p>
+                            <p>Lorem ipsum dolor</p>
+                            <p>Lorem ipsum dolor</p>
+                            <p>Lorem ipsum dolor</p>
+                        </span>
+                        <span class="menuPrice">
+                            <p>5$</p>
+                            <p>5$</p>
+                            <p>5$</p>
+                            <p>5$</p>
+                            <p>5$</p>
+                        </span>
+                    </div>
+                    <div>
+			            <button class="button" id="menuClose" onclick="hideWindow()">ClOSE MENU</button>
+                    </div>
+		        </div>
+		        出现悬浮窗口后,背景变暗
+		        <div id="shadow" class="shadow_css"></div> -->
+                <button class="button" id="buttonSee" onclick="displayWindow()">SEE MENU</button>
+                <button class="button" id="buttonFindFirst">FIND A TABLE</button>
+                <button class="button" id="buttonLogin" onclick="login()">LOGIN</button>    <!--接口：登录按钮，跳转登陆界面-->
+            </div>
+            <div class="login" id="login">
+                <h4>Don't have our account?<a id="register">Click me to register.</a></h4>  <!--接口：注册文本，跳转注册界面-->
+            </div>
+            <div class="down" id="down">
+                <a onclick="smoothRoll('detail')" class="detail">Scroll down for details</a>
+                <br>
+                <img src="images/down-arrow-icon.png">
+            </div>
+        </div>
+        <div class="First">
+            <span class="firstLeft" id="detail">
+                <h1 class="title">About Voila Restaurant</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia provident praesentium sunt maiores modi sed reprehenderit nisi fugiat tempore magni iure, necessitatibus voluptas dolorum sint quo alias inventore veritatis, nam numquam! <a href="https://www.bilibili.com/video/BV1GJ411x7h7" id="ModiLa">Modi laboriosam</a> eos veritatis enim tempore animi. Itaque reiciendis saepe necessitatibus sit quos accusantium dolorem eaque ipsum pariatur molestiae!</p>
+                <button class="button" id="buttonRead">READ MORE</button>
+                <img src="images/Eric-McGregor-flickr.png" id="Eric" width="700px">
+            </span>
+
+            <span class="firstRight">
+                <img src="images/glass of wine.png" id="glass" width="800px">
+                <img src="images/Restaurant kitchen.png" id="Restaurant" width="320px">
+                <img src="images/foodiesfeed.com_excelent-beef-steak-vegetables.png" id="foodiesfeed" height="254px">
+            </span>
+
+        </div>
+        <div class="Second">
+            <span class="secondLeft">
+                <img src="images/Steak and vegetables - Foodies Feed.png"  id="Steak" width="250px">
+                <img src="images/Beef-steak-pineapple-salad Foodies Feed.png" id="Beef" width="250px">
+                <img src="images/Cup cakes.png" id="Cup" width="550px">
+            </span>
+            <span class="secondRight">
+                <h1 class="title">Tasteful French Cuisine</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia provident praesentium sunt maiores modi sed reprehenderit nisi fugiat tempore magni iure, necessitatibus voluptas dolorum sint quo alias inventore veritatis, nam numquam! <a href="https://www.bilibili.com/video/BV1GJ411x7h7" id="Modi">Modi laboriosam</a> eos veritatis enim tempore animi. Itaque reiciendis saepe necessitatibus sit quos accusantium dolorem eaque ipsum pariatur molestiae!</p>
+                <button class="button" id="buttonView">VIEW MENU</button>
+            </span>
+
+        </div>
+        <div class="reservation">
+            <span class="table">
+                <form>
+                    <h1 class="title" id="titleMake">Make a Reservation</h1>
+                    <input type="text" class="tableElements" id="tableName" placeholder="  Name*" required> <br>
+                    <input type="datetime" class="tableElements" id="tableDate" placeholder="  Date*" required> <br>
+                    <input type="datetime" class="tableElements" id="tableTime" placeholder="  Time*" required> <br>
+                    <input type="text" class="tableElements" id="tableCommensals" placeholder="  Commensals*" required> <br>
+                    <input type="button" class="button" id="buttonFindSecond" value="FIND A TABLE">
+                </form>
+            </span>
+            <span class="event">
+                <div>
+                <h1 class="title" id="titleUpcoming">Upcoming Events</h1>
+                </div>
+                <div class="eventTextImg">
+                    <span class="eventImg">
+                        <img src="images/Live music Fridays.png">
+                    </span>
+                    <span class="eventIndividual">
+                        <div class="eventsName">
+                            <p class="eventTitle">Live Music Fridays</p>
+                        </div>
+                        <span class="eventTime">
+                            <img src="images/Date-icon.png" width="13px" height="13px">
+                            <p class="eventTimeText">February 28th</p>
+                            <img src="images/Time-icon.png" width="13px" height="13px">
+                            <p class="eventTimeText">6:00 PM</p>
+                        </span>
+                        <span>
+                        <p class="eventTextDiscription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, repudiandae!</p>
+                        <p class="eventReadMore">Read more...</p>
+                        </span>
+                    </span>
+                </div>
+                <div class="eventTextImg">
+                    <span class="eventImg">
+                        <img src="images/Festival.png">
+                    </span>
+                    <span class="eventIndividual">
+                        <div class="eventsName">
+                            <p class="eventTitle">Louis XII Food Festival</p>
+                        </div>
+                        <span class="eventTime">
+                            <img src="images/Date-icon.png" width="13px" height="13px">
+                            <p class="eventTimeText">March 12th</p>
+                            <img src="images/Time-icon.png" width="13px" height="13px">
+                            <p class="eventTimeText">12:00 PM</p>
+                        </span>
+                        <span>
+                        <p class="eventTextDiscription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, repudiandae!</p>
+                        <p class="eventReadMore">Read more...</p>
+                        </span>
+                    </span>
+                </div>
+                <div class="eventTextImg">
+                    <span class="eventImg">
+                        <img src="images/magic show.png">
+                    </span>
+                    <span class="eventIndividual">
+                        <div class="eventsName">
+                            <p class="eventTitle">Magic Show with Karim Diaw</p>
+                        </div>
+                        <span class="eventTime">
+                            <img src="images/Date-icon.png" width="13px" height="13px">
+                            <p class="eventTimeText">March 22nd</p>
+                            <img src="images/Time-icon.png" width="13px" height="13px">
+                            <p class="eventTimeText">8:00 PM</p>
+                        </span>
+                        <span>
+                        <p class="eventTextDiscription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, repudiandae!</p>
+                        <p class="eventReadMore">Read more...</p>
+                        </span>
+                    </span>
+                </div>
+            </span>
+        </div>
+        <div class="bookTell">
+            <span class="bookTable">
+                <div class="bookOrTellTitle">
+                    <h1 class="title">Book a Table</h1>
+                </div>
+                <div class="bookTellText">
+                    <p>Like our restaurant concepts?Book a table and taste our dishes on first hand.</p>
+                </div>
+                <div>
+                    <button class="button" id="bookTableButton">BOOK A TABLE</button>
+                </div>
+            </span>
+            <span id="bookOrTell">
+                <div class="blackLine"></div>
+                <div id="orPng">
+                    <img src="images/Or.png">
+                </div>
+                <div class="blackLine"></div>
+            </span>
+            <span class="tellFriend">
+                <div class="bookOrTellTitle">
+                    <h1 class="title">Tell to Your Friends</h1>
+                </div>
+                <div class="bookTellText">
+                    <p>Some of your friends may like to visit if you recommend us.They will trust your taste!</p>
+                </div>
+                <div class="shareTwitter">
+                    <img src="images/Facebook Share button.png">
+                    <img src="images/Tweet button.png">
+                </div>
+            </span>
+        </div>
+        <div class="bottom">
+            <span class="titleVoila">
+               <h1 id="titleVoilaButtom">Voilà</h1>
+            </span>
+            <span class="navigation">
+                <h3 class="bottomTitle" id="titleNavigation">NAVIGATION</h3>
+                <p>MENU</p>
+                <p>ABOUT</p>
+                <p>EVENTS</p>
+                <p>RESERVATIONS</p>
+                <p>CONTACT</p>
+            </span>
+            <span class="visitOrConnect">
+                <span class="visitUs">
+                    <h3 class="bottomTitle" id="titleVisitUs">VISIT US</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, et!.<a href="https://www.bilibili.com/video/BV1GJ411x7h7?from=search&seid=5024477869953682940&spm_id_from=333.337.0.0" id="viewOnTheMap">View on the map.(Click Here)</a></p>
+                </span>
+                <span class="connectUs">
+                    <h3 class="bottomTitle" id="titleConnectUs">CONNECT WITH US</h3>
+                    <img class="connectUsPng" src="images/Facebook icon.png">
+                    <img class="connectUsPng" src="images/Twitter icon.png">
+                    <img class="connectUsPng" src="images/Instagram.png">
+                    <img class="connectUsPng" src="images/Trip advisor icon.png">
+                </span>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
