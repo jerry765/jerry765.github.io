@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>一些建议</title>
-    <url>/2023/07/28/advice/</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>I know nothing except the fact of my ignorance。<br>我唯一知道的就是我一无所知</p>
-
-</blockquote>
-
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><p>下列建议都出自同一个前提：各位同学对编程0基础</p>
-<h3 id="计算机概览"><a href="#计算机概览" class="headerlink" title="计算机概览"></a>计算机概览</h3><p><strong>推荐阅读：</strong><br><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmRvdWJhbi5jb20vc3ViamVjdC8zMDIwMDI0OC8=">普林斯顿大学计算机公开课<i class="fa fa-external-link-alt"></i></span></p>
-<p><strong>理由：</strong><br>通俗易懂，零基础入门，包含绝大部分所需要了解的基础知识</p>
-<span id="more"></span>
-
-<h3 id="前端编程入门"><a href="#前端编程入门" class="headerlink" title="前端编程入门"></a>前端编程入门</h3><p><strong>推荐观看：</strong><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMXZzNDExTTdhVA==">为初学者准备的：HTML 速成<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWJXNDExUjdoZw==">为初学者准备的：CSS 速成<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMUp0NDExRDdqNg==">为初学者准备的：JavaScript 速成<i class="fa fa-external-link-alt"></i></span></p>
-<p><strong>理由：</strong><br>足够精练，两小时通览上手的必备知识。从实践中学习，是软件工程的精髓所在。</p>
-<h3 id="后端编程入门"><a href="#后端编程入门" class="headerlink" title="后端编程入门"></a>后端编程入门</h3><p><strong>推荐阅读：</strong><br><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmRvdWJhbi5jb20vc3ViamVjdC8yNjc5MjUyMS8=">C Primer Plus（第6版）中文版<i class="fa fa-external-link-alt"></i></span></p>
-<p><strong>理由：</strong><br>风趣幽默，无需预备知识。无论是浅尝辄止或反复品味都非常推荐。</p>
-<h3 id="行业背景"><a href="#行业背景" class="headerlink" title="行业背景"></a>行业背景</h3><p><strong>推荐阅读：</strong><br><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmRvdWJhbi5jb20vc3ViamVjdC8zMzQ3NDc1MC8=">浪潮之巅（第四版）（上下册）<i class="fa fa-external-link-alt"></i></span></p>
-<p><strong>理由：</strong><br>技术决定下限，变革的思想定义上限。</p>
-<h2 id="一些小建议"><a href="#一些小建议" class="headerlink" title="一些小建议"></a>一些小建议</h2><ul>
-<li>快速学习。网课、书籍、文档各有利弊，智者见智，快速入门后投入实践才是王道。<strong>实践是检验真理的唯一标准。</strong></li>
-<li>保持谦逊。<strong>永远不要说自己精通。</strong></li>
-<li>大胆提问。不耻上问，但要注意提问的礼仪。</li>
-<li>劳逸结合。不做过多评价卷与躺，选择最适合自己的方式度过大学便可。人生有梦，各自精彩，永不要用同一个标杆衡量所有人。<strong>不是每一个人都有你所拥有的条件。</strong></li>
-</ul>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>experience</category>
-      </categories>
-      <tags>
-        <tag>csu</tag>
-        <tag>advice</tag>
-        <tag>university</tag>
-        <tag>software engineering</tag>
-        <tag>frontend</tag>
-        <tag>backend</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Node.js 笔记</title>
     <url>/2023/08/26/note-nodeJs/</url>
     <content><![CDATA[<h2 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h2><h3 id="Zero-Delay"><a href="#Zero-Delay" class="headerlink" title="Zero Delay"></a>Zero Delay</h3><p>如果指定超时延迟为 0 ，回调函数将尽快执行，但在当前函数执行之后：</p>
@@ -78,137 +38,6 @@
       <tags>
         <tag>javascript</tag>
         <tag>node.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm install 的不同方式</title>
-    <url>/2023/08/05/npm-install-ways/</url>
-    <content><![CDATA[<h2 id="npm-install-g-–save"><a href="#npm-install-g-–save" class="headerlink" title="npm install -g –save ?"></a>npm install -g –save ?</h2><span id="more"></span>
-
-<ul>
-<li><code>npm install</code>（在包目录中）<br>根据<code>package.json</code>文件，将依赖安装到包目录中<code>node_modules</code>文件夹</li>
-<li><code>npm install &quot;module-name&quot;</code><br>安装特定依赖到包目录下</li>
-<li><code>npm install -g &quot;module-name&quot;</code><br><code>-g</code>表明将模块安装到全局，将包安装到<code>prefix</code>文件夹而不是当前工作目录，<code>&#123;prefix&#125;/lib/node_modules</code><br>可通过以下命令查看 npm 相关配置：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
-<img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308051125123.png"></li>
-<li><code>npm install --save &quot;module-name&quot;</code><br><code>--save</code>表明模块安装并写入<code>package.json</code>的<code>dependencies</code>节点。<code>--save</code>等同于<code>-S</code>。</li>
-<li><ul>
-<li><code>npm install --save-prod &quot;module-name&quot;</code><br>包将出现在<code>dependencies</code>中，这是默认值</li>
-</ul>
-</li>
-<li><ul>
-<li><code>npm install --save-dev &quot;module-name&quot;</code><br>包将出现在<code>devDependencies</code>中，运行<code>npm install --production</code>或<code>NODE_ENV</code>值为<code>production</code>时<strong>不会</strong>自动下载模块。<code>--save-dev</code>等同于<code>-D</code>。</li>
-</ul>
-</li>
-</ul>
-<p><code>npm uninstall &quot;module_name&quot;</code>删除依赖同理。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>devDependencies</code>节点下模块是开发时需要使用的，如辅助开发的压缩，部署后不需要，所以使用<code>--save-dev</code>形式安装。<br><code>dependencies</code>节点下模块是运行时必备的，故采用<code>--save</code>（等同于<code>--save-prod</code>）安装。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><span class="exturl" data-url="aHR0cHM6Ly9ucG0ubm9kZWpzLmNuL2NsaS92OS9jb21tYW5kcy9ucG0taW5zdGFsbA==">npm中文网——npm-install<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGltaXRjb2RlL3AvNzkwNjQ0Ny5odG1s">NPM install -save 和 -save-dev 傻傻分不清<i class="fa fa-external-link-alt"></i></span></p>
-]]></content>
-      <categories>
-        <category>npm</category>
-      </categories>
-      <tags>
-        <tag>frontend</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>中南云麓谷研发部2023招新面试题</title>
-    <url>/2023/08/01/recruitment-2023/</url>
-    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>请不要被以下的内容吓走，也许从目前的你看来是太过困难；请放心，只要愿意学习，你会做的比图示更好。</p>
-<h2 id="理论学习"><a href="#理论学习" class="headerlink" title="理论学习"></a>理论学习</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="html"><a href="#html" class="headerlink" title="html"></a>html</h4><h5 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h5><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMXZzNDExTTdhVA==">为初学者准备的：HTML 速成<i class="fa fa-external-link-alt"></i></span></p>
-<h5 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h5><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSFRNTA==">MDN Web docs<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9odG1sL2h0bWwtdHV0b3JpYWwuaHRtbA==">HTML教程|菜鸟教程<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cudzNzY2hvb2wuY29tLmNuL3RhZ3MvaW5kZXguYXNw">W3school HTML<i class="fa fa-external-link-alt"></i></span></p>
-<span id="more"></span>
-
-<h4 id="css"><a href="#css" class="headerlink" title="css"></a>css</h4><h5 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h5><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWJXNDExUjdoZw==">为初学者准备的：CSS 速成<i class="fa fa-external-link-alt"></i></span></p>
-<h5 id="文档-1"><a href="#文档-1" class="headerlink" title="文档"></a>文档</h5><p>与HTML站点相同，不再复述。</p>
-<h4 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h4><h5 id="视频-2"><a href="#视频-2" class="headerlink" title="视频"></a>视频</h5><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMUp0NDExRDdqNg==">为初学者准备的：JavaScript 速成<i class="fa fa-external-link-alt"></i></span></p>
-<h5 id="文档-2"><a href="#文档-2" class="headerlink" title="文档"></a>文档</h5><p>与HTML站点相同，不再复述。<br><span class="exturl" data-url="aHR0cHM6Ly96aC5qYXZhc2NyaXB0LmluZm8v">现代JavaScript教程<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="提高"><a href="#提高" class="headerlink" title="提高"></a>提高</h3><p><a href="%22https://zhuanlan.zhihu.com/p/260177225%22">HTML5 + CSS3</a></p>
-<h2 id="招新作业"><a href="#招新作业" class="headerlink" title="招新作业"></a>招新作业</h2><h3 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h3><p>请设计并完成如下页面：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021013086.jpeg"></p>
-<h3 id="提高题"><a href="#提高题" class="headerlink" title="提高题"></a>提高题</h3><p>请根据<strong>HTML5和CSS3规范</strong>复现如下页面，其中图片资源在<strong>文末</strong>提供。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308050951824.jpeg"></p>
-<h4 id="基础要求"><a href="#基础要求" class="headerlink" title="基础要求"></a>基础要求</h4><p>了解并合理使用<strong>盒子模型</strong>、<strong>flex 布局</strong>以及其他 CSS 知识完成网页布局，各模块布局合理。</p>
-<h4 id="提高部分"><a href="#提高部分" class="headerlink" title="提高部分"></a>提高部分</h4><p>在基础要求的基础上，自主完善网页功能，包括但不限于网页间的联动、表单的使用等。请大胆发挥你的创意。</p>
-<h3 id="进阶题"><a href="#进阶题" class="headerlink" title="进阶题"></a>进阶题</h3><p>请在以下二题中<mark class="label success">任选其一</mark>完成。</p>
-<h4 id="微信小程序（推荐选做）"><a href="#微信小程序（推荐选做）" class="headerlink" title="微信小程序（推荐选做）"></a>微信小程序（推荐选做）</h4><p>利用相关知识完成一个主题为<strong>个人博客</strong>的微信小程序，示例如下（仅作参考）：</p>
-<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://img1.imgtp.com/2023/08/01/PasamiB3.png"></div><div class="group-picture-column"><img data-src="https://img1.imgtp.com/2023/08/01/rpPMYMzf.png"></div><div class="group-picture-column"><img data-src="https://img1.imgtp.com/2023/08/01/vhRFbkzJ.png"></div></div></div>
-
-<h5 id="基础要求-1"><a href="#基础要求-1" class="headerlink" title="基础要求"></a>基础要求</h5><p>自主完成小程序页面的设计，美观、简洁，且要求符合主题，各元素设置符合<strong>个人博客</strong>的要求。小程序组件功能齐全，可在本地调试环境流畅、正常运行。</p>
-<h5 id="提高部分-1"><a href="#提高部分-1" class="headerlink" title="提高部分"></a>提高部分</h5><p>在完成基础要求的前提下，可以选择实现以下功能：</p>
-<ol>
-<li>完成一篇自己的博客并展示在首页上，并且可以通过主页转跳到对应博客</li>
-<li>完成个人签名的编辑与保存功能</li>
-<li>完成点赞数、浏览数等的统计功能</li>
-<li>实现前后端分离设计</li>
-</ol>
-<h4 id="个人网站"><a href="#个人网站" class="headerlink" title="个人网站"></a>个人网站</h4><p>利用<span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcv">Vue<i class="fa fa-external-link-alt"></i></span>或<span class="exturl" data-url="aHR0cHM6Ly9yZWFjdC5kb2NzY2hpbmEub3JnLw==">React<i class="fa fa-external-link-alt"></i></span>等流行前端框架完成主题为<strong>个人博客</strong>的网站。</p>
-<h5 id="基础要求-2"><a href="#基础要求-2" class="headerlink" title="基础要求"></a>基础要求</h5><p>自主完成网页页面的设计，美观、简洁，且要求符合主题，各元素设置符合<strong>个人博客</strong>的要求。网页元素功能齐全，可在本地环境流畅、正常运行。</p>
-<h5 id="提高部分-2"><a href="#提高部分-2" class="headerlink" title="提高部分"></a>提高部分</h5><p>与微信小程序提高部分相同。</p>
-<h2 id="图片资源"><a href="#图片资源" class="headerlink" title="图片资源"></a>图片资源</h2><p>提高题所需要的图片资源请前往<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2plcnJ5NzY1L3JlY3J1aXRtZW50LWltYWdlcy5naXQ=">github<i class="fa fa-external-link-alt"></i></span>下载，如不能访问请使用<strong>科学上网</strong>方式。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021036634.png"><br>其余题目所有图片素材自行寻找即可，不做统一规定。</p>
-<p>可能用上的素材及工具网站：<br><span class="exturl" data-url="aHR0cHM6Ly93d3cucGV4ZWxzLmNvbS96aC1jbi8=">Pexels<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuaWNvbmZvbnQuY24v">阿里巴巴矢量图<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuaWxvdmVpbWcuY29tL3poLWNuL2Nyb3AtaW1hZ2U=">iLoveIMG免费图片裁剪<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="仍有疑问？"><a href="#仍有疑问？" class="headerlink" title="仍有疑问？"></a>仍有疑问？</h2><p>请通过本网站的评论系统（科学上网）提出，后续统一更新在本博客中。保持关注！</p>
-]]></content>
-      <categories>
-        <category>recruitment</category>
-      </categories>
-      <tags>
-        <tag>csu</tag>
-        <tag>university</tag>
-        <tag>software engineering</tag>
-        <tag>frontend</tag>
-        <tag>recruitment</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>教程其二之git</title>
-    <url>/2023/08/04/tutorial-git/</url>
-    <content><![CDATA[<h2 id="开源为王-git安装与github初入门"><a href="#开源为王-git安装与github初入门" class="headerlink" title="开源为王- git安装与github初入门"></a>开源为王- git安装与github初入门</h2><p>“开源（open source）”——人人可审查、修改与增强，可以从这篇文章稍作了解<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNzUwMTA3MA==">什么是开源？<i class="fa fa-external-link-alt"></i></span>。<br>至于git——世界上<strong>目前最先进</strong>的分布式版本控制系统，详见廖雪峰大佬的<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>以下内容不对其上概念和重要性做过多阐述，请自行选择阅读上述文章，以下仅从安装配置讨论。</p>
-<span id="more"></span>
-
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows 上安装方法有几种，对于新手推荐以下两种。</p>
-<h4 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h4><p>官网下载地址（通过科学上网访问）：<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZC93aW4=">https://git-scm.com/download/win<i class="fa fa-external-link-alt"></i></span><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041758468.png"></p>
-<blockquote>
-<p>小提示：如果你对你的英语水平不自信，edge&#x2F;chrome浏览器可以安装<code>沉浸式翻译</code>插件。<br>官网安装的详细步骤详见<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L211a2VzL2FydGljbGUvZGV0YWlscy8xMTU2OTM4MzM=">Git详细安装教程<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-<h4 id="Github-Desktop-安装"><a href="#Github-Desktop-安装" class="headerlink" title="Github Desktop 安装"></a>Github Desktop 安装</h4><p>该安装程序包含图形化和命令行版本的 Git。它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。前往 Github for Windows 网站下载，网址为<span class="exturl" data-url="aHR0cHM6Ly9kZXNrdG9wLmdpdGh1Yi5jb20v">https://desktop.github.com/<i class="fa fa-external-link-alt"></i></span>。</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开 Git Bash ，命令行界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041813146.png"></p>
-<p>配置用户名：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;username&quot;</span> // 将<span class="string">&quot;username&quot;</span>替换为你的账户名</span><br></pre></td></tr></table></figure>
-<p>邮箱：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;user@email.com&quot;</span> // 将<span class="string">&quot;user@email.com&quot;</span>替换为你的邮箱</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果你不清楚为什么要配置用户名和邮箱，请重新阅读<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>并找到相关部分。</p>
-</blockquote>
-<p>以上命令执行完毕后，可以用如下命令查看配置是否正确。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --list</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041817797.png"></p>
-<p>确认完毕后，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>此时有三个配置问题，第一次使用保持默认配置即可，<strong>请连按三次回车键</strong>。<br>结束后你可以看到两个目录地址，如你保持默认配置则前往系统盘目录<code>C:\Users(用户)\&quot;username&quot;\.ssh</code>文件夹查看 ssh 文件是否生成成功，分别为<code>id_rsa</code>和<code>id_rsa.pub</code>。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041826736.png"></p>
-<p>此时 git 的配置暂时告一段落，让我们将目光转向 github ，世界上最大的开源仓库平台。</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>如果你对注册账号的流程抱有疑问，请查看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82MTY1OTQ1MjA=">注册Github账号详细教程<i class="fa fa-external-link-alt"></i></span>，本博客不再详述。</p>
-<blockquote>
-<p>如若可以，建议用非 qq 邮箱注册，出于 qq 号可能被封禁考虑。</p>
-</blockquote>
-<p>你的 github 主页如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041832965.png"></p>
-<h3 id="绑定-git"><a href="#绑定-git" class="headerlink" title="绑定 git"></a>绑定 git</h3><p>点击右上角你的头像，选择<code>Settings</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041833037.png"></p>
-<p>于左侧<code>Access</code>下选择<code>SSH and GPG keys</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041835639.png"></p>
-<p>点击<code>New SSH Key</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041840544.png"></p>
-<p>title随意取好，个人建议为<code>你的电脑型号-Windows</code>（如<code>ThinkBook16p-Windows</code>），方便日后管理不同电脑&#x2F;虚拟机&#x2F;系统的 git 密钥。 Key Type 保持不变为<code>Authentication Key</code>。将<strong>公钥（<code>id_rsa.pub</code>）</strong>文件中的内容用 vscode 打开后复制粘贴到key中，然后点击<code>Add SSH key</code>即可。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041841111.png">。</p>
-<blockquote>
-<p>如果你对 SSH 公钥与私钥之分很感兴趣，可以阅读<span class="exturl" data-url="aHR0cHM6Ly9zb25nbGVlMjQuZ2l0aHViLmlvLzIwMTUvMDUvMDMvcHVibGljLWtleS1hbmQtcHJpdmF0ZS1rZXkv">理解公钥与私钥<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-<p>测试一下你的配置是否成功，在 Git Bash 终端中输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041848555.png"><br>看到如上字样则你的 github 与 git 已经配置成功。欢迎来到开源世界！</p>
-]]></content>
-      <categories>
-        <category>recruitment</category>
-      </categories>
-      <tags>
-        <tag>recruitment</tag>
-        <tag>software-engineering</tag>
       </tags>
   </entry>
   <entry>
@@ -352,117 +181,145 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
         <category>recruitment</category>
       </categories>
       <tags>
-        <tag>software-engineering</tag>
         <tag>git</tag>
+        <tag>software-engineering</tag>
       </tags>
   </entry>
   <entry>
-    <title>教程其一之VSCode</title>
-    <url>/2023/08/03/tutorial-vscode/</url>
-    <content><![CDATA[<h2 id="工欲善其事，必先利其器-从环境开始讲起"><a href="#工欲善其事，必先利其器-从环境开始讲起" class="headerlink" title="工欲善其事，必先利其器-从环境开始讲起"></a>工欲善其事，必先利其器-从环境开始讲起</h2><p>刚踏入计算机相关专业，却从未有编程经验？甚至从小到大第一次遇见计算机？没有关系，让我们从零开始讲起，一步一步从最最基础的开始讲起。<br>开篇先叠甲：<em>以下所有内容仅源于于个人体验，请根据你使用最舒服的方式进行配置。</em></p>
+    <title>中南云麓谷研发部2023招新面试题</title>
+    <url>/2023/08/01/recruitment-2023/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>请不要被以下的内容吓走，也许从目前的你看来是太过困难；请放心，只要愿意学习，你会做的比图示更好。</p>
+<h2 id="理论学习"><a href="#理论学习" class="headerlink" title="理论学习"></a>理论学习</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="html"><a href="#html" class="headerlink" title="html"></a>html</h4><h5 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h5><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMXZzNDExTTdhVA==">为初学者准备的：HTML 速成<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h5><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSFRNTA==">MDN Web docs<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9odG1sL2h0bWwtdHV0b3JpYWwuaHRtbA==">HTML教程|菜鸟教程<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cudzNzY2hvb2wuY29tLmNuL3RhZ3MvaW5kZXguYXNw">W3school HTML<i class="fa fa-external-link-alt"></i></span></p>
 <span id="more"></span>
 
-<h2 id="计算机环境"><a href="#计算机环境" class="headerlink" title="计算机环境"></a>计算机环境</h2><h3 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h3><p>如题，请确保你能通过<strong>科学上网</strong>访问<a href="%22https://github.com/%22">Github</a>。如若不能（或者你从未听过科学上网），请询问你身边的学长学姐。</p>
-<h3 id="安全软件"><a href="#安全软件" class="headerlink" title="安全软件"></a>安全软件</h3><p>首先，如果你有良好的计算机使用习惯，日常远离p2p下崽器、xxx中文网，始终对于网络资源尤其是各类安装包保持警惕，安装软件的第一步是寻找官网且日常略过前三广告，那么恭喜你，可以卸载所有安全管家等。<strong>Windows安全中心</strong>绝对足敷使用，请打开它并开启所有必要的保护。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021111543.png"><br>这个可以解决许多因安全软件拦截而产生的疑难杂症。<strong>请务必确保您的使用习惯足够良好，本站概不承担因卸载后猪脑过载导致的财产损失。</strong></p>
-<h3 id="浏览器和搜索引擎"><a href="#浏览器和搜索引擎" class="headerlink" title="浏览器和搜索引擎"></a>浏览器和搜索引擎</h3><p>Chrome，Edge，Firefox三选其一（排名分先后）。<br><strong>近乎所有的国产浏览器都是Chromium套壳+捆绑广告，请不要让它们污染你重金购入的电脑。</strong><br>利用科学上网手段注册账号后，打开密码自动填充并在手机端下载相同浏览器，上网体验如德芙般丝滑。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021121569.png"><br>请将默认浏览器设置为你最喜欢的御三家之一，搜索引擎推荐google&#x2F;bing（前者更好，但需要保持科学上网）。<strong>作为高质量大学生，请不要使用百度搜索引擎。</strong></p>
-<p>益智小游戏，请指出图中真正的steam官网：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021126585.png"></p>
-<p>最基本的计算机环境已经配置完毕，电脑已经清爽许多，现在让我们叩开编程的大门，不妨先从环境入手。</p>
-<h2 id="Visual-Studio-Code：免费开源的轻量级代码编辑器"><a href="#Visual-Studio-Code：免费开源的轻量级代码编辑器" class="headerlink" title="Visual Studio Code：免费开源的轻量级代码编辑器"></a>Visual Studio Code：免费开源的轻量级代码编辑器</h2><h3 id="为什么是-VS-Code-？"><a href="#为什么是-VS-Code-？" class="headerlink" title="为什么是 VS Code ？"></a>为什么是 VS Code ？</h3><p>VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨平台的、高性能的、轻量级的代码<strong>编辑器</strong>。</p>
-<p>何为编辑器？何为IDE？</p>
-<ul>
-<li>IDE（Integrated Development Environment，集成开发环境）:一组集成在一起的工具，包含文本编辑器、编译器、构建或集成、调试。侧重于工程项目，比较臃肿笨重。如Visual Studio、IDEA、Eclipse。</li>
-<li>编辑器：文本（代码）的编辑。如Windows系统自带的记事本就是最简单的编辑器。</li>
-</ul>
-<p>微软有两种软件：一种是 VS Code，一种是其他软件。</p>
-<h3 id="VS-Code-的特点"><a href="#VS-Code-的特点" class="headerlink" title="VS Code 的特点"></a>VS Code 的特点</h3><ul>
-<li>跨平台：支持 MacOS、Windows 和 Linux 等多个平台，且有一致的用户界面和开发体验，支持同步配置</li>
-<li>开源：源代码、开发计划和发布管理均开源</li>
-<li>自带终端、Git版本支持</li>
-<li>丰富的插件拓展</li>
-<li>活跃的社区生态</li>
-<li>语法支持：语法高亮、代码智能提示和补全、括号匹配、颜色区分、代码片段提示</li>
-</ul>
-<h3 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h3><p>免费？不是70r吗？</p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021130466.png"></p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021132921.webp"></p>
-<p>这就是为什么推荐google或bing搜索引擎，因为你真的能在国产搜索引擎看到这些。如果对是否是官网有疑问，请尤其注意他的域名。通过域名，能够分辨一大半的虚假官网。</p>
-<p>真正的VSCode官网：<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">https://code.visualstudio.com/<i class="fa fa-external-link-alt"></i></span>，点开后你应该能看到如下网页。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021137406.png"></p>
-<p>请根据你的电脑型号（Windows or MacOS）选择对应Stable（*稳定）版本下载。安装过程不再赘述，其中注意Win本<strong>尽量选择安装路径为非C盘</strong>即可，否则后续很可能<strong>因为C盘爆满，Windows系统无法更新</strong>。</p>
-<p>安装完成后打开软件，界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308030942879.png"></p>
-<p>如果你对英文界面感觉不太好，那么第一步就是<strong>将VSCode设置为中文</strong>。以下有两种方法：</p>
-<ul>
-<li>Windows用户快捷键<code>Ctrl+Shift+P</code>（Mac用户快捷键<code>Cmd+Shift+P</code>），打开命令面板，输入<code>Configure Display Language</code>，选择<code>Install additional languages</code>，然后安装插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code>即可</li>
-<li>Windows用户快捷键<code>Ctrl+Shift+X</code>，打开拓展页面，同样安装此插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code><br>安装完成后，重启 VS Code 。</li>
-</ul>
-<p>解放右手，请熟记常用快捷键组合。</p>
-<h3 id="常见操作-amp-使用技巧"><a href="#常见操作-amp-使用技巧" class="headerlink" title="常见操作&amp;使用技巧"></a>常见操作&amp;使用技巧</h3><h4 id="1、快速生成HTML骨架"><a href="#1、快速生成HTML骨架" class="headerlink" title="1、快速生成HTML骨架"></a>1、快速生成HTML骨架</h4><p>新建一个.html文件（如example.html），然后通过以下方式可快速生成HTML骨架：</p>
+<h4 id="css"><a href="#css" class="headerlink" title="css"></a>css</h4><h5 id="视频-1"><a href="#视频-1" class="headerlink" title="视频"></a>视频</h5><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWJXNDExUjdoZw==">为初学者准备的：CSS 速成<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="文档-1"><a href="#文档-1" class="headerlink" title="文档"></a>文档</h5><p>与HTML站点相同，不再复述。</p>
+<h4 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h4><h5 id="视频-2"><a href="#视频-2" class="headerlink" title="视频"></a>视频</h5><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMUp0NDExRDdqNg==">为初学者准备的：JavaScript 速成<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="文档-2"><a href="#文档-2" class="headerlink" title="文档"></a>文档</h5><p>与HTML站点相同，不再复述。<br><span class="exturl" data-url="aHR0cHM6Ly96aC5qYXZhc2NyaXB0LmluZm8v">现代JavaScript教程<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="提高"><a href="#提高" class="headerlink" title="提高"></a>提高</h3><p><a href="%22https://zhuanlan.zhihu.com/p/260177225%22">HTML5 + CSS3</a></p>
+<h2 id="招新作业"><a href="#招新作业" class="headerlink" title="招新作业"></a>招新作业</h2><h3 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h3><p>请设计并完成如下页面：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021013086.jpeg"></p>
+<h3 id="提高题"><a href="#提高题" class="headerlink" title="提高题"></a>提高题</h3><p>请根据<strong>HTML5和CSS3规范</strong>复现如下页面，其中图片资源在<strong>文末</strong>提供。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308050951824.jpeg"></p>
+<h4 id="基础要求"><a href="#基础要求" class="headerlink" title="基础要求"></a>基础要求</h4><p>了解并合理使用<strong>盒子模型</strong>、<strong>flex 布局</strong>以及其他 CSS 知识完成网页布局，各模块布局合理。</p>
+<h4 id="提高部分"><a href="#提高部分" class="headerlink" title="提高部分"></a>提高部分</h4><p>在基础要求的基础上，自主完善网页功能，包括但不限于网页间的联动、表单的使用等。请大胆发挥你的创意。</p>
+<h3 id="进阶题"><a href="#进阶题" class="headerlink" title="进阶题"></a>进阶题</h3><p>请在以下二题中<mark class="label success">任选其一</mark>完成。</p>
+<h4 id="微信小程序（推荐选做）"><a href="#微信小程序（推荐选做）" class="headerlink" title="微信小程序（推荐选做）"></a>微信小程序（推荐选做）</h4><p>利用相关知识完成一个主题为<strong>个人博客</strong>的微信小程序，示例如下（仅作参考）：</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://img1.imgtp.com/2023/08/01/PasamiB3.png"></div><div class="group-picture-column"><img data-src="https://img1.imgtp.com/2023/08/01/rpPMYMzf.png"></div><div class="group-picture-column"><img data-src="https://img1.imgtp.com/2023/08/01/vhRFbkzJ.png"></div></div></div>
+
+<h5 id="基础要求-1"><a href="#基础要求-1" class="headerlink" title="基础要求"></a>基础要求</h5><p>自主完成小程序页面的设计，美观、简洁，且要求符合主题，各元素设置符合<strong>个人博客</strong>的要求。小程序组件功能齐全，可在本地调试环境流畅、正常运行。</p>
+<h5 id="提高部分-1"><a href="#提高部分-1" class="headerlink" title="提高部分"></a>提高部分</h5><p>在完成基础要求的前提下，可以选择实现以下功能：</p>
 <ol>
-<li>输入<code>!</code>（英文感叹号），然后按下<code>Enter</code>键</li>
-<li>输入<code>html:5</code>，然后按住<code>Tab</code>键<br>生成的骨架如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>完成一篇自己的博客并展示在首页上，并且可以通过主页转跳到对应博客</li>
+<li>完成个人签名的编辑与保存功能</li>
+<li>完成点赞数、浏览数等的统计功能</li>
+<li>实现前后端分离设计</li>
 </ol>
-<p><strong>小技巧：</strong>在HTML文件中输入<code>lorem</code>可生成一段占位文本。</p>
-<h4 id="2、并排编辑：上下左右显示多个文件窗口"><a href="#2、并排编辑：上下左右显示多个文件窗口" class="headerlink" title="2、并排编辑：上下左右显示多个文件窗口"></a>2、并排编辑：上下左右显示多个文件窗口</h4><p>Windows用户按住快捷键<code>Ctrl + \</code>（反斜杠，在你的<code>Enter</code>回车键上方），即可同时打开多个编辑器窗口，进行并排编辑。按快捷键<code>Ctrl + 1</code>切换到左侧窗口，<code>Ctrl + 2</code>切换到右侧窗口，以此类推。</p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031012609.png"></p>
-<h3 id="部分插件推荐"><a href="#部分插件推荐" class="headerlink" title="部分插件推荐"></a>部分插件推荐</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031015953.png"></p>
-<p>我们可通过点击上图中红框部分，即可在顶部输入框中查找想要安装的插件名，然后进行安装。安装完毕后部分插件会需要重启软件，插件才会生效。<br>另外，我们也可以通过访问官网的插件市场来安装插件：<br>VS Code 官网插件市场：<span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL3ZzY29kZQ==">https://marketplace.visualstudio.com/vscode<i class="fa fa-external-link-alt"></i></span></p>
-<h4 id="推荐的插件"><a href="#推荐的插件" class="headerlink" title="推荐的插件"></a>推荐的插件</h4><h5 id="0、基本插件"><a href="#0、基本插件" class="headerlink" title="0、基本插件"></a>0、基本插件</h5><h6 id="Chinese-Simplified-Language-Pack-for-Visual-Studio-Code"><a href="#Chinese-Simplified-Language-Pack-for-Visual-Studio-Code" class="headerlink" title="Chinese (Simplified) Language Pack for Visual Studio Code"></a>Chinese (Simplified) Language Pack for Visual Studio Code</h6><p>中文语言插件，不必多言。</p>
-<h5 id="1、Git相关"><a href="#1、Git相关" class="headerlink" title="1、Git相关"></a>1、Git相关</h5><p>还不熟悉Git？没事，先安装再说，后续我们一定会讲到or用上。</p>
-<h6 id="GitLens"><a href="#GitLens" class="headerlink" title="GitLens"></a>GitLens</h6><p>Git管理神器，可视化仓库。</p>
-<h6 id="Local-History"><a href="#Local-History" class="headerlink" title="Local History"></a>Local History</h6><p>维护文件的本地历史记录，妈妈再也不用担心我代码忘记保存了。</p>
-<h5 id="2、代码显示增强"><a href="#2、代码显示增强" class="headerlink" title="2、代码显示增强"></a>2、代码显示增强</h5><h6 id="highlight-icemode"><a href="#highlight-icemode" class="headerlink" title="highlight-icemode"></a>highlight-icemode</h6><p>选中相同代码时高亮显示。安装后请关闭 VS Code 自带高亮，于用户设置添加<code>&quot;editor.selectionHighlight&quot;: false</code>。</p>
-<h6 id="TODO-Highlight"><a href="#TODO-Highlight" class="headerlink" title="TODO Highlight"></a>TODO Highlight</h6><p>什么，手上的 bug 还没修完突然有事，正巧这时候有了思路？按照代码规范，可以在代码中加上 TODO 注释（区分大小写）。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// TODO:发现跳转bug，可能的解决思路为：······</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// FIXME: 如没有万分把握请勿删去此行注释，可能导致程序崩溃。</span><br></pre></td></tr></table></figure>
-<p>安装此插件后，打开命令面板（还记得快捷键吗？）输入<code>TODO-Highlight</code>，选择相关命令，我们就可以看到 todoList 清单。</p>
-<h5 id="3、图片相关插件"><a href="#3、图片相关插件" class="headerlink" title="3、图片相关插件"></a>3、图片相关插件</h5><h6 id="Polacode-2022"><a href="#Polacode-2022" class="headerlink" title="Polacode-2022"></a>Polacode-2022</h6><p>可优雅地分享你的代码截图，如下所示：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031036600.png"></p>
-<p>我们谴责愚蠢的拍屏主义者，<code>Win+Shift+S</code>截图为可接受的。</p>
-<h5 id="4、Markdown相关"><a href="#4、Markdown相关" class="headerlink" title="4、Markdown相关"></a>4、Markdown相关</h5><p>本网站所有博客均由 Markdown 写成，其优点在于不用操心格式，随想随写，解放右手。推荐 VS Code + Markdown ，最好的笔记组合。</p>
-<h6 id="Markdown-Preview-Github-Styling"><a href="#Markdown-Preview-Github-Styling" class="headerlink" title="Markdown Preview Github Styling"></a>Markdown Preview Github Styling</h6><p>以 Github 风格预览 Markdown 样式，简洁且优雅。左侧书写右侧预览。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031047619.png"></p>
-<h5 id="5、通用工具"><a href="#5、通用工具" class="headerlink" title="5、通用工具"></a>5、通用工具</h5><h6 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h6><p>在本地启动服务器，代码修改时实现<strong>热更新</strong>，不需要手动刷新页面。<br>使用方式：于代码页面点击右键，选择<code>Open with Live Server</code>。</p>
-<h6 id="WakaTime"><a href="#WakaTime" class="headerlink" title="WakaTime"></a>WakaTime</h6><p>统计在各安装了 WakaTime 插件的编程环境中写代码的时间，发现真实的自己。网站统计效果如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031051230.png"></p>
-<h5 id="6、软件主题"><a href="#6、软件主题" class="headerlink" title="6、软件主题"></a>6、软件主题</h5><p>想给你的 VS Code 换个皮肤？欢迎来到海澜之家！</p>
-<ul>
-<li><p>Dracula Theme</p>
-</li>
-<li><p>Material Theme</p>
-</li>
-<li><p>Nebula Theme</p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPXpodWFuZ3RvbmdmYS5NYXRlcmlhbC10aGVtZQ==">One Dark Pro<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p>One Monokai Theme</p>
-</li>
-<li><p>Monokai Pro</p>
-</li>
-<li><p>Ayu</p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFrYXJsc3Rlbi52c2NvZGUtc25henp5LWFrYXJsc3Rlbg==">Snazzy Plus<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFsZXhhbmRlcnRlLmRhaW50eS12c2NvZGU=">Dainty<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p>GitHub Plus Theme：白色主题</p>
-</li>
-<li><p>Horizon Theme：红色主题</p>
-</li>
-</ul>
-<h3 id="多端协作：-VS-Code-云同步"><a href="#多端协作：-VS-Code-云同步" class="headerlink" title="多端协作： VS Code 云同步"></a>多端协作： VS Code 云同步</h3><ol>
-<li>上方菜单栏选择<code>文件-首选项-打开设置同步</code></li>
-<li>选择需要同步的配置，全选即可</li>
-<li>通过 GitHub 账号登录</li>
-<li>同步完成后，菜单栏显示“设置同步已打开”</li>
-</ol>
-<p>什么，你还没有 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==">GitHub<i class="fa fa-external-link-alt"></i></span> 账号？注册啊！</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031041381.jpg"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3FpYW5ndXlpaGFvL1dlYi9ibG9iL21hc3Rlci8wMC0lRTUlODklOEQlRTclQUIlQUYlRTUlQjclQTUlRTUlODUlQjcvMDEtVlMlMjBDb2RlJUU3JTlBJTg0JUU0JUJEJUJGJUU3JTk0JUE4Lm1k">Web-Master&#x2F;00-前端工具<i class="fa fa-external-link-alt"></i></span><br>多有参考，如想进一步了解 VS Code 如快捷键及更进一步的配置，可阅读全文。<br><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85MjMxMjY0Mg==">为什么要学Markdown？有什么用？<i class="fa fa-external-link-alt"></i></span></p>
+<h4 id="个人网站"><a href="#个人网站" class="headerlink" title="个人网站"></a>个人网站</h4><p>利用<span class="exturl" data-url="aHR0cHM6Ly9jbi52dWVqcy5vcmcv">Vue<i class="fa fa-external-link-alt"></i></span>或<span class="exturl" data-url="aHR0cHM6Ly9yZWFjdC5kb2NzY2hpbmEub3JnLw==">React<i class="fa fa-external-link-alt"></i></span>等流行前端框架完成主题为<strong>个人博客</strong>的网站。</p>
+<h5 id="基础要求-2"><a href="#基础要求-2" class="headerlink" title="基础要求"></a>基础要求</h5><p>自主完成网页页面的设计，美观、简洁，且要求符合主题，各元素设置符合<strong>个人博客</strong>的要求。网页元素功能齐全，可在本地环境流畅、正常运行。</p>
+<h5 id="提高部分-2"><a href="#提高部分-2" class="headerlink" title="提高部分"></a>提高部分</h5><p>与微信小程序提高部分相同。</p>
+<h2 id="图片资源"><a href="#图片资源" class="headerlink" title="图片资源"></a>图片资源</h2><p>提高题所需要的图片资源请前往<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2plcnJ5NzY1L3JlY3J1aXRtZW50LWltYWdlcy5naXQ=">github<i class="fa fa-external-link-alt"></i></span>下载，如不能访问请使用<strong>科学上网</strong>方式。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021036634.png"><br>其余题目所有图片素材自行寻找即可，不做统一规定。</p>
+<p>可能用上的素材及工具网站：<br><span class="exturl" data-url="aHR0cHM6Ly93d3cucGV4ZWxzLmNvbS96aC1jbi8=">Pexels<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuaWNvbmZvbnQuY24v">阿里巴巴矢量图<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuaWxvdmVpbWcuY29tL3poLWNuL2Nyb3AtaW1hZ2U=">iLoveIMG免费图片裁剪<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="仍有疑问？"><a href="#仍有疑问？" class="headerlink" title="仍有疑问？"></a>仍有疑问？</h2><p>请通过本网站的评论系统（科学上网）提出，后续统一更新在本博客中。保持关注！</p>
 ]]></content>
       <categories>
         <category>recruitment</category>
       </categories>
       <tags>
+        <tag>csu</tag>
+        <tag>university</tag>
+        <tag>software engineering</tag>
         <tag>frontend</tag>
-        <tag>recruitment</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>教程其二之git</title>
+    <url>/2023/08/04/tutorial-git/</url>
+    <content><![CDATA[<h2 id="开源为王-git安装与github初入门"><a href="#开源为王-git安装与github初入门" class="headerlink" title="开源为王- git安装与github初入门"></a>开源为王- git安装与github初入门</h2><p>“开源（open source）”——人人可审查、修改与增强，可以从这篇文章稍作了解<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNzUwMTA3MA==">什么是开源？<i class="fa fa-external-link-alt"></i></span>。<br>至于git——世界上<strong>目前最先进</strong>的分布式版本控制系统，详见廖雪峰大佬的<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>以下内容不对其上概念和重要性做过多阐述，请自行选择阅读上述文章，以下仅从安装配置讨论。</p>
+<span id="more"></span>
+
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows 上安装方法有几种，对于新手推荐以下两种。</p>
+<h4 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h4><p>官网下载地址（通过科学上网访问）：<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZC93aW4=">https://git-scm.com/download/win<i class="fa fa-external-link-alt"></i></span><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041758468.png"></p>
+<blockquote>
+<p>小提示：如果你对你的英语水平不自信，edge&#x2F;chrome浏览器可以安装<code>沉浸式翻译</code>插件。<br>官网安装的详细步骤详见<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L211a2VzL2FydGljbGUvZGV0YWlscy8xMTU2OTM4MzM=">Git详细安装教程<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h4 id="Github-Desktop-安装"><a href="#Github-Desktop-安装" class="headerlink" title="Github Desktop 安装"></a>Github Desktop 安装</h4><p>该安装程序包含图形化和命令行版本的 Git。它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。前往 Github for Windows 网站下载，网址为<span class="exturl" data-url="aHR0cHM6Ly9kZXNrdG9wLmdpdGh1Yi5jb20v">https://desktop.github.com/<i class="fa fa-external-link-alt"></i></span>。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开 Git Bash ，命令行界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041813146.png"></p>
+<p>配置用户名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;username&quot;</span> // 将<span class="string">&quot;username&quot;</span>替换为你的账户名</span><br></pre></td></tr></table></figure>
+<p>邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;user@email.com&quot;</span> // 将<span class="string">&quot;user@email.com&quot;</span>替换为你的邮箱</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你不清楚为什么要配置用户名和邮箱，请重新阅读<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>并找到相关部分。</p>
+</blockquote>
+<p>以上命令执行完毕后，可以用如下命令查看配置是否正确。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --list</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041817797.png"></p>
+<p>确认完毕后，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>此时有三个配置问题，第一次使用保持默认配置即可，<strong>请连按三次回车键</strong>。<br>结束后你可以看到两个目录地址，如你保持默认配置则前往系统盘目录<code>C:\Users(用户)\&quot;username&quot;\.ssh</code>文件夹查看 ssh 文件是否生成成功，分别为<code>id_rsa</code>和<code>id_rsa.pub</code>。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041826736.png"></p>
+<p>此时 git 的配置暂时告一段落，让我们将目光转向 github ，世界上最大的开源仓库平台。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>如果你对注册账号的流程抱有疑问，请查看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82MTY1OTQ1MjA=">注册Github账号详细教程<i class="fa fa-external-link-alt"></i></span>，本博客不再详述。</p>
+<blockquote>
+<p>如若可以，建议用非 qq 邮箱注册，出于 qq 号可能被封禁考虑。</p>
+</blockquote>
+<p>你的 github 主页如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041832965.png"></p>
+<h3 id="绑定-git"><a href="#绑定-git" class="headerlink" title="绑定 git"></a>绑定 git</h3><p>点击右上角你的头像，选择<code>Settings</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041833037.png"></p>
+<p>于左侧<code>Access</code>下选择<code>SSH and GPG keys</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041835639.png"></p>
+<p>点击<code>New SSH Key</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041840544.png"></p>
+<p>title随意取好，个人建议为<code>你的电脑型号-Windows</code>（如<code>ThinkBook16p-Windows</code>），方便日后管理不同电脑&#x2F;虚拟机&#x2F;系统的 git 密钥。 Key Type 保持不变为<code>Authentication Key</code>。将<strong>公钥（<code>id_rsa.pub</code>）</strong>文件中的内容用 vscode 打开后复制粘贴到key中，然后点击<code>Add SSH key</code>即可。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041841111.png">。</p>
+<blockquote>
+<p>如果你对 SSH 公钥与私钥之分很感兴趣，可以阅读<span class="exturl" data-url="aHR0cHM6Ly9zb25nbGVlMjQuZ2l0aHViLmlvLzIwMTUvMDUvMDMvcHVibGljLWtleS1hbmQtcHJpdmF0ZS1rZXkv">理解公钥与私钥<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p>测试一下你的配置是否成功，在 Git Bash 终端中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041848555.png"><br>看到如上字样则你的 github 与 git 已经配置成功。欢迎来到开源世界！</p>
+]]></content>
+      <categories>
+        <category>recruitment</category>
+      </categories>
+      <tags>
         <tag>software-engineering</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些建议</title>
+    <url>/2023/07/28/advice/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>I know nothing except the fact of my ignorance。<br>我唯一知道的就是我一无所知</p>
+
+</blockquote>
+
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><p>下列建议都出自同一个前提：各位同学对编程0基础</p>
+<h3 id="计算机概览"><a href="#计算机概览" class="headerlink" title="计算机概览"></a>计算机概览</h3><p><strong>推荐阅读：</strong><br><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmRvdWJhbi5jb20vc3ViamVjdC8zMDIwMDI0OC8=">普林斯顿大学计算机公开课<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>理由：</strong><br>通俗易懂，零基础入门，包含绝大部分所需要了解的基础知识</p>
+<span id="more"></span>
+
+<h3 id="前端编程入门"><a href="#前端编程入门" class="headerlink" title="前端编程入门"></a>前端编程入门</h3><p><strong>推荐观看：</strong><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMXZzNDExTTdhVA==">为初学者准备的：HTML 速成<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWJXNDExUjdoZw==">为初学者准备的：CSS 速成<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMUp0NDExRDdqNg==">为初学者准备的：JavaScript 速成<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>理由：</strong><br>足够精练，两小时通览上手的必备知识。从实践中学习，是软件工程的精髓所在。</p>
+<h3 id="后端编程入门"><a href="#后端编程入门" class="headerlink" title="后端编程入门"></a>后端编程入门</h3><p><strong>推荐阅读：</strong><br><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmRvdWJhbi5jb20vc3ViamVjdC8yNjc5MjUyMS8=">C Primer Plus（第6版）中文版<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>理由：</strong><br>风趣幽默，无需预备知识。无论是浅尝辄止或反复品味都非常推荐。</p>
+<h3 id="行业背景"><a href="#行业背景" class="headerlink" title="行业背景"></a>行业背景</h3><p><strong>推荐阅读：</strong><br><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmRvdWJhbi5jb20vc3ViamVjdC8zMzQ3NDc1MC8=">浪潮之巅（第四版）（上下册）<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>理由：</strong><br>技术决定下限，变革的思想定义上限。</p>
+<h2 id="一些小建议"><a href="#一些小建议" class="headerlink" title="一些小建议"></a>一些小建议</h2><ul>
+<li>快速学习。网课、书籍、文档各有利弊，智者见智，快速入门后投入实践才是王道。<strong>实践是检验真理的唯一标准。</strong></li>
+<li>保持谦逊。<strong>永远不要说自己精通。</strong></li>
+<li>大胆提问。不耻上问，但要注意提问的礼仪。</li>
+<li>劳逸结合。不做过多评价卷与躺，选择最适合自己的方式度过大学便可。人生有梦，各自精彩，永不要用同一个标杆衡量所有人。<strong>不是每一个人都有你所拥有的条件。</strong></li>
+</ul>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>experience</category>
+      </categories>
+      <tags>
+        <tag>csu</tag>
+        <tag>university</tag>
+        <tag>software engineering</tag>
+        <tag>frontend</tag>
+        <tag>advice</tag>
+        <tag>backend</tag>
       </tags>
   </entry>
   <entry>
@@ -639,6 +496,146 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
       </categories>
       <tags>
         <tag>style</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm install 的不同方式</title>
+    <url>/2023/08/05/npm-install-ways/</url>
+    <content><![CDATA[<h2 id="npm-install-g-–save"><a href="#npm-install-g-–save" class="headerlink" title="npm install -g –save ?"></a>npm install -g –save ?</h2><span id="more"></span>
+
+<ul>
+<li><code>npm install</code>（在包目录中）<br>根据<code>package.json</code>文件，将依赖安装到包目录中<code>node_modules</code>文件夹</li>
+<li><code>npm install &quot;module-name&quot;</code><br>安装特定依赖到包目录下</li>
+<li><code>npm install -g &quot;module-name&quot;</code><br><code>-g</code>表明将模块安装到全局，将包安装到<code>prefix</code>文件夹而不是当前工作目录，<code>&#123;prefix&#125;/lib/node_modules</code><br>可通过以下命令查看 npm 相关配置：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+<img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308051125123.png"></li>
+<li><code>npm install --save &quot;module-name&quot;</code><br><code>--save</code>表明模块安装并写入<code>package.json</code>的<code>dependencies</code>节点。<code>--save</code>等同于<code>-S</code>。</li>
+<li><ul>
+<li><code>npm install --save-prod &quot;module-name&quot;</code><br>包将出现在<code>dependencies</code>中，这是默认值</li>
+</ul>
+</li>
+<li><ul>
+<li><code>npm install --save-dev &quot;module-name&quot;</code><br>包将出现在<code>devDependencies</code>中，运行<code>npm install --production</code>或<code>NODE_ENV</code>值为<code>production</code>时<strong>不会</strong>自动下载模块。<code>--save-dev</code>等同于<code>-D</code>。</li>
+</ul>
+</li>
+</ul>
+<p><code>npm uninstall &quot;module_name&quot;</code>删除依赖同理。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>devDependencies</code>节点下模块是开发时需要使用的，如辅助开发的压缩，部署后不需要，所以使用<code>--save-dev</code>形式安装。<br><code>dependencies</code>节点下模块是运行时必备的，故采用<code>--save</code>（等同于<code>--save-prod</code>）安装。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><span class="exturl" data-url="aHR0cHM6Ly9ucG0ubm9kZWpzLmNuL2NsaS92OS9jb21tYW5kcy9ucG0taW5zdGFsbA==">npm中文网——npm-install<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGltaXRjb2RlL3AvNzkwNjQ0Ny5odG1s">NPM install -save 和 -save-dev 傻傻分不清<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+      <categories>
+        <category>npm</category>
+      </categories>
+      <tags>
+        <tag>frontend</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>教程其一之VSCode</title>
+    <url>/2023/08/03/tutorial-vscode/</url>
+    <content><![CDATA[<h2 id="工欲善其事，必先利其器-从环境开始讲起"><a href="#工欲善其事，必先利其器-从环境开始讲起" class="headerlink" title="工欲善其事，必先利其器-从环境开始讲起"></a>工欲善其事，必先利其器-从环境开始讲起</h2><p>刚踏入计算机相关专业，却从未有编程经验？甚至从小到大第一次遇见计算机？没有关系，让我们从零开始讲起，一步一步从最最基础的开始讲起。<br>开篇先叠甲：<em>以下所有内容仅源于于个人体验，请根据你使用最舒服的方式进行配置。</em></p>
+<span id="more"></span>
+
+<h2 id="计算机环境"><a href="#计算机环境" class="headerlink" title="计算机环境"></a>计算机环境</h2><h3 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h3><p>如题，请确保你能通过<strong>科学上网</strong>访问<a href="%22https://github.com/%22">Github</a>。如若不能（或者你从未听过科学上网），请询问你身边的学长学姐。</p>
+<h3 id="安全软件"><a href="#安全软件" class="headerlink" title="安全软件"></a>安全软件</h3><p>首先，如果你有良好的计算机使用习惯，日常远离p2p下崽器、xxx中文网，始终对于网络资源尤其是各类安装包保持警惕，安装软件的第一步是寻找官网且日常略过前三广告，那么恭喜你，可以卸载所有安全管家等。<strong>Windows安全中心</strong>绝对足敷使用，请打开它并开启所有必要的保护。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021111543.png"><br>这个可以解决许多因安全软件拦截而产生的疑难杂症。<strong>请务必确保您的使用习惯足够良好，本站概不承担因卸载后猪脑过载导致的财产损失。</strong></p>
+<h3 id="浏览器和搜索引擎"><a href="#浏览器和搜索引擎" class="headerlink" title="浏览器和搜索引擎"></a>浏览器和搜索引擎</h3><p>Chrome，Edge，Firefox三选其一（排名分先后）。<br><strong>近乎所有的国产浏览器都是Chromium套壳+捆绑广告，请不要让它们污染你重金购入的电脑。</strong><br>利用科学上网手段注册账号后，打开密码自动填充并在手机端下载相同浏览器，上网体验如德芙般丝滑。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021121569.png"><br>请将默认浏览器设置为你最喜欢的御三家之一，搜索引擎推荐google&#x2F;bing（前者更好，但需要保持科学上网）。<strong>作为高质量大学生，请不要使用百度搜索引擎。</strong></p>
+<p>益智小游戏，请指出图中真正的steam官网：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021126585.png"></p>
+<p>最基本的计算机环境已经配置完毕，电脑已经清爽许多，现在让我们叩开编程的大门，不妨先从环境入手。</p>
+<h2 id="Visual-Studio-Code：免费开源的轻量级代码编辑器"><a href="#Visual-Studio-Code：免费开源的轻量级代码编辑器" class="headerlink" title="Visual Studio Code：免费开源的轻量级代码编辑器"></a>Visual Studio Code：免费开源的轻量级代码编辑器</h2><h3 id="为什么是-VS-Code-？"><a href="#为什么是-VS-Code-？" class="headerlink" title="为什么是 VS Code ？"></a>为什么是 VS Code ？</h3><p>VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨平台的、高性能的、轻量级的代码<strong>编辑器</strong>。</p>
+<p>何为编辑器？何为IDE？</p>
+<ul>
+<li>IDE（Integrated Development Environment，集成开发环境）:一组集成在一起的工具，包含文本编辑器、编译器、构建或集成、调试。侧重于工程项目，比较臃肿笨重。如Visual Studio、IDEA、Eclipse。</li>
+<li>编辑器：文本（代码）的编辑。如Windows系统自带的记事本就是最简单的编辑器。</li>
+</ul>
+<p>微软有两种软件：一种是 VS Code，一种是其他软件。</p>
+<h3 id="VS-Code-的特点"><a href="#VS-Code-的特点" class="headerlink" title="VS Code 的特点"></a>VS Code 的特点</h3><ul>
+<li>跨平台：支持 MacOS、Windows 和 Linux 等多个平台，且有一致的用户界面和开发体验，支持同步配置</li>
+<li>开源：源代码、开发计划和发布管理均开源</li>
+<li>自带终端、Git版本支持</li>
+<li>丰富的插件拓展</li>
+<li>活跃的社区生态</li>
+<li>语法支持：语法高亮、代码智能提示和补全、括号匹配、颜色区分、代码片段提示</li>
+</ul>
+<h3 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h3><p>免费？不是70r吗？</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021130466.png"></p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021132921.webp"></p>
+<p>这就是为什么推荐google或bing搜索引擎，因为你真的能在国产搜索引擎看到这些。如果对是否是官网有疑问，请尤其注意他的域名。通过域名，能够分辨一大半的虚假官网。</p>
+<p>真正的VSCode官网：<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">https://code.visualstudio.com/<i class="fa fa-external-link-alt"></i></span>，点开后你应该能看到如下网页。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021137406.png"></p>
+<p>请根据你的电脑型号（Windows or MacOS）选择对应Stable（*稳定）版本下载。安装过程不再赘述，其中注意Win本<strong>尽量选择安装路径为非C盘</strong>即可，否则后续很可能<strong>因为C盘爆满，Windows系统无法更新</strong>。</p>
+<p>安装完成后打开软件，界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308030942879.png"></p>
+<p>如果你对英文界面感觉不太好，那么第一步就是<strong>将VSCode设置为中文</strong>。以下有两种方法：</p>
+<ul>
+<li>Windows用户快捷键<code>Ctrl+Shift+P</code>（Mac用户快捷键<code>Cmd+Shift+P</code>），打开命令面板，输入<code>Configure Display Language</code>，选择<code>Install additional languages</code>，然后安装插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code>即可</li>
+<li>Windows用户快捷键<code>Ctrl+Shift+X</code>，打开拓展页面，同样安装此插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code><br>安装完成后，重启 VS Code 。</li>
+</ul>
+<p>解放右手，请熟记常用快捷键组合。</p>
+<h3 id="常见操作-amp-使用技巧"><a href="#常见操作-amp-使用技巧" class="headerlink" title="常见操作&amp;使用技巧"></a>常见操作&amp;使用技巧</h3><h4 id="1、快速生成HTML骨架"><a href="#1、快速生成HTML骨架" class="headerlink" title="1、快速生成HTML骨架"></a>1、快速生成HTML骨架</h4><p>新建一个.html文件（如example.html），然后通过以下方式可快速生成HTML骨架：</p>
+<ol>
+<li>输入<code>!</code>（英文感叹号），然后按下<code>Enter</code>键</li>
+<li>输入<code>html:5</code>，然后按住<code>Tab</code>键<br>生成的骨架如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>小技巧：</strong>在HTML文件中输入<code>lorem</code>可生成一段占位文本。</p>
+<h4 id="2、并排编辑：上下左右显示多个文件窗口"><a href="#2、并排编辑：上下左右显示多个文件窗口" class="headerlink" title="2、并排编辑：上下左右显示多个文件窗口"></a>2、并排编辑：上下左右显示多个文件窗口</h4><p>Windows用户按住快捷键<code>Ctrl + \</code>（反斜杠，在你的<code>Enter</code>回车键上方），即可同时打开多个编辑器窗口，进行并排编辑。按快捷键<code>Ctrl + 1</code>切换到左侧窗口，<code>Ctrl + 2</code>切换到右侧窗口，以此类推。</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031012609.png"></p>
+<h3 id="部分插件推荐"><a href="#部分插件推荐" class="headerlink" title="部分插件推荐"></a>部分插件推荐</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031015953.png"></p>
+<p>我们可通过点击上图中红框部分，即可在顶部输入框中查找想要安装的插件名，然后进行安装。安装完毕后部分插件会需要重启软件，插件才会生效。<br>另外，我们也可以通过访问官网的插件市场来安装插件：<br>VS Code 官网插件市场：<span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL3ZzY29kZQ==">https://marketplace.visualstudio.com/vscode<i class="fa fa-external-link-alt"></i></span></p>
+<h4 id="推荐的插件"><a href="#推荐的插件" class="headerlink" title="推荐的插件"></a>推荐的插件</h4><h5 id="0、基本插件"><a href="#0、基本插件" class="headerlink" title="0、基本插件"></a>0、基本插件</h5><h6 id="Chinese-Simplified-Language-Pack-for-Visual-Studio-Code"><a href="#Chinese-Simplified-Language-Pack-for-Visual-Studio-Code" class="headerlink" title="Chinese (Simplified) Language Pack for Visual Studio Code"></a>Chinese (Simplified) Language Pack for Visual Studio Code</h6><p>中文语言插件，不必多言。</p>
+<h5 id="1、Git相关"><a href="#1、Git相关" class="headerlink" title="1、Git相关"></a>1、Git相关</h5><p>还不熟悉Git？没事，先安装再说，后续我们一定会讲到or用上。</p>
+<h6 id="GitLens"><a href="#GitLens" class="headerlink" title="GitLens"></a>GitLens</h6><p>Git管理神器，可视化仓库。</p>
+<h6 id="Local-History"><a href="#Local-History" class="headerlink" title="Local History"></a>Local History</h6><p>维护文件的本地历史记录，妈妈再也不用担心我代码忘记保存了。</p>
+<h5 id="2、代码显示增强"><a href="#2、代码显示增强" class="headerlink" title="2、代码显示增强"></a>2、代码显示增强</h5><h6 id="highlight-icemode"><a href="#highlight-icemode" class="headerlink" title="highlight-icemode"></a>highlight-icemode</h6><p>选中相同代码时高亮显示。安装后请关闭 VS Code 自带高亮，于用户设置添加<code>&quot;editor.selectionHighlight&quot;: false</code>。</p>
+<h6 id="TODO-Highlight"><a href="#TODO-Highlight" class="headerlink" title="TODO Highlight"></a>TODO Highlight</h6><p>什么，手上的 bug 还没修完突然有事，正巧这时候有了思路？按照代码规范，可以在代码中加上 TODO 注释（区分大小写）。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// TODO:发现跳转bug，可能的解决思路为：······</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// FIXME: 如没有万分把握请勿删去此行注释，可能导致程序崩溃。</span><br></pre></td></tr></table></figure>
+<p>安装此插件后，打开命令面板（还记得快捷键吗？）输入<code>TODO-Highlight</code>，选择相关命令，我们就可以看到 todoList 清单。</p>
+<h5 id="3、图片相关插件"><a href="#3、图片相关插件" class="headerlink" title="3、图片相关插件"></a>3、图片相关插件</h5><h6 id="Polacode-2022"><a href="#Polacode-2022" class="headerlink" title="Polacode-2022"></a>Polacode-2022</h6><p>可优雅地分享你的代码截图，如下所示：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031036600.png"></p>
+<p>我们谴责愚蠢的拍屏主义者，<code>Win+Shift+S</code>截图为可接受的。</p>
+<h5 id="4、Markdown相关"><a href="#4、Markdown相关" class="headerlink" title="4、Markdown相关"></a>4、Markdown相关</h5><p>本网站所有博客均由 Markdown 写成，其优点在于不用操心格式，随想随写，解放右手。推荐 VS Code + Markdown ，最好的笔记组合。</p>
+<h6 id="Markdown-Preview-Github-Styling"><a href="#Markdown-Preview-Github-Styling" class="headerlink" title="Markdown Preview Github Styling"></a>Markdown Preview Github Styling</h6><p>以 Github 风格预览 Markdown 样式，简洁且优雅。左侧书写右侧预览。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031047619.png"></p>
+<h5 id="5、通用工具"><a href="#5、通用工具" class="headerlink" title="5、通用工具"></a>5、通用工具</h5><h6 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h6><p>在本地启动服务器，代码修改时实现<strong>热更新</strong>，不需要手动刷新页面。<br>使用方式：于代码页面点击右键，选择<code>Open with Live Server</code>。</p>
+<h6 id="WakaTime"><a href="#WakaTime" class="headerlink" title="WakaTime"></a>WakaTime</h6><p>统计在各安装了 WakaTime 插件的编程环境中写代码的时间，发现真实的自己。网站统计效果如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031051230.png"></p>
+<h5 id="6、软件主题"><a href="#6、软件主题" class="headerlink" title="6、软件主题"></a>6、软件主题</h5><p>想给你的 VS Code 换个皮肤？欢迎来到海澜之家！</p>
+<ul>
+<li><p>Dracula Theme</p>
+</li>
+<li><p>Material Theme</p>
+</li>
+<li><p>Nebula Theme</p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPXpodWFuZ3RvbmdmYS5NYXRlcmlhbC10aGVtZQ==">One Dark Pro<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p>One Monokai Theme</p>
+</li>
+<li><p>Monokai Pro</p>
+</li>
+<li><p>Ayu</p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFrYXJsc3Rlbi52c2NvZGUtc25henp5LWFrYXJsc3Rlbg==">Snazzy Plus<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFsZXhhbmRlcnRlLmRhaW50eS12c2NvZGU=">Dainty<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p>GitHub Plus Theme：白色主题</p>
+</li>
+<li><p>Horizon Theme：红色主题</p>
+</li>
+</ul>
+<h3 id="多端协作：-VS-Code-云同步"><a href="#多端协作：-VS-Code-云同步" class="headerlink" title="多端协作： VS Code 云同步"></a>多端协作： VS Code 云同步</h3><ol>
+<li>上方菜单栏选择<code>文件-首选项-打开设置同步</code></li>
+<li>选择需要同步的配置，全选即可</li>
+<li>通过 GitHub 账号登录</li>
+<li>同步完成后，菜单栏显示“设置同步已打开”</li>
+</ol>
+<p>什么，你还没有 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==">GitHub<i class="fa fa-external-link-alt"></i></span> 账号？注册啊！</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031041381.jpg"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3FpYW5ndXlpaGFvL1dlYi9ibG9iL21hc3Rlci8wMC0lRTUlODklOEQlRTclQUIlQUYlRTUlQjclQTUlRTUlODUlQjcvMDEtVlMlMjBDb2RlJUU3JTlBJTg0JUU0JUJEJUJGJUU3JTk0JUE4Lm1k">Web-Master&#x2F;00-前端工具<i class="fa fa-external-link-alt"></i></span><br>多有参考，如想进一步了解 VS Code 如快捷键及更进一步的配置，可阅读全文。<br><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85MjMxMjY0Mg==">为什么要学Markdown？有什么用？<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+      <categories>
+        <category>recruitment</category>
+      </categories>
+      <tags>
+        <tag>software-engineering</tag>
+        <tag>frontend</tag>
       </tags>
   </entry>
   <entry>
