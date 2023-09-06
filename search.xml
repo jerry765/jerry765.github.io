@@ -32,12 +32,84 @@
         <category>experience</category>
       </categories>
       <tags>
+        <tag>backend</tag>
         <tag>csu</tag>
         <tag>advice</tag>
         <tag>university</tag>
         <tag>software engineering</tag>
         <tag>frontend</tag>
-        <tag>backend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm install 的不同方式</title>
+    <url>/2023/08/05/npm-install-ways/</url>
+    <content><![CDATA[<h2 id="npm-install-g-–save"><a href="#npm-install-g-–save" class="headerlink" title="npm install -g –save ?"></a>npm install -g –save ?</h2><span id="more"></span>
+
+<ul>
+<li><code>npm install</code>（在包目录中）<br>根据<code>package.json</code>文件，将依赖安装到包目录中<code>node_modules</code>文件夹</li>
+<li><code>npm install &quot;module-name&quot;</code><br>安装特定依赖到包目录下</li>
+<li><code>npm install -g &quot;module-name&quot;</code><br><code>-g</code>表明将模块安装到全局，将包安装到<code>prefix</code>文件夹而不是当前工作目录，<code>&#123;prefix&#125;/lib/node_modules</code><br>可通过以下命令查看 npm 相关配置：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+<img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308051125123.png"></li>
+<li><code>npm install --save &quot;module-name&quot;</code><br><code>--save</code>表明模块安装并写入<code>package.json</code>的<code>dependencies</code>节点。<code>--save</code>等同于<code>-S</code>。</li>
+<li><ul>
+<li><code>npm install --save-prod &quot;module-name&quot;</code><br>包将出现在<code>dependencies</code>中，这是默认值</li>
+</ul>
+</li>
+<li><ul>
+<li><code>npm install --save-dev &quot;module-name&quot;</code><br>包将出现在<code>devDependencies</code>中，运行<code>npm install --production</code>或<code>NODE_ENV</code>值为<code>production</code>时<strong>不会</strong>自动下载模块。<code>--save-dev</code>等同于<code>-D</code>。</li>
+</ul>
+</li>
+</ul>
+<p><code>npm uninstall &quot;module_name&quot;</code>删除依赖同理。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>devDependencies</code>节点下模块是开发时需要使用的，如辅助开发的压缩，部署后不需要，所以使用<code>--save-dev</code>形式安装。<br><code>dependencies</code>节点下模块是运行时必备的，故采用<code>--save</code>（等同于<code>--save-prod</code>）安装。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><span class="exturl" data-url="aHR0cHM6Ly9ucG0ubm9kZWpzLmNuL2NsaS92OS9jb21tYW5kcy9ucG0taW5zdGFsbA==">npm中文网——npm-install<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGltaXRjb2RlL3AvNzkwNjQ0Ny5odG1s">NPM install -save 和 -save-dev 傻傻分不清<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+      <categories>
+        <category>npm</category>
+      </categories>
+      <tags>
+        <tag>frontend</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Node.js 笔记</title>
+    <url>/2023/08/26/note-nodeJs/</url>
+    <content><![CDATA[<h2 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h2><h3 id="Zero-Delay"><a href="#Zero-Delay" class="headerlink" title="Zero Delay"></a>Zero Delay</h3><p>如果指定超时延迟为 0 ，回调函数将尽快执行，但在当前函数执行之后：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;after &#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27; before &#x27;</span>);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>该代码将打印</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">before</span><br><span class="line">after</span><br></pre></td></tr></table></figure>
+
+<p>这对于避免在密集型任务上阻塞 CPU 并通过在调度程序中对函数进行排队来让其他函数在执行繁重计算时执行特别有用。</p>
+<h3 id="Recursive-setTimeout"><a href="#Recursive-setTimeout" class="headerlink" title="Recursive setTimeout"></a>Recursive setTimeout</h3><p><code>setInterval</code> 每 n 毫秒启动一个函数，而不考虑函数何时完成执行。如果一个函数总是花费相同的时间，那就没问题；但也许一个长执行会与下一个执行重叠：</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308261059739.png"></p>
+<p>为了避免这种情况，您可以安排在回调函数完成时调用递归 setTimeout：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">myFunction</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">setTimeout</span>(myFunction, <span class="number">1000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(myFunction, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>为了实现这个场景：</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308261100968.png"></p>
+<p>Node.js 还提供了 <code>setImmediate()</code> ，相当于使用 <code>setTimeout(() =&gt; &#123;&#125;</code>, 0) ，主要用于与 Node.js 事件循环配合使用。</p>
+<h3 id="setImmediate"><a href="#setImmediate" class="headerlink" title="setImmediate()"></a>setImmediate()</h3><p><code>setImmediate()</code> 与 <code>setTimeout(() =&gt; &#123;&#125;, 0)</code> （传递 0 毫秒超时）以及 <code>process.nextTick() </code>和 <code>Promise.then()</code> 有何不同？</p>
+<p>当前操作结束后，传递给 <code>process.nextTick()</code> 的函数将在事件循环的当前迭代中执行。这意味着它将始终在 <code>setTimeout</code> 和 <code>setImmediate</code> 之前执行。</p>
+<p>延迟 0 毫秒的 <code>setTimeout()</code> 回调与 <code>setImmediate()</code> 非常相似。执行顺序将取决于各种因素，但它们都将在事件循环的下一次迭代中运行。</p>
+<p><code>process.nextTick</code> 回调被添加到 <code>process.nextTick queue</code> 。 <code>Promise.then()</code> 回调被添加到 <code>promises microtask queue</code> 。 setTimeout 回调被添加到 <code>macrotask queue</code> 。</p>
+<p>事件循环首先执行 <code>process.nextTick queue</code> 中的任务，然后执行 <code>promises microtask queue</code> ，然后执行 <code>macrotask queue</code> 。</p>
+<p>下面是一个显示 <code>setImmediate()</code> 、 <code>process.nextTick()</code> 和 <code>Promise.then()</code> 之间顺序的示例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">baz</span> = (<span class="params"></span>) =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;baz&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">foo</span> = (<span class="params"></span>) =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">zoo</span> = (<span class="params"></span>) =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;zoo&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">start</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line">  <span class="title function_">setImmediate</span>(baz);  <span class="comment">// 3</span></span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(resolve);</span><br><span class="line">    process.<span class="title function_">nextTick</span>(zoo);  <span class="comment">// 2</span></span><br><span class="line">  &#125;);</span><br><span class="line">  process.<span class="title function_">nextTick</span>(foo);  <span class="comment">// 1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">start</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// start foo bar zoo baz</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>此代码将首先调用 <code>start()</code> ，然后调用 <code>process.nextTick queue</code> 中的 <code>foo()</code> 。之后，它将处理 <code>promises microtask queue</code> ，打印 <code>bar</code> 并同时在 <code>process.nextTick queue</code> 中添加 <code>zoo()</code> 。然后就会调用刚刚添加的 <code>zoo()</code> 。最终调用了 <code>macrotask queue</code> 中的 <code>baz()</code> 。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p>更应该说是摘抄自</p>
+</blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMuZGV2L2VuL2xlYXJuL2Rpc2NvdmVyLWphdmFzY3JpcHQtdGltZXJzLw==">探索 JavaScript 定时器<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+      <categories>
+        <category>note</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>node.js</tag>
       </tags>
   </entry>
   <entry>
@@ -87,43 +159,54 @@
       </tags>
   </entry>
   <entry>
-    <title>Node.js 笔记</title>
-    <url>/2023/08/26/note-nodeJs/</url>
-    <content><![CDATA[<h2 id="Timer"><a href="#Timer" class="headerlink" title="Timer"></a>Timer</h2><h3 id="Zero-Delay"><a href="#Zero-Delay" class="headerlink" title="Zero Delay"></a>Zero Delay</h3><p>如果指定超时延迟为 0 ，回调函数将尽快执行，但在当前函数执行之后：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;after &#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27; before &#x27;</span>);</span><br></pre></td></tr></table></figure>
+    <title>教程其二之git</title>
+    <url>/2023/08/04/tutorial-git/</url>
+    <content><![CDATA[<h2 id="开源为王-git安装与github初入门"><a href="#开源为王-git安装与github初入门" class="headerlink" title="开源为王- git安装与github初入门"></a>开源为王- git安装与github初入门</h2><p>“开源（open source）”——人人可审查、修改与增强，可以从这篇文章稍作了解<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNzUwMTA3MA==">什么是开源？<i class="fa fa-external-link-alt"></i></span>。<br>至于git——世界上<strong>目前最先进</strong>的分布式版本控制系统，详见廖雪峰大佬的<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>以下内容不对其上概念和重要性做过多阐述，请自行选择阅读上述文章，以下仅从安装配置讨论。</p>
 <span id="more"></span>
-<p>该代码将打印</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">before</span><br><span class="line">after</span><br></pre></td></tr></table></figure>
 
-<p>这对于避免在密集型任务上阻塞 CPU 并通过在调度程序中对函数进行排队来让其他函数在执行繁重计算时执行特别有用。</p>
-<h3 id="Recursive-setTimeout"><a href="#Recursive-setTimeout" class="headerlink" title="Recursive setTimeout"></a>Recursive setTimeout</h3><p><code>setInterval</code> 每 n 毫秒启动一个函数，而不考虑函数何时完成执行。如果一个函数总是花费相同的时间，那就没问题；但也许一个长执行会与下一个执行重叠：</p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308261059739.png"></p>
-<p>为了避免这种情况，您可以安排在回调函数完成时调用递归 setTimeout：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">myFunction</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">setTimeout</span>(myFunction, <span class="number">1000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(myFunction, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>为了实现这个场景：</p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308261100968.png"></p>
-<p>Node.js 还提供了 <code>setImmediate()</code> ，相当于使用 <code>setTimeout(() =&gt; &#123;&#125;</code>, 0) ，主要用于与 Node.js 事件循环配合使用。</p>
-<h3 id="setImmediate"><a href="#setImmediate" class="headerlink" title="setImmediate()"></a>setImmediate()</h3><p><code>setImmediate()</code> 与 <code>setTimeout(() =&gt; &#123;&#125;, 0)</code> （传递 0 毫秒超时）以及 <code>process.nextTick() </code>和 <code>Promise.then()</code> 有何不同？</p>
-<p>当前操作结束后，传递给 <code>process.nextTick()</code> 的函数将在事件循环的当前迭代中执行。这意味着它将始终在 <code>setTimeout</code> 和 <code>setImmediate</code> 之前执行。</p>
-<p>延迟 0 毫秒的 <code>setTimeout()</code> 回调与 <code>setImmediate()</code> 非常相似。执行顺序将取决于各种因素，但它们都将在事件循环的下一次迭代中运行。</p>
-<p><code>process.nextTick</code> 回调被添加到 <code>process.nextTick queue</code> 。 <code>Promise.then()</code> 回调被添加到 <code>promises microtask queue</code> 。 setTimeout 回调被添加到 <code>macrotask queue</code> 。</p>
-<p>事件循环首先执行 <code>process.nextTick queue</code> 中的任务，然后执行 <code>promises microtask queue</code> ，然后执行 <code>macrotask queue</code> 。</p>
-<p>下面是一个显示 <code>setImmediate()</code> 、 <code>process.nextTick()</code> 和 <code>Promise.then()</code> 之间顺序的示例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">baz</span> = (<span class="params"></span>) =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;baz&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">foo</span> = (<span class="params"></span>) =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">zoo</span> = (<span class="params"></span>) =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;zoo&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">start</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line">  <span class="title function_">setImmediate</span>(baz);  <span class="comment">// 3</span></span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&#x27;bar&#x27;</span>);</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(resolve);</span><br><span class="line">    process.<span class="title function_">nextTick</span>(zoo);  <span class="comment">// 2</span></span><br><span class="line">  &#125;);</span><br><span class="line">  process.<span class="title function_">nextTick</span>(foo);  <span class="comment">// 1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">start</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// start foo bar zoo baz</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>此代码将首先调用 <code>start()</code> ，然后调用 <code>process.nextTick queue</code> 中的 <code>foo()</code> 。之后，它将处理 <code>promises microtask queue</code> ，打印 <code>bar</code> 并同时在 <code>process.nextTick queue</code> 中添加 <code>zoo()</code> 。然后就会调用刚刚添加的 <code>zoo()</code> 。最终调用了 <code>macrotask queue</code> 中的 <code>baz()</code> 。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<p>更应该说是摘抄自</p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows 上安装方法有几种，对于新手推荐以下两种。</p>
+<h4 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h4><p>官网下载地址（通过科学上网访问）：<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZC93aW4=">https://git-scm.com/download/win<i class="fa fa-external-link-alt"></i></span><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041758468.png"></p>
+<blockquote>
+<p>小提示：如果你对你的英语水平不自信，edge&#x2F;chrome浏览器可以安装<code>沉浸式翻译</code>插件。<br>官网安装的详细步骤详见<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L211a2VzL2FydGljbGUvZGV0YWlscy8xMTU2OTM4MzM=">Git详细安装教程<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
-<p><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMuZGV2L2VuL2xlYXJuL2Rpc2NvdmVyLWphdmFzY3JpcHQtdGltZXJzLw==">探索 JavaScript 定时器<i class="fa fa-external-link-alt"></i></span></p>
+<h4 id="Github-Desktop-安装"><a href="#Github-Desktop-安装" class="headerlink" title="Github Desktop 安装"></a>Github Desktop 安装</h4><p>该安装程序包含图形化和命令行版本的 Git。它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。前往 Github for Windows 网站下载，网址为<span class="exturl" data-url="aHR0cHM6Ly9kZXNrdG9wLmdpdGh1Yi5jb20v">https://desktop.github.com/<i class="fa fa-external-link-alt"></i></span>。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开 Git Bash ，命令行界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041813146.png"></p>
+<p>配置用户名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;username&quot;</span> // 将<span class="string">&quot;username&quot;</span>替换为你的账户名</span><br></pre></td></tr></table></figure>
+<p>邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;user@email.com&quot;</span> // 将<span class="string">&quot;user@email.com&quot;</span>替换为你的邮箱</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你不清楚为什么要配置用户名和邮箱，请重新阅读<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>并找到相关部分。</p>
+</blockquote>
+<p>以上命令执行完毕后，可以用如下命令查看配置是否正确。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --list</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041817797.png"></p>
+<p>确认完毕后，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>此时有三个配置问题，第一次使用保持默认配置即可，<strong>请连按三次回车键</strong>。<br>结束后你可以看到两个目录地址，如你保持默认配置则前往系统盘目录<code>C:\Users(用户)\&quot;username&quot;\.ssh</code>文件夹查看 ssh 文件是否生成成功，分别为<code>id_rsa</code>和<code>id_rsa.pub</code>。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041826736.png"></p>
+<p>此时 git 的配置暂时告一段落，让我们将目光转向 github ，世界上最大的开源仓库平台。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>如果你对注册账号的流程抱有疑问，请查看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82MTY1OTQ1MjA=">注册Github账号详细教程<i class="fa fa-external-link-alt"></i></span>，本博客不再详述。</p>
+<blockquote>
+<p>如若可以，建议用非 qq 邮箱注册，出于 qq 号可能被封禁考虑。</p>
+</blockquote>
+<p>你的 github 主页如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041832965.png"></p>
+<h3 id="绑定-git"><a href="#绑定-git" class="headerlink" title="绑定 git"></a>绑定 git</h3><p>点击右上角你的头像，选择<code>Settings</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041833037.png"></p>
+<p>于左侧<code>Access</code>下选择<code>SSH and GPG keys</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041835639.png"></p>
+<p>点击<code>New SSH Key</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041840544.png"></p>
+<p>title随意取好，个人建议为<code>你的电脑型号-Windows</code>（如<code>ThinkBook16p-Windows</code>），方便日后管理不同电脑&#x2F;虚拟机&#x2F;系统的 git 密钥。 Key Type 保持不变为<code>Authentication Key</code>。将<strong>公钥（<code>id_rsa.pub</code>）</strong>文件中的内容用 vscode 打开后复制粘贴到key中，然后点击<code>Add SSH key</code>即可。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041841111.png">。</p>
+<blockquote>
+<p>如果你对 SSH 公钥与私钥之分很感兴趣，可以阅读<span class="exturl" data-url="aHR0cHM6Ly9zb25nbGVlMjQuZ2l0aHViLmlvLzIwMTUvMDUvMDMvcHVibGljLWtleS1hbmQtcHJpdmF0ZS1rZXkv">理解公钥与私钥<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p>测试一下你的配置是否成功，在 Git Bash 终端中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041848555.png"><br>看到如上字样则你的 github 与 git 已经配置成功。欢迎来到开源世界！</p>
 ]]></content>
       <categories>
-        <category>note</category>
+        <category>recruitment</category>
       </categories>
       <tags>
-        <tag>javascript</tag>
-        <tag>node.js</tag>
+        <tag>software-engineering</tag>
       </tags>
   </entry>
   <entry>
@@ -235,86 +318,148 @@
       </tags>
   </entry>
   <entry>
-    <title>npm install 的不同方式</title>
-    <url>/2023/08/05/npm-install-ways/</url>
-    <content><![CDATA[<h2 id="npm-install-g-–save"><a href="#npm-install-g-–save" class="headerlink" title="npm install -g –save ?"></a>npm install -g –save ?</h2><span id="more"></span>
-
+    <title>教程其三之常用git命令</title>
+    <url>/2023/08/16/tutorial-git-command/</url>
+    <content><![CDATA[<blockquote>
+<p>本文由部长代写形成，赞美 youyiBYSKY</p>
+</blockquote>
+<h1 id="git的仓库管理"><a href="#git的仓库管理" class="headerlink" title="git的仓库管理"></a>git的仓库管理</h1><p>git在工程实践中起着举足轻重的作用，能够大大提高开发时版本迭代的效率。<br>接下来，本文将简单介绍一下git管理仓库的一些方法。希望阅读这篇博客的萌新能够看懂。<br><strong><del>毕竟不会用git要担心被开除了</del></strong><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/noob01.png" alt="0"><br><strong>（图来自runoob.com）</strong><br>本文从三个方面介绍仓库的管理  </p>
 <ul>
-<li><code>npm install</code>（在包目录中）<br>根据<code>package.json</code>文件，将依赖安装到包目录中<code>node_modules</code>文件夹</li>
-<li><code>npm install &quot;module-name&quot;</code><br>安装特定依赖到包目录下</li>
-<li><code>npm install -g &quot;module-name&quot;</code><br><code>-g</code>表明将模块安装到全局，将包安装到<code>prefix</code>文件夹而不是当前工作目录，<code>&#123;prefix&#125;/lib/node_modules</code><br>可通过以下命令查看 npm 相关配置：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
-<img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308051125123.png"></li>
-<li><code>npm install --save &quot;module-name&quot;</code><br><code>--save</code>表明模块安装并写入<code>package.json</code>的<code>dependencies</code>节点。<code>--save</code>等同于<code>-S</code>。</li>
-<li><ul>
-<li><code>npm install --save-prod &quot;module-name&quot;</code><br>包将出现在<code>dependencies</code>中，这是默认值</li>
+<li>本地仓库</li>
+<li>外部仓库</li>
+<li>仓库的分支管理</li>
 </ul>
-</li>
-<li><ul>
-<li><code>npm install --save-dev &quot;module-name&quot;</code><br>包将出现在<code>devDependencies</code>中，运行<code>npm install --production</code>或<code>NODE_ENV</code>值为<code>production</code>时<strong>不会</strong>自动下载模块。<code>--save-dev</code>等同于<code>-D</code>。</li>
-</ul>
-</li>
-</ul>
-<p><code>npm uninstall &quot;module_name&quot;</code>删除依赖同理。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><code>devDependencies</code>节点下模块是开发时需要使用的，如辅助开发的压缩，部署后不需要，所以使用<code>--save-dev</code>形式安装。<br><code>dependencies</code>节点下模块是运行时必备的，故采用<code>--save</code>（等同于<code>--save-prod</code>）安装。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><span class="exturl" data-url="aHR0cHM6Ly9ucG0ubm9kZWpzLmNuL2NsaS92OS9jb21tYW5kcy9ucG0taW5zdGFsbA==">npm中文网——npm-install<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGltaXRjb2RlL3AvNzkwNjQ0Ny5odG1s">NPM install -save 和 -save-dev 傻傻分不清<i class="fa fa-external-link-alt"></i></span></p>
-]]></content>
-      <categories>
-        <category>npm</category>
-      </categories>
-      <tags>
-        <tag>frontend</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>教程其二之git</title>
-    <url>/2023/08/04/tutorial-git/</url>
-    <content><![CDATA[<h2 id="开源为王-git安装与github初入门"><a href="#开源为王-git安装与github初入门" class="headerlink" title="开源为王- git安装与github初入门"></a>开源为王- git安装与github初入门</h2><p>“开源（open source）”——人人可审查、修改与增强，可以从这篇文章稍作了解<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNzUwMTA3MA==">什么是开源？<i class="fa fa-external-link-alt"></i></span>。<br>至于git——世界上<strong>目前最先进</strong>的分布式版本控制系统，详见廖雪峰大佬的<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>以下内容不对其上概念和重要性做过多阐述，请自行选择阅读上述文章，以下仅从安装配置讨论。</p>
 <span id="more"></span>
 
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows 上安装方法有几种，对于新手推荐以下两种。</p>
-<h4 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h4><p>官网下载地址（通过科学上网访问）：<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZC93aW4=">https://git-scm.com/download/win<i class="fa fa-external-link-alt"></i></span><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041758468.png"></p>
+<p>本文所用到的代码总览</p>
 <blockquote>
-<p>小提示：如果你对你的英语水平不自信，edge&#x2F;chrome浏览器可以安装<code>沉浸式翻译</code>插件。<br>官网安装的详细步骤详见<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L211a2VzL2FydGljbGUvZGV0YWlscy8xMTU2OTM4MzM=">Git详细安装教程<i class="fa fa-external-link-alt"></i></span></p>
+<p><code>$ git init //仓库初始化  </code><br><code>$ git status //仓库状态  </code><br><code>$ git add //将工作区文件添加到缓存区  </code><br><code>$ git commit -m &quot;(日志内容)&quot;//提交更改到版本库 </code><br><code>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt; //push代码到远程仓库</code><br><code>$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt; //从远程仓库上pull下代码</code><br><code>$ git fetch //从远程仓库下载新分支与数据</code><br><code>$ git clone &lt;repo&gt; &lt;directory&gt; //从现有 Git 仓库中拷贝项目</code><br><code>$ git branch //查看当前git中的分支列表</code><br><code>$ git checkout (branchname) //切换当前所在分支</code><br><code>$ git merge (branchname) //将指定分支合并到当前分支</code><br><code>$ git branch -d (branchname) //删除指定分支</code>  </p>
 </blockquote>
-<h4 id="Github-Desktop-安装"><a href="#Github-Desktop-安装" class="headerlink" title="Github Desktop 安装"></a>Github Desktop 安装</h4><p>该安装程序包含图形化和命令行版本的 Git。它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。前往 Github for Windows 网站下载，网址为<span class="exturl" data-url="aHR0cHM6Ly9kZXNrdG9wLmdpdGh1Yi5jb20v">https://desktop.github.com/<i class="fa fa-external-link-alt"></i></span>。</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开 Git Bash ，命令行界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041813146.png"></p>
-<p>配置用户名：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;username&quot;</span> // 将<span class="string">&quot;username&quot;</span>替换为你的账户名</span><br></pre></td></tr></table></figure>
-<p>邮箱：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;user@email.com&quot;</span> // 将<span class="string">&quot;user@email.com&quot;</span>替换为你的邮箱</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>如果你不清楚为什么要配置用户名和邮箱，请重新阅读<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>并找到相关部分。</p>
+<p><code>$ git log //查看git日志 </code>  </p>
 </blockquote>
-<p>以上命令执行完毕后，可以用如下命令查看配置是否正确。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --list</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041817797.png"></p>
-<p>确认完毕后，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>此时有三个配置问题，第一次使用保持默认配置即可，<strong>请连按三次回车键</strong>。<br>结束后你可以看到两个目录地址，如你保持默认配置则前往系统盘目录<code>C:\Users(用户)\&quot;username&quot;\.ssh</code>文件夹查看 ssh 文件是否生成成功，分别为<code>id_rsa</code>和<code>id_rsa.pub</code>。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041826736.png"></p>
-<p>此时 git 的配置暂时告一段落，让我们将目光转向 github ，世界上最大的开源仓库平台。</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>如果你对注册账号的流程抱有疑问，请查看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82MTY1OTQ1MjA=">注册Github账号详细教程<i class="fa fa-external-link-alt"></i></span>，本博客不再详述。</p>
+<h2 id="git本地仓库的基础操作"><a href="#git本地仓库的基础操作" class="headerlink" title="git本地仓库的基础操作"></a>git本地仓库的基础操作</h2><h3 id="本地仓库的初始化"><a href="#本地仓库的初始化" class="headerlink" title="本地仓库的初始化"></a>本地仓库的初始化</h3><p>初始化git本地仓库的命令格式如下</p>
 <blockquote>
-<p>如若可以，建议用非 qq 邮箱注册，出于 qq 号可能被封禁考虑。</p>
+<p><code>$ git init</code><br>在所选定的文件夹下启动git，在cmd中输入<br><code>$ git init</code>  </p>
 </blockquote>
-<p>你的 github 主页如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041832965.png"></p>
-<h3 id="绑定-git"><a href="#绑定-git" class="headerlink" title="绑定 git"></a>绑定 git</h3><p>点击右上角你的头像，选择<code>Settings</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041833037.png"></p>
-<p>于左侧<code>Access</code>下选择<code>SSH and GPG keys</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041835639.png"></p>
-<p>点击<code>New SSH Key</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041840544.png"></p>
-<p>title随意取好，个人建议为<code>你的电脑型号-Windows</code>（如<code>ThinkBook16p-Windows</code>），方便日后管理不同电脑&#x2F;虚拟机&#x2F;系统的 git 密钥。 Key Type 保持不变为<code>Authentication Key</code>。将<strong>公钥（<code>id_rsa.pub</code>）</strong>文件中的内容用 vscode 打开后复制粘贴到key中，然后点击<code>Add SSH key</code>即可。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041841111.png">。</p>
+<p>之后返回提示</p>
+<pre><code>Initialized empty Git repository in &quot;仓库所在文件夹的路径&quot;
+</code></pre>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/1.png" alt="1"><br>即可完成仓库的初始化，同时，在该文件夹下会生成一个 <strong>.git</strong> 文件夹。</p>
+<p>此时要查看仓库状态，可以输入  </p>
 <blockquote>
-<p>如果你对 SSH 公钥与私钥之分很感兴趣，可以阅读<span class="exturl" data-url="aHR0cHM6Ly9zb25nbGVlMjQuZ2l0aHViLmlvLzIwMTUvMDUvMDMvcHVibGljLWtleS1hbmQtcHJpdmF0ZS1rZXkv">理解公钥与私钥<i class="fa fa-external-link-alt"></i></span></p>
+<p><code> git status</code>  </p>
 </blockquote>
-<p>测试一下你的配置是否成功，在 Git Bash 终端中输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041848555.png"><br>看到如上字样则你的 github 与 git 已经配置成功。欢迎来到开源世界！</p>
+<p>此时会看到已经被初始化的仓库<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/2.png" alt="2"><br><strong>这只是一个空仓库</strong></p>
+<h3 id="本地仓库的管理"><a href="#本地仓库的管理" class="headerlink" title="本地仓库的管理"></a>本地仓库的管理</h3><h4 id="文件的工作区导入"><a href="#文件的工作区导入" class="headerlink" title="文件的工作区导入"></a>文件的工作区导入</h4><p>在原来的文件夹下面新增一个 <strong>“GitTest”</strong> 文件夹<br>在所选定的文件夹下导入你所要保存的项目，启动git，在cmd中输入  </p>
+<blockquote>
+<p><code>$ git status</code>   </p>
+</blockquote>
+<p>此时可以看到导入的项目文件未提交的git仓库  </p>
+<pre><code class="bash">On branch master
+
+No commits yet
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        GitTest/ (.git同级文件)
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre>
+<h4 id="文件的暂存区导入"><a href="#文件的暂存区导入" class="headerlink" title="文件的暂存区导入"></a>文件的暂存区导入</h4><p>git中将工作区文件导入到暂存区的命令格式如下：  </p>
+<blockquote>
+<p><code>git add &lt;文件名&gt;</code>  </p>
+</blockquote>
+<p>在cmd中输入<br><code>$ git add GitTest/（所要添加到暂存区的文件）</code><br><code>（输入$ git add . 可将当前目录下的所有文件都添加到暂存区）</code>  </p>
+<p>此时再查看仓库状态<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/5.png" alt="5"><br>可以看到工作区中的文件已经添加到了暂存区  </p>
+<h4 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a>提交文件到版本库</h4><p>git中将暂存区文件提交到版本库的命令格式如下：  </p>
+<blockquote>
+<p><code>git commit -m &quot;(日志内容)&quot;</code>  </p>
+</blockquote>
+<p>在cmd中输入  </p>
+<blockquote>
+<p><code>$ git commit -m &quot;提交到版本库&quot; </code>  </p>
+</blockquote>
+<p>然后可以看到暂存区的文件已经被更新到版本库  </p>
+<pre><code class="bash">[master (root-commit) c868616] &quot;提交到版本库&quot;
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 GitTest/introduction.md
+</code></pre>
+<p>在cmd中再次输入  </p>
+<blockquote>
+<p><code>$ git status</code>  </p>
+</blockquote>
+<p>此时可以看到在版本库更新后，缓存区中的内容已经被清空<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/3.png" alt="3"></p>
+<h4 id="提交更改到版本库"><a href="#提交更改到版本库" class="headerlink" title="提交更改到版本库"></a>提交更改到版本库</h4><p>打开上例中的 &#x2F;GitTest&#x2F;introduction.md 文件进行如下修改</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/7.png" alt="7"></p>
+<p>查看仓库状态，可以看到git检测到introduction.md已被修改<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/8.png" alt="8"><br>按照上一段的步骤再次操作（工作区-&gt;暂存区-&gt;提交更改）即可将项目保存的修改提交到版本库  </p>
+<h2 id="git远程仓库的基础操作"><a href="#git远程仓库的基础操作" class="headerlink" title="git远程仓库的基础操作"></a>git远程仓库的基础操作</h2><p>前言：这里稍稍加速一下，本地仓库的分支管理、版本库回溯等操作暂且跳过，就先优先讲解一写远程仓库的基础操作（pull、push）  </p>
+<p><del>说实话，这种很不负责任的做法，但为了快速上手，我还是把分支管理放在了这一节之后<br><strong>原谅我</strong></del>    </p>
+<h3 id="新建远程仓库"><a href="#新建远程仓库" class="headerlink" title="新建远程仓库"></a>新建远程仓库</h3><p>登录GitHub ,在主页导航栏找到新建，选中“New repository”,<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/9.png" alt="9"><br>根据引导创建远程仓库  </p>
+<h3 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h3><p>在github中找到远程仓库的地址<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/11.png" alt="11"><br>新建仓库后复制仓库地址，在git中输入  </p>
+<blockquote>
+<p><code>$ git remodte add origin &quot;远程仓库地址&quot;</code>  </p>
+</blockquote>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/12.png" alt="12">  </p>
+<h4 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h4><p>git中push代码的命令格式如下：</p>
+<blockquote>
+<p><code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code>  </p>
+</blockquote>
+<p>现在来开始push我们已有的代码<br>此时尝试直接输入<code>git push</code>来push本地代码，会出现以下情况<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/13.png" alt="13"><br>这里提示当前master分支没有上传分支，并且提示输入  <code>git push --set-upstream origin master</code> 来建立origin和master之间的流通道<br><em><strong>（origin是远程仓库的默认名称，master是本地分支的默认名称）</strong></em><br>如上建立流通道后，打开github中的远程仓库，可以看到本地代码已经上传至远程仓库<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/14.png" alt="14">  </p>
+<h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><p>git中pull代码的命令格式如下：  </p>
+<blockquote>
+<p><code>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code>  </p>
+</blockquote>
+<p>打开GitHub，将先前上传的introduction.md 文件做一些改动后保存<br><strong>（在GitHub上直接修改代码时记得选择分支，这个会在之后细说）</strong><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/15.png" alt="15"><br>在git中直接输入<code>git pull</code><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/16.png" alt="16"><br>打开本地的introduction.md ，可以看见GitHub上的更改已经同步到本地<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/17.png" alt="17">  </p>
+<h2 id="git的分支管理"><a href="#git的分支管理" class="headerlink" title="git的分支管理"></a>git的分支管理</h2><p>分支，是将修改的项目整体分叉保存，每个分叉后的分支相互独立，互不影响。<br>git的分支模型是git的一大 <strong>“绝学”</strong>，几乎每一种版本控制系统都以某种形式支持分支，一个分支代表一条独立的开发线。<br>利用分支，可以让多个人同时为同一个项目进行开发。在自己完成工作后，将自己分支上的修改合并到主分支。  </p>
+<h3 id="查看与新建git分支"><a href="#查看与新建git分支" class="headerlink" title="查看与新建git分支"></a>查看与新建git分支</h3><p>git中查看分支的命令格式如下：  </p>
+<blockquote>
+<p><code>git branch</code>  </p>
+</blockquote>
+<p>在默认情况下，本地仓库只有一个 <strong>master</strong>分支，并且该分支是当前分支。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/18.png" alt="18">  </p>
+<p>git中新建分支的命令格式如下：  </p>
+<blockquote>
+<p><code>git branch (branchname)</code>  </p>
+</blockquote>
+<p>现在我们要新建一个 <strong>“moke”</strong> 分支，只需输入：<code>git branch moke</code><br>然后再次输入<code>git branch</code>来查看所有分支。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/19.png" alt="19">  </p>
+<p>现在我们可以看到，我们有了一个新的分支 <strong>“moke”</strong>。  </p>
+<h3 id="切换git分支"><a href="#切换git分支" class="headerlink" title="切换git分支"></a>切换git分支</h3><p>git中切换分支的命令格式如下：  </p>
+<blockquote>
+<p><code>git checkout (branchname)</code>  </p>
+</blockquote>
+<p>现在我们要切换到方才创建的<strong>“moke”</strong> 分支，就只需要输入<code>git checkout moke</code><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/20.png" alt="20">  </p>
+<p>可以看到，我们现在已经切换到了 <strong>“moke”</strong> 分支。  </p>
+<p>现在打开 introduction.md ，删除第二行的内容，然后更新到版本库。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/21.png" alt="21"><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/22.png" alt="22">   </p>
+<p>此时输入<code>git checkout mmaster</code>切换到默认的master分支。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/23.png" alt="23">  </p>
+<p>再打开 introduction.md ，可以看到在 <strong>“moke”</strong> 中被删除的第二行回来了。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/24.png" alt="24">  </p>
+<p>这里证明了不同的分支下，同一个项目可以同时开发，而且互不影响。  </p>
+<h3 id="合并git分支"><a href="#合并git分支" class="headerlink" title="合并git分支"></a>合并git分支</h3><p>git中合并分支的命令格式如下：  </p>
+<blockquote>
+<p><code>git merge (branchname)</code>  </p>
+</blockquote>
+<p><strong>首先先解释一下这个命令：</strong><br>这个分支合并命令是将指定分支合（上面命令格式中的参数）并到当前分支。</p>
+<p>上文中master分支与 <strong>“moke”</strong> 中的内容并不相同，这里我们要把这<strong>“moke”</strong>分支合并到master分支。<br>在git中输入<code>git merge moke</code>,可以看到<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/25.png" alt="25"><br>再打开 introduction.md ，可以看到在master分支中第二行继承了 <strong>“moke”</strong>的状态，也就是被删除了。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/21.png" alt="21">    </p>
+<h3 id="删除git分支"><a href="#删除git分支" class="headerlink" title="删除git分支"></a>删除git分支</h3><p>git中删除分支的命令格式如下：  </p>
+<blockquote>
+<p><code>git branch -d (branchname)</code>  </p>
+</blockquote>
+<p>上面我们将 <strong>“moke”</strong>分支合并到了master中，那么现在 <strong>“moke”</strong>分支没用了，我们就要准备删除这个分支了。<br>在git中输入<code>git branch -d moke</code>,可以看到 <strong>“moke”</strong>分支已经被删除了<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/26.png" alt="26">  </p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
+<li>合并冲突分支</li>
+<li>git clone 与 pull、fetch之间的区别</li>
+<li>git log命令的使用</li>
+<li>git blame命令的使用</li>
+<li>git diff命令的使用</li>
+<li>远程仓库的使用进阶</li>
+<li>git版本回溯</li>
+</ul>
 ]]></content>
       <categories>
         <category>recruitment</category>
       </categories>
       <tags>
         <tag>software-engineering</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -538,151 +683,6 @@
         <tag>frontend</tag>
         <tag>vue</tag>
         <tag>websocket</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>教程其三之常用git命令</title>
-    <url>/2023/08/16/tutorial-git-command/</url>
-    <content><![CDATA[<blockquote>
-<p>本文由部长代写形成，赞美 youyiBYSKY</p>
-</blockquote>
-<h1 id="git的仓库管理"><a href="#git的仓库管理" class="headerlink" title="git的仓库管理"></a>git的仓库管理</h1><p>git在工程实践中起着举足轻重的作用，能够大大提高开发时版本迭代的效率。<br>接下来，本文将简单介绍一下git管理仓库的一些方法。希望阅读这篇博客的萌新能够看懂。<br><strong><del>毕竟不会用git要担心被开除了</del></strong><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/noob01.png" alt="0"><br><strong>（图来自runoob.com）</strong><br>本文从三个方面介绍仓库的管理  </p>
-<ul>
-<li>本地仓库</li>
-<li>外部仓库</li>
-<li>仓库的分支管理</li>
-</ul>
-<span id="more"></span>
-
-<p>本文所用到的代码总览</p>
-<blockquote>
-<p><code>$ git init //仓库初始化  </code><br><code>$ git status //仓库状态  </code><br><code>$ git add //将工作区文件添加到缓存区  </code><br><code>$ git commit -m &quot;(日志内容)&quot;//提交更改到版本库 </code><br><code>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt; //push代码到远程仓库</code><br><code>$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt; //从远程仓库上pull下代码</code><br><code>$ git fetch //从远程仓库下载新分支与数据</code><br><code>$ git clone &lt;repo&gt; &lt;directory&gt; //从现有 Git 仓库中拷贝项目</code><br><code>$ git branch //查看当前git中的分支列表</code><br><code>$ git checkout (branchname) //切换当前所在分支</code><br><code>$ git merge (branchname) //将指定分支合并到当前分支</code><br><code>$ git branch -d (branchname) //删除指定分支</code>  </p>
-</blockquote>
-<blockquote>
-<p><code>$ git log //查看git日志 </code>  </p>
-</blockquote>
-<h2 id="git本地仓库的基础操作"><a href="#git本地仓库的基础操作" class="headerlink" title="git本地仓库的基础操作"></a>git本地仓库的基础操作</h2><h3 id="本地仓库的初始化"><a href="#本地仓库的初始化" class="headerlink" title="本地仓库的初始化"></a>本地仓库的初始化</h3><p>初始化git本地仓库的命令格式如下</p>
-<blockquote>
-<p><code>$ git init</code><br>在所选定的文件夹下启动git，在cmd中输入<br><code>$ git init</code>  </p>
-</blockquote>
-<p>之后返回提示</p>
-<pre><code>Initialized empty Git repository in &quot;仓库所在文件夹的路径&quot;
-</code></pre>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/1.png" alt="1"><br>即可完成仓库的初始化，同时，在该文件夹下会生成一个 <strong>.git</strong> 文件夹。</p>
-<p>此时要查看仓库状态，可以输入  </p>
-<blockquote>
-<p><code> git status</code>  </p>
-</blockquote>
-<p>此时会看到已经被初始化的仓库<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/2.png" alt="2"><br><strong>这只是一个空仓库</strong></p>
-<h3 id="本地仓库的管理"><a href="#本地仓库的管理" class="headerlink" title="本地仓库的管理"></a>本地仓库的管理</h3><h4 id="文件的工作区导入"><a href="#文件的工作区导入" class="headerlink" title="文件的工作区导入"></a>文件的工作区导入</h4><p>在原来的文件夹下面新增一个 <strong>“GitTest”</strong> 文件夹<br>在所选定的文件夹下导入你所要保存的项目，启动git，在cmd中输入  </p>
-<blockquote>
-<p><code>$ git status</code>   </p>
-</blockquote>
-<p>此时可以看到导入的项目文件未提交的git仓库  </p>
-<pre><code class="bash">On branch master
-
-No commits yet
-
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-        GitTest/ (.git同级文件)
-
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)
-</code></pre>
-<h4 id="文件的暂存区导入"><a href="#文件的暂存区导入" class="headerlink" title="文件的暂存区导入"></a>文件的暂存区导入</h4><p>git中将工作区文件导入到暂存区的命令格式如下：  </p>
-<blockquote>
-<p><code>git add &lt;文件名&gt;</code>  </p>
-</blockquote>
-<p>在cmd中输入<br><code>$ git add GitTest/（所要添加到暂存区的文件）</code><br><code>（输入$ git add . 可将当前目录下的所有文件都添加到暂存区）</code>  </p>
-<p>此时再查看仓库状态<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/5.png" alt="5"><br>可以看到工作区中的文件已经添加到了暂存区  </p>
-<h4 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a>提交文件到版本库</h4><p>git中将暂存区文件提交到版本库的命令格式如下：  </p>
-<blockquote>
-<p><code>git commit -m &quot;(日志内容)&quot;</code>  </p>
-</blockquote>
-<p>在cmd中输入  </p>
-<blockquote>
-<p><code>$ git commit -m &quot;提交到版本库&quot; </code>  </p>
-</blockquote>
-<p>然后可以看到暂存区的文件已经被更新到版本库  </p>
-<pre><code class="bash">[master (root-commit) c868616] &quot;提交到版本库&quot;
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 GitTest/introduction.md
-</code></pre>
-<p>在cmd中再次输入  </p>
-<blockquote>
-<p><code>$ git status</code>  </p>
-</blockquote>
-<p>此时可以看到在版本库更新后，缓存区中的内容已经被清空<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/3.png" alt="3"></p>
-<h4 id="提交更改到版本库"><a href="#提交更改到版本库" class="headerlink" title="提交更改到版本库"></a>提交更改到版本库</h4><p>打开上例中的 &#x2F;GitTest&#x2F;introduction.md 文件进行如下修改</p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/7.png" alt="7"></p>
-<p>查看仓库状态，可以看到git检测到introduction.md已被修改<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/8.png" alt="8"><br>按照上一段的步骤再次操作（工作区-&gt;暂存区-&gt;提交更改）即可将项目保存的修改提交到版本库  </p>
-<h2 id="git远程仓库的基础操作"><a href="#git远程仓库的基础操作" class="headerlink" title="git远程仓库的基础操作"></a>git远程仓库的基础操作</h2><p>前言：这里稍稍加速一下，本地仓库的分支管理、版本库回溯等操作暂且跳过，就先优先讲解一写远程仓库的基础操作（pull、push）  </p>
-<p><del>说实话，这种很不负责任的做法，但为了快速上手，我还是把分支管理放在了这一节之后<br><strong>原谅我</strong></del>    </p>
-<h3 id="新建远程仓库"><a href="#新建远程仓库" class="headerlink" title="新建远程仓库"></a>新建远程仓库</h3><p>登录GitHub ,在主页导航栏找到新建，选中“New repository”,<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/9.png" alt="9"><br>根据引导创建远程仓库  </p>
-<h3 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h3><p>在github中找到远程仓库的地址<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/11.png" alt="11"><br>新建仓库后复制仓库地址，在git中输入  </p>
-<blockquote>
-<p><code>$ git remodte add origin &quot;远程仓库地址&quot;</code>  </p>
-</blockquote>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/12.png" alt="12">  </p>
-<h4 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h4><p>git中push代码的命令格式如下：</p>
-<blockquote>
-<p><code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code>  </p>
-</blockquote>
-<p>现在来开始push我们已有的代码<br>此时尝试直接输入<code>git push</code>来push本地代码，会出现以下情况<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/13.png" alt="13"><br>这里提示当前master分支没有上传分支，并且提示输入  <code>git push --set-upstream origin master</code> 来建立origin和master之间的流通道<br><em><strong>（origin是远程仓库的默认名称，master是本地分支的默认名称）</strong></em><br>如上建立流通道后，打开github中的远程仓库，可以看到本地代码已经上传至远程仓库<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/14.png" alt="14">  </p>
-<h4 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h4><p>git中pull代码的命令格式如下：  </p>
-<blockquote>
-<p><code>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code>  </p>
-</blockquote>
-<p>打开GitHub，将先前上传的introduction.md 文件做一些改动后保存<br><strong>（在GitHub上直接修改代码时记得选择分支，这个会在之后细说）</strong><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/15.png" alt="15"><br>在git中直接输入<code>git pull</code><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/16.png" alt="16"><br>打开本地的introduction.md ，可以看见GitHub上的更改已经同步到本地<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/17.png" alt="17">  </p>
-<h2 id="git的分支管理"><a href="#git的分支管理" class="headerlink" title="git的分支管理"></a>git的分支管理</h2><p>分支，是将修改的项目整体分叉保存，每个分叉后的分支相互独立，互不影响。<br>git的分支模型是git的一大 <strong>“绝学”</strong>，几乎每一种版本控制系统都以某种形式支持分支，一个分支代表一条独立的开发线。<br>利用分支，可以让多个人同时为同一个项目进行开发。在自己完成工作后，将自己分支上的修改合并到主分支。  </p>
-<h3 id="查看与新建git分支"><a href="#查看与新建git分支" class="headerlink" title="查看与新建git分支"></a>查看与新建git分支</h3><p>git中查看分支的命令格式如下：  </p>
-<blockquote>
-<p><code>git branch</code>  </p>
-</blockquote>
-<p>在默认情况下，本地仓库只有一个 <strong>master</strong>分支，并且该分支是当前分支。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/18.png" alt="18">  </p>
-<p>git中新建分支的命令格式如下：  </p>
-<blockquote>
-<p><code>git branch (branchname)</code>  </p>
-</blockquote>
-<p>现在我们要新建一个 <strong>“moke”</strong> 分支，只需输入：<code>git branch moke</code><br>然后再次输入<code>git branch</code>来查看所有分支。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/19.png" alt="19">  </p>
-<p>现在我们可以看到，我们有了一个新的分支 <strong>“moke”</strong>。  </p>
-<h3 id="切换git分支"><a href="#切换git分支" class="headerlink" title="切换git分支"></a>切换git分支</h3><p>git中切换分支的命令格式如下：  </p>
-<blockquote>
-<p><code>git checkout (branchname)</code>  </p>
-</blockquote>
-<p>现在我们要切换到方才创建的<strong>“moke”</strong> 分支，就只需要输入<code>git checkout moke</code><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/20.png" alt="20">  </p>
-<p>可以看到，我们现在已经切换到了 <strong>“moke”</strong> 分支。  </p>
-<p>现在打开 introduction.md ，删除第二行的内容，然后更新到版本库。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/21.png" alt="21"><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/22.png" alt="22">   </p>
-<p>此时输入<code>git checkout mmaster</code>切换到默认的master分支。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/23.png" alt="23">  </p>
-<p>再打开 introduction.md ，可以看到在 <strong>“moke”</strong> 中被删除的第二行回来了。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/24.png" alt="24">  </p>
-<p>这里证明了不同的分支下，同一个项目可以同时开发，而且互不影响。  </p>
-<h3 id="合并git分支"><a href="#合并git分支" class="headerlink" title="合并git分支"></a>合并git分支</h3><p>git中合并分支的命令格式如下：  </p>
-<blockquote>
-<p><code>git merge (branchname)</code>  </p>
-</blockquote>
-<p><strong>首先先解释一下这个命令：</strong><br>这个分支合并命令是将指定分支合（上面命令格式中的参数）并到当前分支。</p>
-<p>上文中master分支与 <strong>“moke”</strong> 中的内容并不相同，这里我们要把这<strong>“moke”</strong>分支合并到master分支。<br>在git中输入<code>git merge moke</code>,可以看到<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/25.png" alt="25"><br>再打开 introduction.md ，可以看到在master分支中第二行继承了 <strong>“moke”</strong>的状态，也就是被删除了。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/21.png" alt="21">    </p>
-<h3 id="删除git分支"><a href="#删除git分支" class="headerlink" title="删除git分支"></a>删除git分支</h3><p>git中删除分支的命令格式如下：  </p>
-<blockquote>
-<p><code>git branch -d (branchname)</code>  </p>
-</blockquote>
-<p>上面我们将 <strong>“moke”</strong>分支合并到了master中，那么现在 <strong>“moke”</strong>分支没用了，我们就要准备删除这个分支了。<br>在git中输入<code>git branch -d moke</code>,可以看到 <strong>“moke”</strong>分支已经被删除了<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-BYSKY/26.png" alt="26">  </p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
-<li>合并冲突分支</li>
-<li>git clone 与 pull、fetch之间的区别</li>
-<li>git log命令的使用</li>
-<li>git blame命令的使用</li>
-<li>git diff命令的使用</li>
-<li>远程仓库的使用进阶</li>
-<li>git版本回溯</li>
-</ul>
-]]></content>
-      <categories>
-        <category>recruitment</category>
-      </categories>
-      <tags>
-        <tag>software-engineering</tag>
-        <tag>git</tag>
       </tags>
   </entry>
 </search>
