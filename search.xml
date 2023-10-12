@@ -32,19 +32,49 @@
         <category>experience</category>
       </categories>
       <tags>
+        <tag>backend</tag>
         <tag>csu</tag>
         <tag>advice</tag>
         <tag>university</tag>
         <tag>software engineering</tag>
         <tag>frontend</tag>
-        <tag>backend</tag>
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2023/10/09/data-structure-in-c/</url>
-    <content><![CDATA[<p>title: 数据结构笔记<br>date: 2023-09-27 18:07:21<br>mdate: 2023-10-09 14:44:35<br>categories: GEE<br>tags: </p>
-<blockquote>
+    <title>计算机网络笔记</title>
+    <url>/2023/10/08/computer-network/</url>
+    <content><![CDATA[<blockquote>
+<p> 参考书籍：计算机网络——自顶向下方法（原书第 8 版）</p>
+</blockquote>
+<h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2><p>端系统（end system）通过通信链路（communication link）和分组交换机（packet switch）的网络连接到一起。</p>
+<p>端系统通过因特网服务提供商（Internet Service Provider，ISP）接入因特网。每一个 ISP 网络都是独立管理的。</p>
+<ul>
+<li>TCP（Transmission Control Protocol，传输控制协议）</li>
+<li>IP（Internet Protoc，网络协议）</li>
+</ul>
+<p>分布式应用（distributed application）：涉及多个相互交换数据的端系统。</p>
+<p>与因特网相连的端系统提供了一个套接字接口（socket interface），因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
+<p>为了完成一项工作，要求两个（或多个）通信实体运行相同的协议。<br>&#x2F;&#x2F; TODO：附图计算机网络协议 P5</p>
+<p><strong>向一个 Web 服务器发出请求（即在 Web 浏览器中键入一个 Web 网页的 URL）所发生的情况</strong>：<br>首先，计算机向该 Web 服务器发送一条连接请求报文，并等待回答。该 Web 服务器最终能接收到连接请求报文，并返回一条连接响应报文。得知请求该 Web 文档正常后，计算机则在一条 GET 报文中发送该网页的名字，而该网页的名字要从这台 Web 服务器上取回。最后，Web 服务器向你的计算机返回该 Web 网页（文件）。</p>
+<p>协议（protocol）定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文的发送&#x2F;接收或其他事件所采取的操作。</p>
+<p>WiFi：基于 IEEE 802.11 技术的无线 LAN（局域网）接入</p>
+<p>为了从源端系统向目的端系统发送一个报文（message），源将长报文划分为较小的数据块，称为分组（packet）。在源和目的地之间，每个分组都通过通信链路（communication link）和分组交换机（packet switch）传送，交换机主要有路由器（router）和链路层交换机（link-layer switch）两类。</p>
+<p>存储转发传输（store-and-forward transmission）：交换机在开始向输出链路传输该分组的第一个比特之前，必须接受到整个分组。</p>
+<p>分组交换机具有一个输出缓存【output buffer，也称为输出队列（output queue）】，缓存充满时将出现分组丢失（丢包）（packet loss），到达的分组或已经排队的分组之一将被丢弃。</p>
+<p>转发表（forwarding table）用于将目的地址（或目的地址的一部分）映射为输出链路。</p>
+<p>通过网络链路和交换机移动数据有两种基本方法：电路交换（circuit switching）和分组交换（packet switching）。<br>在电路</p>
+]]></content>
+      <categories>
+        <category>GEE</category>
+      </categories>
+      <tags>
+        <tag>computer network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构笔记</title>
+    <url>/2023/09/27/data-structure-in-c/</url>
+    <content><![CDATA[<blockquote>
 <p>参考书籍：数据结构与算法分析（C语言描述） 原书第二版</p>
 </blockquote>
 <span id="more"></span>
@@ -81,6 +111,13 @@
 <h3 id="AVL-树"><a href="#AVL-树" class="headerlink" title="AVL 树"></a>AVL 树</h3><p>一颗 AVL 树是其每个节点的左子树和右子树的高度最多差 1 的二叉查找树。（空树的高度定义为-1。）在高度为 h 的 AVL 树中，最少节点数 S(h) 由 S(h)&#x3D;S(h-1)+S(h-2)+1 给出。</p>
 <p>插入一个节点可能破坏 AVL 树的特性，通过旋转进行修正。高度不平衡时，必须重新平衡的节点的两棵子树的高度差 2 。</p>
 <h4 id="单旋转"><a href="#单旋转" class="headerlink" title="单旋转"></a>单旋转</h4>]]></content>
+      <categories>
+        <category>GEE</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>data structure</tag>
+      </tags>
   </entry>
   <entry>
     <title>Node.js 笔记</title>
@@ -121,32 +158,6 @@
         <tag>javascript</tag>
         <tag>node.js</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2023/10/12/computer-network/</url>
-    <content><![CDATA[<p>title: 计算机网络笔记<br>date: 2023-10-08 19:42<br>mdate: 2023-10-12 15:37:51</p>
-<blockquote>
-<p> 参考书籍：计算机网络——自顶向下方法（原书第 8 版）</p>
-</blockquote>
-<h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2><p>端系统（end system）通过通信链路（communication link）和分组交换机（packet switch）的网络连接到一起。</p>
-<p>端系统通过因特网服务提供商（Internet Service Provider，ISP）接入因特网。每一个 ISP 网络都是独立管理的。</p>
-<ul>
-<li>TCP（Transmission Control Protocol，传输控制协议）</li>
-<li>IP（Internet Protoc，网络协议）</li>
-</ul>
-<p>分布式应用（distributed application）：涉及多个相互交换数据的端系统。</p>
-<p>与因特网相连的端系统提供了一个套接字接口（socket interface），因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
-<p>为了完成一项工作，要求两个（或多个）通信实体运行相同的协议。<br>&#x2F;&#x2F; TODO：附图计算机网络协议 P5</p>
-<p><strong>向一个 Web 服务器发出请求（即在 Web 浏览器中键入一个 Web 网页的 URL）所发生的情况</strong>：<br>首先，计算机向该 Web 服务器发送一条连接请求报文，并等待回答。该 Web 服务器最终能接收到连接请求报文，并返回一条连接响应报文。得知请求该 Web 文档正常后，计算机则在一条 GET 报文中发送该网页的名字，而该网页的名字要从这台 Web 服务器上取回。最后，Web 服务器向你的计算机返回该 Web 网页（文件）。</p>
-<p>协议（protocol）定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文的发送&#x2F;接收或其他事件所采取的操作。</p>
-<p>WiFi：基于 IEEE 802.11 技术的无线 LAN（局域网）接入</p>
-<p>为了从源端系统向目的端系统发送一个报文（message），源将长报文划分为较小的数据块，称为分组（packet）。在源和目的地之间，每个分组都通过通信链路（communication link）和分组交换机（packet switch）传送，交换机主要有路由器（router）和链路层交换机（link-layer switch）两类。</p>
-<p>存储转发传输（store-and-forward transmission）：交换机在开始向输出链路传输该分组的第一个比特之前，必须接受到整个分组。</p>
-<p>分组交换机具有一个输出缓存【output buffer，也称为输出队列（output queue）】，缓存充满时将出现分组丢失（丢包）（packet loss），到达的分组或已经排队的分组之一将被丢弃。</p>
-<p>转发表（forwarding table）用于将目的地址（或目的地址的一部分）映射为输出链路。</p>
-<p>通过网络链路和交换机移动数据有两种基本方法：电路交换（circuit switching）和分组交换（packet switching）。<br>在电路</p>
-]]></content>
   </entry>
   <entry>
     <title>npm install 的不同方式</title>
