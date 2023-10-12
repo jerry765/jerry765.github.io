@@ -46,6 +46,8 @@
     <content><![CDATA[<blockquote>
 <p> 参考书籍：计算机网络——自顶向下方法（原书第 8 版）</p>
 </blockquote>
+<span id="more"></span>
+
 <h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2><p>端系统（end system）通过通信链路（communication link）和分组交换机（packet switch）的网络连接到一起。</p>
 <p>端系统通过因特网服务提供商（Internet Service Provider，ISP）接入因特网。每一个 ISP 网络都是独立管理的。</p>
 <ul>
