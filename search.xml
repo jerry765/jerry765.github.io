@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2023/10/22/2023-10-08/</url>
+    <content><![CDATA[<p>title: 计算机网络笔记<br>date: 2023-10-08 19:42<br>mdate: 2023-10-20 11:35:22</p>
+<blockquote>
+<p> 参考书籍：计算机网络——自顶向下方法（原书第 8 版）</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2><p>端系统（end system）通过通信链路（communication link）和分组交换机（packet switch）的网络连接到一起。</p>
+<p>端系统通过因特网服务提供商（Internet Service Provider，ISP）接入因特网。每一个 ISP 网络都是独立管理的。</p>
+<ul>
+<li>TCP（Transmission Control Protocol，传输控制协议）</li>
+<li>IP（Internet Protoc，网络协议）</li>
+</ul>
+<p>分布式应用（distributed application）：涉及多个相互交换数据的端系统。</p>
+<p>与因特网相连的端系统提供了一个套接字接口（socket interface），因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
+<p>为了完成一项工作，要求两个（或多个）通信实体运行相同的协议。<br>&#x2F;&#x2F; TODO：附图计算机网络协议 P5</p>
+<p><strong>向一个 Web 服务器发出请求（即在 Web 浏览器中键入一个 Web 网页的 URL）所发生的情况</strong>：<br>首先，计算机向该 Web 服务器发送一条连接请求报文，并等待回答。该 Web 服务器最终能接收到连接请求报文，并返回一条连接响应报文。得知请求该 Web 文档正常后，计算机则在一条 GET 报文中发送该网页的名字，而该网页的名字要从这台 Web 服务器上取回。最后，Web 服务器向你的计算机返回该 Web 网页（文件）。</p>
+<p>协议（protocol）定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文的发送&#x2F;接收或其他事件所采取的操作。</p>
+<p>WiFi：基于 IEEE 802.11 技术的无线 LAN（局域网）接入</p>
+<p>为了从源端系统向目的端系统发送一个报文（message），源将长报文划分为较小的数据块，称为分组（packet）。在源和目的地之间，每个分组都通过通信链路（communication link）和分组交换机（packet switch）传送，交换机主要有路由器（router）和链路层交换机（link-layer switch）两类。</p>
+<p>存储转发传输（store-and-forward transmission）：交换机在开始向输出链路传输该分组的第一个比特之前，必须接受到整个分组。</p>
+<p>分组交换机具有一个输出缓存【output buffer，也称为输出队列（output queue）】，缓存充满时将出现分组丢失（丢包）（packet loss），到达的分组或已经排队的分组之一将被丢弃。</p>
+<p>转发表（forwarding table）用于将目的地址（或目的地址的一部分）映射为输出链路。</p>
+<p>通过网络链路和交换机移动数据有两种基本方法：电路交换（circuit switching）和分组交换（packet switching）。<br>在电路交换网络中，在端系统间通信会话期间，预留了端系统间沿路径通信所需要的资源（缓存，链路传输速率）。在分组交换网络中，这些数据不是预留的。<br>因特网尽最大努力以及时方式交付分组，但它不做任何保证。</p>
+<p><strong>电路交换网络中的复用</strong></p>
+<ul>
+<li>频分复用（Frequency-Division Multiplexing, FDM）：链路的频谱由跨越链路创建的所有连接共享。特别是，在连接期间为每条连接专设一个频段。该频段的宽度称为带宽（band-width）。</li>
+<li>时分复用（Time-Division Multiplexing, TDM）：时间被划分为固定的帧，而且每个帧又被划分为固定数量的时隙。当网络跨越链路创建一条连接时，网络在每个帧中为该连接指定一个时隙。</li>
+</ul>
+<p>电路交换不够经济：静默期 （silent period）专用电路是空闲的。</p>
+<p>端到端电路传输时间与链路数量无关。</p>
+<p>对比：</p>
+<ol>
+<li>分组交换不适合实时服务</li>
+<li>比电路交换更好的带宽共享，更简单有效，实现成本更低</li>
+</ol>
+<p>&#x2F;&#x2F; TODO：ISP 互联图</p>
+<p>位于相同等级结构层次的临近的一对 ISP 能够对等（peer），当两个 ISP 对等时，为减少费用通常不进行结算，即任何一个 ISP 都不对其对等付费。<br>因特网交换点（Internet Exchange Point，IXP）是一个汇合点，多个 ISP 能够在这里一起对等。<br>谷歌专用网络通过与较低层 ISP 对等（无结算），尝试“绕过”互联网的较高层。通过创建自己的网络，内容提供商不仅减少了向顶层 ISP 支付的费用，而且对其服务最终如何交付给端用户有了更多的控制。</p>
+<p>节点总时延（total nodal delay）：</p>
+<ul>
+<li>节点处理时延（nodal processing delay）</li>
+<li>排队时延（queuing delay）</li>
+<li>传输时延（transmission delay）</li>
+<li>传播时延（propagation delay）<br>传输时延事路由器推出分组所需要的时间，它是分组长度和链路传输速率的函数，而与两台路由器之间的距离无关。而传播时延是一个比特从一台路由器传播到另一台路由器所需要的时间，它是两台路由器之间的距离的函数，与分组长度或链路传输速率无关。</li>
+</ul>
+<p>排队时延很大程度取决于流量到达队列的速率、链路的传输速率和到达流量的性质，即流量是周期性到达还是以突发形式到达。</p>
+<p>a - 分组到达队列的平均速率（分组&#x2F;秒，pkt&#x2F;s）<br>R - 传输速率，即从队列中推出比特的速率（bps）<br>假设所有分组由 L bit 组成，则比特到达队列的平均速率是<code>La bps</code>，流量强度（traffic intensity）为<code>La/R</code><br><em>sh</em></p>
+]]></content>
+  </entry>
+  <entry>
     <title>一些建议</title>
     <url>/2023/07/28/advice/</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -32,12 +83,68 @@
         <category>experience</category>
       </categories>
       <tags>
-        <tag>backend</tag>
         <tag>csu</tag>
         <tag>advice</tag>
         <tag>university</tag>
         <tag>software engineering</tag>
         <tag>frontend</tag>
+        <tag>backend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构笔记</title>
+    <url>/2023/09/27/data-structure-in-c/</url>
+    <content><![CDATA[<blockquote>
+<p>参考书籍：数据结构与算法分析（C语言描述） 原书第二版</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="第-1-章-引论"><a href="#第-1-章-引论" class="headerlink" title="第 1 章 引论"></a>第 1 章 引论</h2><p>递归的四条基本法则</p>
+<ul>
+<li><strong>基准情形</strong>：不用递归就能求解</li>
+<li><strong>不断推进</strong>：递归调用必须能够朝着产生基本情形的方向推进</li>
+<li><strong>设计法则</strong>：假设所有的递归调用都能运行</li>
+<li><strong>合成效益法则</strong>（compound interest rule）：在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作</li>
+</ul>
+<h2 id="第-2-章-算法分析"><a href="#第-2-章-算法分析" class="headerlink" title="第 2 章 算法分析"></a>第 2 章 算法分析</h2><blockquote>
+<p>计算任何事情不要超过一次</p>
+</blockquote>
+<h3 id="最大子序列和"><a href="#最大子序列和" class="headerlink" title="最大子序列和"></a>最大子序列和</h3><h4 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">MaxSubsequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="type">int</span> ThisSum, MaxSum, i, j, k;</span><br><span class="line">    </span><br><span class="line">    MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">            ThisSum = <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> (k = i; k &lt;= j; k++)&#123;</span><br><span class="line">                ThisSum += A[k];    <span class="comment">/* 过分耗时 */</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">                MaxSum = ThisSum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度为<code>O(N*3)</code></p>
+<h4 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">MaxSubSequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="type">int</span> ThisSum, MaxSum, i, j;</span><br><span class="line"></span><br><span class="line">    MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        ThisSum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(j = i; j &lt; N; j++) &#123;</span><br><span class="line">            ThisSum += A[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">                MaxSum = ThisSum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度为<code>O(N*2)</code></p>
+<h4 id="算法3"><a href="#算法3" class="headerlink" title="算法3"></a>算法3</h4><p>分析知最大子序列和可能在三处出现，或者整个出现在输入数据的左半部，或者整个出现在右半部，或者跨越输入数据的中部从而占据左右两半部分。前两种情况可以递归求解，第三种情况的最大和可以通过求出前半部分的最大和（包括前半部分的最后一个元素）以及后半部分的最大和（包括后半部分的第一个元素）而得到。</p>
+<p><strong>递归调用的一般形式是通过传递输入的数组以及左（Left）边界和右（Right）边界，它们界定了数组待处理的部分。单行驱动程序通过传递数组以及边界 0 和 N-1 以启动该过程。</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">MaxSubSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> Left, <span class="type">int</span> Right)</span> &#123;</span><br><span class="line">    <span class="type">int</span> MaxLeftSum, MaxRightSum;</span><br><span class="line">    <span class="type">int</span> MaxLeftBorderSum, MaxRightBorderSum;</span><br><span class="line">    <span class="type">int</span> LeftBorderSum, RightBorderSum;</span><br><span class="line">    <span class="type">int</span> Center, i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Base Case</span></span><br><span class="line">    <span class="keyword">if</span>(Left == Right) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[Left] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> A[Left];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Center = (Left + Right)/<span class="number">2</span>;  <span class="comment">// assume N is even</span></span><br><span class="line">    MaxLeftSum = MaxSubSum(A, Left, Center);</span><br><span class="line">    MaxRightSum = MaxSubSum(A, Center + <span class="number">1</span>; right);</span><br><span class="line"></span><br><span class="line">    MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = Center; i &gt;= Left; i--) &#123;</span><br><span class="line">        LeftBorderSum += A[i];</span><br><span class="line">        <span class="keyword">if</span>(LeftBorderSum &gt; MaxLeftBorderSum) &#123;</span><br><span class="line">            MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = Center + <span class="number">1</span>; i &lt;= Right; i++) &#123;</span><br><span class="line">        RightBorderSum += A[i];</span><br><span class="line">        <span class="keyword">if</span>(RightBorderSum &gt; MaxRightBorderSum) &#123;</span><br><span class="line">            MaxRightBorderSum = RightBorderSum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Max3(MaxLeftSum, MaxRightSum, MaxLeftBorderSum, MaxRightBorderSum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">MaxSubsequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> MaxSubSum(A, <span class="number">0</span>, N - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度为<code>O(N)</code></p>
+<h4 id="算法4"><a href="#算法4" class="headerlink" title="算法4"></a>算法4</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">MaxSubsequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="type">int</span> ThisSum, MaxSum, j;</span><br><span class="line"></span><br><span class="line">    ThisSum = MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; N; j++) &#123;</span><br><span class="line">        ThisSum += A[j];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">            MaxSum = ThisSum;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ThisSum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            ThisSum = <span class="number">0</span>;    <span class="comment">// clear ThisSum when negative</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在任意时刻，算法都能对它已经读入的数据给出子序列问题的正确答案，具有这种特性的算法叫做<strong>联机算法</strong>（on-line algorithm）。仅需要常量空间并以线性时间运行的联机算法几乎是完美的算法。</p>
+<h2 id="第-3-章-表、栈和队列"><a href="#第-3-章-表、栈和队列" class="headerlink" title="第 3 章 表、栈和队列"></a>第 3 章 表、栈和队列</h2><h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _List_H</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> PtrToNode List;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode Position;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElementType;</span><br><span class="line"></span><br><span class="line">List <span class="title function_">MakeEmpty</span><span class="params">(List L)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">IsEmpty</span><span class="params">(List L)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">IsLast</span><span class="params">(Position P, List L)</span>;</span><br><span class="line">Position <span class="title function_">Find</span><span class="params">(ElementType X, List L)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Delete</span><span class="params">(ElementType X, List L)</span>;</span><br><span class="line">Position <span class="title function_">FindPrevious</span><span class="params">(ElementType X, List L)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Insert</span><span class="params">(ElementType X, List L, Position P)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteList</span><span class="params">(List L)</span>;</span><br><span class="line">Position <span class="title function_">Header</span><span class="params">(List L)</span>;</span><br><span class="line">Position <span class="title function_">First</span><span class="params">(List L)</span>;</span><br><span class="line">Position <span class="title function_">Advance</span><span class="params">(Position P)</span>;</span><br><span class="line">ElementType <span class="title function_">Retrieve</span><span class="params">(Position P)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  <span class="comment">/* _List_H */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Place in the implementation file</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElementType Element;</span><br><span class="line">    Position Next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Return true if L is empty</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">IsEmpty</span><span class="params">(List L)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> L-&gt;Next == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Return true if P is the last position in list L</span></span><br><span class="line"><span class="comment">// Parameter L is unused in this implementation</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">IsLast</span><span class="params">(Position P, List L)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> P-&gt;Next == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Return Position of X in L; NULL if not found</span></span><br><span class="line">Position <span class="title function_">Find</span><span class="params">(ElementType X, List L)</span> &#123;</span><br><span class="line">    Position P;</span><br><span class="line"></span><br><span class="line">    P = L-&gt;Next;</span><br><span class="line">    <span class="keyword">while</span>(P != <span class="literal">NULL</span> &amp;&amp; P-&gt;Element != X) &#123;</span><br><span class="line">        P = P-&gt;Next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Delete first occurrence of X from a list</span></span><br><span class="line"><span class="comment">// Assume use of a header node</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Delete</span><span class="params">(ElementType X, List L)</span> &#123;</span><br><span class="line">    Position P, TempCell;</span><br><span class="line"></span><br><span class="line">    P = FindPrevious(X, L);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!IsLast(P, L)) &#123;</span><br><span class="line">        <span class="comment">// Assumption of header use</span></span><br><span class="line">        <span class="comment">// X is found, delete it</span></span><br><span class="line">        TempCell = P-&gt;Next;</span><br><span class="line">        P-&gt;Next = TempCell-&gt;Next; <span class="comment">// Bypass deleted cell</span></span><br><span class="line">        <span class="built_in">free</span>(TempCell);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// If X is not found, then next field of returned</span></span><br><span class="line"><span class="comment">// Position is NULL</span></span><br><span class="line"><span class="comment">// Assumes a header</span></span><br><span class="line">Position <span class="title function_">FindPrevious</span><span class="params">(ElementType X, List L)</span> &#123;</span><br><span class="line">    Position P;</span><br><span class="line"></span><br><span class="line">    P = L;</span><br><span class="line">    <span class="keyword">while</span>(P-&gt;Next != <span class="literal">NULL</span> &amp;&amp; P-&gt;Next-&gt;Element != X) &#123;</span><br><span class="line">        P = P-&gt;Next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert (after legal position P)</span></span><br><span class="line"><span class="comment">// Header implementation assumed</span></span><br><span class="line"><span class="comment">// Parameter L is unused in this implementation</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Insert</span><span class="params">(ElementType X, List L, Position P)</span> &#123;</span><br><span class="line">    Position TmpCell;</span><br><span class="line"></span><br><span class="line">    TmpCell = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    <span class="keyword">if</span>(TmpCell == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        FatalError(<span class="string">&quot;Out of space!!!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TmpCell-&gt;Element = X;</span><br><span class="line">    TmpCell-&gt;Next = P-&gt;Next;</span><br><span class="line">    P-&gt;Next = TmpCell;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteList</span><span class="params">(List L)</span> &#123;</span><br><span class="line">    Position P, Tmp;</span><br><span class="line"></span><br><span class="line">    P = L-&gt;Next;    <span class="comment">// Header assumed</span></span><br><span class="line">    L-&gt;Next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span> (P != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        Tmp = P-&gt;Next;</span><br><span class="line">        <span class="built_in">free</span>(P);</span><br><span class="line">        P = Tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第-4-章-树"><a href="#第-4-章-树" class="headerlink" title="第 4 章 树"></a>第 4 章 树</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树的一个性质是<strong>平均二叉树的深度要比 N 小的多</strong>，这个平均深度为**O(根号 N)<strong>；对于二叉查找树（binary search tree），深度的平均值为</strong>O(log N)**。</p>
+<h4 id="平均情形分析"><a href="#平均情形分析" class="headerlink" title="平均情形分析"></a>平均情形分析</h4><p>假设所有树出现的机会均等，则树的所有节点的平均深度为**O(log N)**。</p>
+<ul>
+<li>平衡条件：任何节点的深度均不得过深</li>
+<li>放弃平衡条件，允许树有任意的深度，但是在每次操作之后要使用一个规则进行调整，使得后面的操作效率更高。<strong>自调查（self-adjusting）类结构</strong>。</li>
+</ul>
+<h3 id="AVL-树"><a href="#AVL-树" class="headerlink" title="AVL 树"></a>AVL 树</h3><p>一颗 AVL 树是其每个节点的左子树和右子树的高度最多差 1 的二叉查找树。（空树的高度定义为-1。）在高度为 h 的 AVL 树中，最少节点数 S(h) 由 S(h)&#x3D;S(h-1)+S(h-2)+1 给出。</p>
+<p>插入一个节点可能破坏 AVL 树的特性，通过旋转进行修正。高度不平衡时，必须重新平衡的节点的两棵子树的高度差 2 。</p>
+<h4 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h4><p>把树形象地看成柔软灵活的，重力作用。<br>除旋转引起的局部变化外，树的其余部分必须知晓该变化。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>递归地将 X 插入到了 T 的相应的子树中。如果子树的高度不变，那么插入完成。否则，如果 T 中出现了高度不平衡，那么我们根据 X 以及 T 和子树中的关键字做适当的单旋转或双旋转，更新这些高度（并解决好与树的其余部分的连接），从而完成插入。</p>
+<!-- TODO：寻找满意的旋转图 -->
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># <span class="keyword">ifdef</span> _AVLTree_H</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AvlNode</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">AvlNode</span> *<span class="title">Position</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">AvlNode</span> *<span class="title">AvlTree</span>;</span>    <span class="comment">// AVL树</span></span><br><span class="line"></span><br><span class="line">AvlTree <span class="title function_">MakeEmpty</span><span class="params">(AvlTree T)</span>;</span><br><span class="line">Position <span class="title function_">Find</span><span class="params">(ElementType X, AvlTree T)</span>;</span><br><span class="line">Position <span class="title function_">FindMin</span><span class="params">(AvlTree T)</span>;</span><br><span class="line">Position <span class="title function_">FindMax</span><span class="params">(AvlTree T)</span>;</span><br><span class="line">AvlTree <span class="title function_">Insert</span><span class="params">(ElementType X, AvlTree T)</span>;</span><br><span class="line">AvlTree <span class="title function_">Delete</span><span class="params">(ElementType X, AvlTree T)</span>;</span><br><span class="line">ElementType <span class="title function_">Retrieve</span><span class="params">(Position P)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="keyword">endif</span> <span class="comment">/* _AVLTree_H */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Place in the implementation file</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AvlNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElementType Element;</span><br><span class="line">    AvlTree Left;</span><br><span class="line">    AvlTree Right;</span><br><span class="line">    <span class="type">int</span> Height;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">Height</span><span class="params">(Position P)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (P == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> P-&gt;Height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AvlTree <span class="title function_">Insert</span><span class="params">(ElementType X, AvlTree T)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Create and return a one-node tree</span></span><br><span class="line">        T = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> AvlNode));</span><br><span class="line">        <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">            FatalError(<span class="string">&quot;Out of space!!!&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            T-&gt;Element = X;</span><br><span class="line">            T-&gt;Height = <span class="number">0</span>;</span><br><span class="line">            T-&gt;Left = T-&gt;Right = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (X &lt; T-&gt;Element)</span><br><span class="line">    &#123;</span><br><span class="line">        T-&gt;Left = Insert(X, T-&gt;Left);</span><br><span class="line">        <span class="keyword">if</span> (Height(T-&gt;Left) - Height(T-&gt;Right) == <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span> (X &lt; T-&gt;Left-&gt;Element)</span><br><span class="line">                T = SingleRotateWithLeft(T);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                T = DoubleRotateWithLeft(T);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (X &gt; T-&gt;Element)</span><br><span class="line">    &#123;</span><br><span class="line">        T-&gt;Right = Insert(X, T-&gt;Right);</span><br><span class="line">        <span class="keyword">if</span> (Height(T-&gt;Right) - Height(T-&gt;Left) == <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span> (X &gt; T-&gt;Right-&gt;Element)</span><br><span class="line">                T = SingleRotateWithRight(T);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                T = DoubleRotateWithRight(T);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Else X is in the tree already; we&#x27;ll do nothing</span></span><br><span class="line"></span><br><span class="line">    T-&gt;Height = Max(Height(T-&gt;Left), Height(T-&gt;Right)) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> Position <span class="title function_">SingleRotateWithLeft</span><span class="params">(Position K2)</span></span><br><span class="line">&#123;</span><br><span class="line">    Position K1;</span><br><span class="line"></span><br><span class="line">    K1 = K2-&gt;Left;</span><br><span class="line">    K2-&gt;Left = K1-&gt;Right;</span><br><span class="line">    K1-&gt;Right = K2;</span><br><span class="line"></span><br><span class="line">    K2-&gt;Height = Max(Height(K2-&gt;Left), Height(K2-&gt;Right)) + <span class="number">1</span>;</span><br><span class="line">    K1-&gt;Height = Max(Height(K1-&gt;Left), K2-&gt;Height) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> K1;  <span class="comment">// New root</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> Position <span class="title function_">SingleRotateWithRight</span><span class="params">(Position K1)</span></span><br><span class="line">&#123;</span><br><span class="line">    Position K2;</span><br><span class="line"></span><br><span class="line">    K2 = K1-&gt;Right;</span><br><span class="line">    K1-&gt;Right = K2-&gt;Left;</span><br><span class="line">    K2-&gt;Left = K1;</span><br><span class="line"></span><br><span class="line">    K1-&gt;Height = Max(Height(K1-&gt;Left), Height(K1-&gt;Right)) + <span class="number">1</span>;</span><br><span class="line">    K2-&gt;Height = Max(Height(K2-&gt;Right), K1-&gt;Height) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> K2;  <span class="comment">// New root</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> Position <span class="title function_">DoubleRotateWithLeft</span><span class="params">(Position K3)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Rotate between K1 and K2</span></span><br><span class="line">    K3-&gt;Left = SingleRotateWithRight(K3-&gt;Left);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Rotate between K3 and K2</span></span><br><span class="line">    <span class="keyword">return</span> SingleRotateWithLeft(K3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> Position <span class="title function_">DoubleRotateWithRight</span><span class="params">(Position K1)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Rotate between K3 and K2</span></span><br><span class="line">    K1-&gt;Right = SingleRotateWithLeft(K1-&gt;Right);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Rotate between K1 and K2</span></span><br><span class="line">    <span class="keyword">return</span> SingleRotateWithRight(K1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="伸展树"><a href="#伸展树" class="headerlink" title="伸展树"></a>伸展树</h3><p>伸展树（splay tree）保证从空树开始连续 M 次对树的操作最多花费<code>O(M log N)</code>时间，并不保证任意一次操作花费 O（N） 时间的可能。<em>不存在坏的输入序列</em>。<br><em>当 M 次操作的序列总的最坏情形运行时间为 O(MF(N)) 时，我们就说它的摊还（amortized）运行时间为 O(F(N))。</em>一颗伸展树每次操作的摊还代价为 <code>O(log N)</code>。<br>伸展树是基于这样的事实：对于二叉查找树来说，每次操作最坏情形时间 O(N) 并不坏，只要它相对不常发生就行。累积的运行时间很重要。<br><em>只要有一个节点被访问，它就必须被移动。当一个节点被访问后，它就要经过一系列的 AVL 树的旋转后放到根上。</em></p>
+<p>伸展树不要求保留高度或平衡信息，因此它在某种程度上节省空间并简化代码。</p>
+]]></content>
+      <categories>
+        <category>GEE</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>data structure</tag>
       </tags>
   </entry>
   <entry>
@@ -78,87 +185,6 @@
       <tags>
         <tag>javascript</tag>
         <tag>node.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构笔记</title>
-    <url>/2023/09/27/data-structure-in-c/</url>
-    <content><![CDATA[<blockquote>
-<p>参考书籍：数据结构与算法分析（C语言描述） 原书第二版</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="第-1-章-引论"><a href="#第-1-章-引论" class="headerlink" title="第 1 章 引论"></a>第 1 章 引论</h2><p>递归的四条基本法则</p>
-<ul>
-<li><strong>基准情形</strong>：不用递归就能求解</li>
-<li><strong>不断推进</strong>：递归调用必须能够朝着产生基本情形的方向推进</li>
-<li><strong>设计法则</strong>：假设所有的递归调用都能运行</li>
-<li><strong>合成效益法则</strong>（compound interest rule）：在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作</li>
-</ul>
-<h2 id="第2章-算法分析"><a href="#第2章-算法分析" class="headerlink" title="第2章 算法分析"></a>第2章 算法分析</h2><blockquote>
-<p>计算任何事情不要超过一次</p>
-</blockquote>
-<h3 id="最大子序列和"><a href="#最大子序列和" class="headerlink" title="最大子序列和"></a>最大子序列和</h3><h4 id="算法1"><a href="#算法1" class="headerlink" title="算法1"></a>算法1</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">MaxSubsequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="type">int</span> ThisSum, MaxSum, i, j, k;</span><br><span class="line">    </span><br><span class="line">    MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &lt; N; j++) &#123;</span><br><span class="line">            ThisSum = <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> (k = i; k &lt;= j; k++)&#123;</span><br><span class="line">                ThisSum += A[k];    <span class="comment">/* 过分耗时 */</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">                MaxSum = ThisSum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度为<code>O(N*3)</code></p>
-<h4 id="算法2"><a href="#算法2" class="headerlink" title="算法2"></a>算法2</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">MaxSubSequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="type">int</span> ThisSum, MaxSum, i, j;</span><br><span class="line"></span><br><span class="line">    MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        ThisSum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(j = i; j &lt; N; j++) &#123;</span><br><span class="line">            ThisSum += A[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">                MaxSum = ThisSum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度为<code>O(N*2)</code></p>
-<h4 id="算法3"><a href="#算法3" class="headerlink" title="算法3"></a>算法3</h4><p>分析知最大子序列和可能在三处出现，或者整个出现在输入数据的左半部，或者整个出现在右半部，或者跨越输入数据的中部从而占据左右两半部分。前两种情况可以递归求解，第三种情况的最大和可以通过求出前半部分的最大和（包括前半部分的最后一个元素）以及后半部分的最大和（包括后半部分的第一个元素）而得到。</p>
-<p><strong>递归调用的一般形式是通过传递输入的数组以及左（Left）边界和右（Right）边界，它们界定了数组待处理的部分。单行驱动程序通过传递数组以及边界 0 和 N-1 以启动该过程。</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">MaxSubSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> Left, <span class="type">int</span> Right)</span> &#123;</span><br><span class="line">    <span class="type">int</span> MaxLeftSum, MaxRightSum;</span><br><span class="line">    <span class="type">int</span> MaxLeftBorderSum, MaxRightBorderSum;</span><br><span class="line">    <span class="type">int</span> LeftBorderSum, RightBorderSum;</span><br><span class="line">    <span class="type">int</span> Center, i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Base Case</span></span><br><span class="line">    <span class="keyword">if</span>(Left == Right) &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[Left] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> A[Left];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Center = (Left + Right)/<span class="number">2</span>;  <span class="comment">// assume N is even</span></span><br><span class="line">    MaxLeftSum = MaxSubSum(A, Left, Center);</span><br><span class="line">    MaxRightSum = MaxSubSum(A, Center + <span class="number">1</span>; right);</span><br><span class="line"></span><br><span class="line">    MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = Center; i &gt;= Left; i--) &#123;</span><br><span class="line">        LeftBorderSum += A[i];</span><br><span class="line">        <span class="keyword">if</span>(LeftBorderSum &gt; MaxLeftBorderSum) &#123;</span><br><span class="line">            MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = Center + <span class="number">1</span>; i &lt;= Right; i++) &#123;</span><br><span class="line">        RightBorderSum += A[i];</span><br><span class="line">        <span class="keyword">if</span>(RightBorderSum &gt; MaxRightBorderSum) &#123;</span><br><span class="line">            MaxRightBorderSum = RightBorderSum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Max3(MaxLeftSum, MaxRightSum, MaxLeftBorderSum, MaxRightBorderSum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">MaxSubsequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> MaxSubSum(A, <span class="number">0</span>, N - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度为<code>O(N)</code></p>
-<h4 id="算法4"><a href="#算法4" class="headerlink" title="算法4"></a>算法4</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">MaxSubsequenceSum</span><span class="params">(<span class="type">const</span> <span class="type">int</span> A[], <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="type">int</span> ThisSum, MaxSum, j;</span><br><span class="line"></span><br><span class="line">    ThisSum = MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; N; j++) &#123;</span><br><span class="line">        ThisSum += A[j];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(ThisSum &gt; MaxSum) &#123;</span><br><span class="line">            MaxSum = ThisSum;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ThisSum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            ThisSum = <span class="number">0</span>;    <span class="comment">// clear ThisSum when negative</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在任意时刻，算法都能对它已经读入的数据给出子序列问题的正确答案，具有这种特性的算法叫做<strong>联机算法</strong>（on-line algorithm）。仅需要常量空间并以线性时间运行的联机算法几乎是完美的算法。</p>
-<h2 id="第-3-章-表、栈和队列"><a href="#第-3-章-表、栈和队列" class="headerlink" title="第 3 章 表、栈和队列"></a>第 3 章 表、栈和队列</h2><h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _List_H</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> PtrToNode List;</span><br><span class="line"><span class="keyword">typedef</span> PtrToNode Position;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElementType;</span><br><span class="line"></span><br><span class="line">List <span class="title function_">MakeEmpty</span><span class="params">(List L)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">IsEmpty</span><span class="params">(List L)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">IsLast</span><span class="params">(Position P, List L)</span>;</span><br><span class="line">Position <span class="title function_">Find</span><span class="params">(ElementType X, List L)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Delete</span><span class="params">(ElementType X, List L)</span>;</span><br><span class="line">Position <span class="title function_">FindPrevious</span><span class="params">(ElementType X, List L)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Insert</span><span class="params">(ElementType X, List L, Position P)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteList</span><span class="params">(List L)</span>;</span><br><span class="line">Position <span class="title function_">Header</span><span class="params">(List L)</span>;</span><br><span class="line">Position <span class="title function_">First</span><span class="params">(List L)</span>;</span><br><span class="line">Position <span class="title function_">Advance</span><span class="params">(Position P)</span>;</span><br><span class="line">ElementType <span class="title function_">Retrieve</span><span class="params">(Position P)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  <span class="comment">/* _List_H */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Place in the implementation file</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElementType Element;</span><br><span class="line">    Position Next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Return true if L is empty</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">IsEmpty</span><span class="params">(List L)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> L-&gt;Next == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Return true if P is the last position in list L</span></span><br><span class="line"><span class="comment">// Parameter L is unused in this implementation</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">IsLast</span><span class="params">(Position P, List L)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> P-&gt;Next == <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Return Position of X in L; NULL if not found</span></span><br><span class="line">Position <span class="title function_">Find</span><span class="params">(ElementType X, List L)</span> &#123;</span><br><span class="line">    Position P;</span><br><span class="line"></span><br><span class="line">    P = L-&gt;Next;</span><br><span class="line">    <span class="keyword">while</span>(P != <span class="literal">NULL</span> &amp;&amp; P-&gt;Element != X) &#123;</span><br><span class="line">        P = P-&gt;Next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Delete first occurrence of X from a list</span></span><br><span class="line"><span class="comment">// Assume use of a header node</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Delete</span><span class="params">(ElementType X, List L)</span> &#123;</span><br><span class="line">    Position P, TempCell;</span><br><span class="line"></span><br><span class="line">    P = FindPrevious(X, L);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!IsLast(P, L)) &#123;</span><br><span class="line">        <span class="comment">// Assumption of header use</span></span><br><span class="line">        <span class="comment">// X is found, delete it</span></span><br><span class="line">        TempCell = P-&gt;Next;</span><br><span class="line">        P-&gt;Next = TempCell-&gt;Next; <span class="comment">// Bypass deleted cell</span></span><br><span class="line">        <span class="built_in">free</span>(TempCell);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// If X is not found, then next field of returned</span></span><br><span class="line"><span class="comment">// Position is NULL</span></span><br><span class="line"><span class="comment">// Assumes a header</span></span><br><span class="line">Position <span class="title function_">FindPrevious</span><span class="params">(ElementType X, List L)</span> &#123;</span><br><span class="line">    Position P;</span><br><span class="line"></span><br><span class="line">    P = L;</span><br><span class="line">    <span class="keyword">while</span>(P-&gt;Next != <span class="literal">NULL</span> &amp;&amp; P-&gt;Next-&gt;Element != X) &#123;</span><br><span class="line">        P = P-&gt;Next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert (after legal position P)</span></span><br><span class="line"><span class="comment">// Header implementation assumed</span></span><br><span class="line"><span class="comment">// Parameter L is unused in this implementation</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Insert</span><span class="params">(ElementType X, List L, Position P)</span> &#123;</span><br><span class="line">    Position TmpCell;</span><br><span class="line"></span><br><span class="line">    TmpCell = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">    <span class="keyword">if</span>(TmpCell == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        FatalError(<span class="string">&quot;Out of space!!!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TmpCell-&gt;Element = X;</span><br><span class="line">    TmpCell-&gt;Next = P-&gt;Next;</span><br><span class="line">    P-&gt;Next = TmpCell;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DeleteList</span><span class="params">(List L)</span> &#123;</span><br><span class="line">    Position P, Tmp;</span><br><span class="line"></span><br><span class="line">    P = L-&gt;Next;    <span class="comment">// Header assumed</span></span><br><span class="line">    L-&gt;Next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span> (P != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        Tmp = P-&gt;Next;</span><br><span class="line">        <span class="built_in">free</span>(P);</span><br><span class="line">        P = Tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第-4-章-树"><a href="#第-4-章-树" class="headerlink" title="第 4 章 树"></a>第 4 章 树</h2><h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>二叉树的一个性质是<strong>平均二叉树的深度要比 N 小的多</strong>，这个平均深度为**O(根号 N)<strong>；对于二叉查找树（binary search tree），深度的平均值为</strong>O(log N)**。</p>
-<h4 id="平均情形分析"><a href="#平均情形分析" class="headerlink" title="平均情形分析"></a>平均情形分析</h4><p>假设所有树出现的机会均等，则树的所有节点的平均深度为**O(log N)**。</p>
-<ul>
-<li>平衡条件：任何节点的深度均不得过深</li>
-<li>放弃平衡条件，允许树有任意的深度，但是在每次操作之后要使用一个规则进行调整，使得后面的操作效率更高。<strong>自调查（self-adjusting）类结构</strong>。</li>
-</ul>
-<h3 id="AVL-树"><a href="#AVL-树" class="headerlink" title="AVL 树"></a>AVL 树</h3><p>一颗 AVL 树是其每个节点的左子树和右子树的高度最多差 1 的二叉查找树。（空树的高度定义为-1。）在高度为 h 的 AVL 树中，最少节点数 S(h) 由 S(h)&#x3D;S(h-1)+S(h-2)+1 给出。</p>
-<p>插入一个节点可能破坏 AVL 树的特性，通过旋转进行修正。高度不平衡时，必须重新平衡的节点的两棵子树的高度差 2 。</p>
-<h4 id="单旋转"><a href="#单旋转" class="headerlink" title="单旋转"></a>单旋转</h4>]]></content>
-      <categories>
-        <category>GEE</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>data structure</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络笔记</title>
-    <url>/2023/10/08/computer-network/</url>
-    <content><![CDATA[<blockquote>
-<p> 参考书籍：计算机网络——自顶向下方法（原书第 8 版）</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2><p>端系统（end system）通过通信链路（communication link）和分组交换机（packet switch）的网络连接到一起。</p>
-<p>端系统通过因特网服务提供商（Internet Service Provider，ISP）接入因特网。每一个 ISP 网络都是独立管理的。</p>
-<ul>
-<li>TCP（Transmission Control Protocol，传输控制协议）</li>
-<li>IP（Internet Protoc，网络协议）</li>
-</ul>
-<p>分布式应用（distributed application）：涉及多个相互交换数据的端系统。</p>
-<p>与因特网相连的端系统提供了一个套接字接口（socket interface），因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
-<p>为了完成一项工作，要求两个（或多个）通信实体运行相同的协议。<br>&#x2F;&#x2F; TODO：附图计算机网络协议 P5</p>
-<p><strong>向一个 Web 服务器发出请求（即在 Web 浏览器中键入一个 Web 网页的 URL）所发生的情况</strong>：<br>首先，计算机向该 Web 服务器发送一条连接请求报文，并等待回答。该 Web 服务器最终能接收到连接请求报文，并返回一条连接响应报文。得知请求该 Web 文档正常后，计算机则在一条 GET 报文中发送该网页的名字，而该网页的名字要从这台 Web 服务器上取回。最后，Web 服务器向你的计算机返回该 Web 网页（文件）。</p>
-<p>协议（protocol）定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文的发送&#x2F;接收或其他事件所采取的操作。</p>
-<p>WiFi：基于 IEEE 802.11 技术的无线 LAN（局域网）接入</p>
-<p>为了从源端系统向目的端系统发送一个报文（message），源将长报文划分为较小的数据块，称为分组（packet）。在源和目的地之间，每个分组都通过通信链路（communication link）和分组交换机（packet switch）传送，交换机主要有路由器（router）和链路层交换机（link-layer switch）两类。</p>
-<p>存储转发传输（store-and-forward transmission）：交换机在开始向输出链路传输该分组的第一个比特之前，必须接受到整个分组。</p>
-<p>分组交换机具有一个输出缓存【output buffer，也称为输出队列（output queue）】，缓存充满时将出现分组丢失（丢包）（packet loss），到达的分组或已经排队的分组之一将被丢弃。</p>
-<p>转发表（forwarding table）用于将目的地址（或目的地址的一部分）映射为输出链路。</p>
-<p>通过网络链路和交换机移动数据有两种基本方法：电路交换（circuit switching）和分组交换（packet switching）。<br>在电路</p>
-]]></content>
-      <categories>
-        <category>GEE</category>
-      </categories>
-      <tags>
-        <tag>computer network</tag>
       </tags>
   </entry>
   <entry>
@@ -436,114 +462,6 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
       </tags>
   </entry>
   <entry>
-    <title>教程其一之VSCode</title>
-    <url>/2023/08/03/tutorial-vscode/</url>
-    <content><![CDATA[<h2 id="工欲善其事，必先利其器-从环境开始讲起"><a href="#工欲善其事，必先利其器-从环境开始讲起" class="headerlink" title="工欲善其事，必先利其器-从环境开始讲起"></a>工欲善其事，必先利其器-从环境开始讲起</h2><p>刚踏入计算机相关专业，却从未有编程经验？甚至从小到大第一次遇见计算机？没有关系，让我们从零开始讲起，一步一步从最最基础的开始讲起。<br>开篇先叠甲：<em>以下所有内容仅源于于个人体验，请根据你使用最舒服的方式进行配置。</em></p>
-<span id="more"></span>
-
-<h2 id="计算机环境"><a href="#计算机环境" class="headerlink" title="计算机环境"></a>计算机环境</h2><h3 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h3><p>如题，请确保你能通过<strong>科学上网</strong>访问<a href="%22https://github.com/%22">Github</a>。如若不能（或者你从未听过科学上网），请询问你身边的学长学姐。</p>
-<h3 id="安全软件"><a href="#安全软件" class="headerlink" title="安全软件"></a>安全软件</h3><p>首先，如果你有良好的计算机使用习惯，日常远离p2p下崽器、xxx中文网，始终对于网络资源尤其是各类安装包保持警惕，安装软件的第一步是寻找官网且日常略过前三广告，那么恭喜你，可以卸载所有安全管家等。<strong>Windows安全中心</strong>绝对足敷使用，请打开它并开启所有必要的保护。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021111543.png"><br>这个可以解决许多因安全软件拦截而产生的疑难杂症。<strong>请务必确保您的使用习惯足够良好，本站概不承担因卸载后猪脑过载导致的财产损失。</strong></p>
-<h3 id="浏览器和搜索引擎"><a href="#浏览器和搜索引擎" class="headerlink" title="浏览器和搜索引擎"></a>浏览器和搜索引擎</h3><p>Chrome，Edge，Firefox三选其一（排名分先后）。<br><strong>近乎所有的国产浏览器都是Chromium套壳+捆绑广告，请不要让它们污染你重金购入的电脑。</strong><br>利用科学上网手段注册账号后，打开密码自动填充并在手机端下载相同浏览器，上网体验如德芙般丝滑。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021121569.png"><br>请将默认浏览器设置为你最喜欢的御三家之一，搜索引擎推荐google&#x2F;bing（前者更好，但需要保持科学上网）。<strong>作为高质量大学生，请不要使用百度搜索引擎。</strong></p>
-<p>益智小游戏，请指出图中真正的steam官网：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021126585.png"></p>
-<p>最基本的计算机环境已经配置完毕，电脑已经清爽许多，现在让我们叩开编程的大门，不妨先从环境入手。</p>
-<h2 id="Visual-Studio-Code：免费开源的轻量级代码编辑器"><a href="#Visual-Studio-Code：免费开源的轻量级代码编辑器" class="headerlink" title="Visual Studio Code：免费开源的轻量级代码编辑器"></a>Visual Studio Code：免费开源的轻量级代码编辑器</h2><h3 id="为什么是-VS-Code-？"><a href="#为什么是-VS-Code-？" class="headerlink" title="为什么是 VS Code ？"></a>为什么是 VS Code ？</h3><p>VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨平台的、高性能的、轻量级的代码<strong>编辑器</strong>。</p>
-<p>何为编辑器？何为IDE？</p>
-<ul>
-<li>IDE（Integrated Development Environment，集成开发环境）:一组集成在一起的工具，包含文本编辑器、编译器、构建或集成、调试。侧重于工程项目，比较臃肿笨重。如Visual Studio、IDEA、Eclipse。</li>
-<li>编辑器：文本（代码）的编辑。如Windows系统自带的记事本就是最简单的编辑器。</li>
-</ul>
-<p>微软有两种软件：一种是 VS Code，一种是其他软件。</p>
-<h3 id="VS-Code-的特点"><a href="#VS-Code-的特点" class="headerlink" title="VS Code 的特点"></a>VS Code 的特点</h3><ul>
-<li>跨平台：支持 MacOS、Windows 和 Linux 等多个平台，且有一致的用户界面和开发体验，支持同步配置</li>
-<li>开源：源代码、开发计划和发布管理均开源</li>
-<li>自带终端、Git版本支持</li>
-<li>丰富的插件拓展</li>
-<li>活跃的社区生态</li>
-<li>语法支持：语法高亮、代码智能提示和补全、括号匹配、颜色区分、代码片段提示</li>
-</ul>
-<h3 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h3><p>免费？不是70r吗？</p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021130466.png"></p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021132921.webp"></p>
-<p>这就是为什么推荐google或bing搜索引擎，因为你真的能在国产搜索引擎看到这些。如果对是否是官网有疑问，请尤其注意他的域名。通过域名，能够分辨一大半的虚假官网。</p>
-<p>真正的VSCode官网：<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">https://code.visualstudio.com/<i class="fa fa-external-link-alt"></i></span>，点开后你应该能看到如下网页。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021137406.png"></p>
-<p>请根据你的电脑型号（Windows or MacOS）选择对应Stable（*稳定）版本下载。安装过程不再赘述，其中注意Win本<strong>尽量选择安装路径为非C盘</strong>即可，否则后续很可能<strong>因为C盘爆满，Windows系统无法更新</strong>。</p>
-<p>安装完成后打开软件，界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308030942879.png"></p>
-<p>如果你对英文界面感觉不太好，那么第一步就是<strong>将VSCode设置为中文</strong>。以下有两种方法：</p>
-<ul>
-<li>Windows用户快捷键<code>Ctrl+Shift+P</code>（Mac用户快捷键<code>Cmd+Shift+P</code>），打开命令面板，输入<code>Configure Display Language</code>，选择<code>Install additional languages</code>，然后安装插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code>即可</li>
-<li>Windows用户快捷键<code>Ctrl+Shift+X</code>，打开拓展页面，同样安装此插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code><br>安装完成后，重启 VS Code 。</li>
-</ul>
-<p>解放右手，请熟记常用快捷键组合。</p>
-<h3 id="常见操作-amp-使用技巧"><a href="#常见操作-amp-使用技巧" class="headerlink" title="常见操作&amp;使用技巧"></a>常见操作&amp;使用技巧</h3><h4 id="1、快速生成HTML骨架"><a href="#1、快速生成HTML骨架" class="headerlink" title="1、快速生成HTML骨架"></a>1、快速生成HTML骨架</h4><p>新建一个.html文件（如example.html），然后通过以下方式可快速生成HTML骨架：</p>
-<ol>
-<li>输入<code>!</code>（英文感叹号），然后按下<code>Enter</code>键</li>
-<li>输入<code>html:5</code>，然后按住<code>Tab</code>键<br>生成的骨架如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p><strong>小技巧：</strong>在HTML文件中输入<code>lorem</code>可生成一段占位文本。</p>
-<h4 id="2、并排编辑：上下左右显示多个文件窗口"><a href="#2、并排编辑：上下左右显示多个文件窗口" class="headerlink" title="2、并排编辑：上下左右显示多个文件窗口"></a>2、并排编辑：上下左右显示多个文件窗口</h4><p>Windows用户按住快捷键<code>Ctrl + \</code>（反斜杠，在你的<code>Enter</code>回车键上方），即可同时打开多个编辑器窗口，进行并排编辑。按快捷键<code>Ctrl + 1</code>切换到左侧窗口，<code>Ctrl + 2</code>切换到右侧窗口，以此类推。</p>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031012609.png"></p>
-<h3 id="部分插件推荐"><a href="#部分插件推荐" class="headerlink" title="部分插件推荐"></a>部分插件推荐</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031015953.png"></p>
-<p>我们可通过点击上图中红框部分，即可在顶部输入框中查找想要安装的插件名，然后进行安装。安装完毕后部分插件会需要重启软件，插件才会生效。<br>另外，我们也可以通过访问官网的插件市场来安装插件：<br>VS Code 官网插件市场：<span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL3ZzY29kZQ==">https://marketplace.visualstudio.com/vscode<i class="fa fa-external-link-alt"></i></span></p>
-<h4 id="推荐的插件"><a href="#推荐的插件" class="headerlink" title="推荐的插件"></a>推荐的插件</h4><h5 id="0、基本插件"><a href="#0、基本插件" class="headerlink" title="0、基本插件"></a>0、基本插件</h5><h6 id="Chinese-Simplified-Language-Pack-for-Visual-Studio-Code"><a href="#Chinese-Simplified-Language-Pack-for-Visual-Studio-Code" class="headerlink" title="Chinese (Simplified) Language Pack for Visual Studio Code"></a>Chinese (Simplified) Language Pack for Visual Studio Code</h6><p>中文语言插件，不必多言。</p>
-<h5 id="1、Git相关"><a href="#1、Git相关" class="headerlink" title="1、Git相关"></a>1、Git相关</h5><p>还不熟悉Git？没事，先安装再说，后续我们一定会讲到or用上。</p>
-<h6 id="GitLens"><a href="#GitLens" class="headerlink" title="GitLens"></a>GitLens</h6><p>Git管理神器，可视化仓库。</p>
-<h6 id="Local-History"><a href="#Local-History" class="headerlink" title="Local History"></a>Local History</h6><p>维护文件的本地历史记录，妈妈再也不用担心我代码忘记保存了。</p>
-<h5 id="2、代码显示增强"><a href="#2、代码显示增强" class="headerlink" title="2、代码显示增强"></a>2、代码显示增强</h5><h6 id="highlight-icemode"><a href="#highlight-icemode" class="headerlink" title="highlight-icemode"></a>highlight-icemode</h6><p>选中相同代码时高亮显示。安装后请关闭 VS Code 自带高亮，于用户设置添加<code>&quot;editor.selectionHighlight&quot;: false</code>。</p>
-<h6 id="TODO-Highlight"><a href="#TODO-Highlight" class="headerlink" title="TODO Highlight"></a>TODO Highlight</h6><p>什么，手上的 bug 还没修完突然有事，正巧这时候有了思路？按照代码规范，可以在代码中加上 TODO 注释（区分大小写）。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// TODO:发现跳转bug，可能的解决思路为：······</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// FIXME: 如没有万分把握请勿删去此行注释，可能导致程序崩溃。</span><br></pre></td></tr></table></figure>
-<p>安装此插件后，打开命令面板（还记得快捷键吗？）输入<code>TODO-Highlight</code>，选择相关命令，我们就可以看到 todoList 清单。</p>
-<h5 id="3、图片相关插件"><a href="#3、图片相关插件" class="headerlink" title="3、图片相关插件"></a>3、图片相关插件</h5><h6 id="Polacode-2022"><a href="#Polacode-2022" class="headerlink" title="Polacode-2022"></a>Polacode-2022</h6><p>可优雅地分享你的代码截图，如下所示：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031036600.png"></p>
-<p>我们谴责愚蠢的拍屏主义者，<code>Win+Shift+S</code>截图为可接受的。</p>
-<h5 id="4、Markdown相关"><a href="#4、Markdown相关" class="headerlink" title="4、Markdown相关"></a>4、Markdown相关</h5><p>本网站所有博客均由 Markdown 写成，其优点在于不用操心格式，随想随写，解放右手。推荐 VS Code + Markdown ，最好的笔记组合。</p>
-<h6 id="Markdown-Preview-Github-Styling"><a href="#Markdown-Preview-Github-Styling" class="headerlink" title="Markdown Preview Github Styling"></a>Markdown Preview Github Styling</h6><p>以 Github 风格预览 Markdown 样式，简洁且优雅。左侧书写右侧预览。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031047619.png"></p>
-<h5 id="5、通用工具"><a href="#5、通用工具" class="headerlink" title="5、通用工具"></a>5、通用工具</h5><h6 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h6><p>在本地启动服务器，代码修改时实现<strong>热更新</strong>，不需要手动刷新页面。<br>使用方式：于代码页面点击右键，选择<code>Open with Live Server</code>。</p>
-<h6 id="WakaTime"><a href="#WakaTime" class="headerlink" title="WakaTime"></a>WakaTime</h6><p>统计在各安装了 WakaTime 插件的编程环境中写代码的时间，发现真实的自己。网站统计效果如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031051230.png"></p>
-<h5 id="6、软件主题"><a href="#6、软件主题" class="headerlink" title="6、软件主题"></a>6、软件主题</h5><p>想给你的 VS Code 换个皮肤？欢迎来到海澜之家！</p>
-<ul>
-<li><p>Dracula Theme</p>
-</li>
-<li><p>Material Theme</p>
-</li>
-<li><p>Nebula Theme</p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPXpodWFuZ3RvbmdmYS5NYXRlcmlhbC10aGVtZQ==">One Dark Pro<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p>One Monokai Theme</p>
-</li>
-<li><p>Monokai Pro</p>
-</li>
-<li><p>Ayu</p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFrYXJsc3Rlbi52c2NvZGUtc25henp5LWFrYXJsc3Rlbg==">Snazzy Plus<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFsZXhhbmRlcnRlLmRhaW50eS12c2NvZGU=">Dainty<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p>GitHub Plus Theme：白色主题</p>
-</li>
-<li><p>Horizon Theme：红色主题</p>
-</li>
-</ul>
-<h3 id="多端协作：-VS-Code-云同步"><a href="#多端协作：-VS-Code-云同步" class="headerlink" title="多端协作： VS Code 云同步"></a>多端协作： VS Code 云同步</h3><ol>
-<li>上方菜单栏选择<code>文件-首选项-打开设置同步</code></li>
-<li>选择需要同步的配置，全选即可</li>
-<li>通过 GitHub 账号登录</li>
-<li>同步完成后，菜单栏显示“设置同步已打开”</li>
-</ol>
-<p>什么，你还没有 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==">GitHub<i class="fa fa-external-link-alt"></i></span> 账号？注册啊！</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031041381.jpg"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3FpYW5ndXlpaGFvL1dlYi9ibG9iL21hc3Rlci8wMC0lRTUlODklOEQlRTclQUIlQUYlRTUlQjclQTUlRTUlODUlQjcvMDEtVlMlMjBDb2RlJUU3JTlBJTg0JUU0JUJEJUJGJUU3JTk0JUE4Lm1k">Web-Master&#x2F;00-前端工具<i class="fa fa-external-link-alt"></i></span><br>多有参考，如想进一步了解 VS Code 如快捷键及更进一步的配置，可阅读全文。<br><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85MjMxMjY0Mg==">为什么要学Markdown？有什么用？<i class="fa fa-external-link-alt"></i></span></p>
-]]></content>
-      <categories>
-        <category>recruitment</category>
-      </categories>
-      <tags>
-        <tag>frontend</tag>
-        <tag>software-engineering</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>教程其四之编码风格</title>
     <url>/2023/08/23/tutorial-style-guide/</url>
     <content><![CDATA[<h2 id="google-编码风格"><a href="#google-编码风格" class="headerlink" title="google 编码风格"></a>google 编码风格</h2><blockquote class="blockquote-center">
@@ -717,6 +635,114 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
       </categories>
       <tags>
         <tag>style</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>教程其一之VSCode</title>
+    <url>/2023/08/03/tutorial-vscode/</url>
+    <content><![CDATA[<h2 id="工欲善其事，必先利其器-从环境开始讲起"><a href="#工欲善其事，必先利其器-从环境开始讲起" class="headerlink" title="工欲善其事，必先利其器-从环境开始讲起"></a>工欲善其事，必先利其器-从环境开始讲起</h2><p>刚踏入计算机相关专业，却从未有编程经验？甚至从小到大第一次遇见计算机？没有关系，让我们从零开始讲起，一步一步从最最基础的开始讲起。<br>开篇先叠甲：<em>以下所有内容仅源于于个人体验，请根据你使用最舒服的方式进行配置。</em></p>
+<span id="more"></span>
+
+<h2 id="计算机环境"><a href="#计算机环境" class="headerlink" title="计算机环境"></a>计算机环境</h2><h3 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h3><p>如题，请确保你能通过<strong>科学上网</strong>访问<a href="%22https://github.com/%22">Github</a>。如若不能（或者你从未听过科学上网），请询问你身边的学长学姐。</p>
+<h3 id="安全软件"><a href="#安全软件" class="headerlink" title="安全软件"></a>安全软件</h3><p>首先，如果你有良好的计算机使用习惯，日常远离p2p下崽器、xxx中文网，始终对于网络资源尤其是各类安装包保持警惕，安装软件的第一步是寻找官网且日常略过前三广告，那么恭喜你，可以卸载所有安全管家等。<strong>Windows安全中心</strong>绝对足敷使用，请打开它并开启所有必要的保护。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021111543.png"><br>这个可以解决许多因安全软件拦截而产生的疑难杂症。<strong>请务必确保您的使用习惯足够良好，本站概不承担因卸载后猪脑过载导致的财产损失。</strong></p>
+<h3 id="浏览器和搜索引擎"><a href="#浏览器和搜索引擎" class="headerlink" title="浏览器和搜索引擎"></a>浏览器和搜索引擎</h3><p>Chrome，Edge，Firefox三选其一（排名分先后）。<br><strong>近乎所有的国产浏览器都是Chromium套壳+捆绑广告，请不要让它们污染你重金购入的电脑。</strong><br>利用科学上网手段注册账号后，打开密码自动填充并在手机端下载相同浏览器，上网体验如德芙般丝滑。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021121569.png"><br>请将默认浏览器设置为你最喜欢的御三家之一，搜索引擎推荐google&#x2F;bing（前者更好，但需要保持科学上网）。<strong>作为高质量大学生，请不要使用百度搜索引擎。</strong></p>
+<p>益智小游戏，请指出图中真正的steam官网：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021126585.png"></p>
+<p>最基本的计算机环境已经配置完毕，电脑已经清爽许多，现在让我们叩开编程的大门，不妨先从环境入手。</p>
+<h2 id="Visual-Studio-Code：免费开源的轻量级代码编辑器"><a href="#Visual-Studio-Code：免费开源的轻量级代码编辑器" class="headerlink" title="Visual Studio Code：免费开源的轻量级代码编辑器"></a>Visual Studio Code：免费开源的轻量级代码编辑器</h2><h3 id="为什么是-VS-Code-？"><a href="#为什么是-VS-Code-？" class="headerlink" title="为什么是 VS Code ？"></a>为什么是 VS Code ？</h3><p>VS Code 的全称是 Visual Studio Code，是一款开源的、免费的、跨平台的、高性能的、轻量级的代码<strong>编辑器</strong>。</p>
+<p>何为编辑器？何为IDE？</p>
+<ul>
+<li>IDE（Integrated Development Environment，集成开发环境）:一组集成在一起的工具，包含文本编辑器、编译器、构建或集成、调试。侧重于工程项目，比较臃肿笨重。如Visual Studio、IDEA、Eclipse。</li>
+<li>编辑器：文本（代码）的编辑。如Windows系统自带的记事本就是最简单的编辑器。</li>
+</ul>
+<p>微软有两种软件：一种是 VS Code，一种是其他软件。</p>
+<h3 id="VS-Code-的特点"><a href="#VS-Code-的特点" class="headerlink" title="VS Code 的特点"></a>VS Code 的特点</h3><ul>
+<li>跨平台：支持 MacOS、Windows 和 Linux 等多个平台，且有一致的用户界面和开发体验，支持同步配置</li>
+<li>开源：源代码、开发计划和发布管理均开源</li>
+<li>自带终端、Git版本支持</li>
+<li>丰富的插件拓展</li>
+<li>活跃的社区生态</li>
+<li>语法支持：语法高亮、代码智能提示和补全、括号匹配、颜色区分、代码片段提示</li>
+</ul>
+<h3 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h3><p>免费？不是70r吗？</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021130466.png"></p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021132921.webp"></p>
+<p>这就是为什么推荐google或bing搜索引擎，因为你真的能在国产搜索引擎看到这些。如果对是否是官网有疑问，请尤其注意他的域名。通过域名，能够分辨一大半的虚假官网。</p>
+<p>真正的VSCode官网：<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">https://code.visualstudio.com/<i class="fa fa-external-link-alt"></i></span>，点开后你应该能看到如下网页。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308021137406.png"></p>
+<p>请根据你的电脑型号（Windows or MacOS）选择对应Stable（*稳定）版本下载。安装过程不再赘述，其中注意Win本<strong>尽量选择安装路径为非C盘</strong>即可，否则后续很可能<strong>因为C盘爆满，Windows系统无法更新</strong>。</p>
+<p>安装完成后打开软件，界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308030942879.png"></p>
+<p>如果你对英文界面感觉不太好，那么第一步就是<strong>将VSCode设置为中文</strong>。以下有两种方法：</p>
+<ul>
+<li>Windows用户快捷键<code>Ctrl+Shift+P</code>（Mac用户快捷键<code>Cmd+Shift+P</code>），打开命令面板，输入<code>Configure Display Language</code>，选择<code>Install additional languages</code>，然后安装插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code>即可</li>
+<li>Windows用户快捷键<code>Ctrl+Shift+X</code>，打开拓展页面，同样安装此插件<code>Chinese(Simplified) Language Pack for Visual Studio Code</code><br>安装完成后，重启 VS Code 。</li>
+</ul>
+<p>解放右手，请熟记常用快捷键组合。</p>
+<h3 id="常见操作-amp-使用技巧"><a href="#常见操作-amp-使用技巧" class="headerlink" title="常见操作&amp;使用技巧"></a>常见操作&amp;使用技巧</h3><h4 id="1、快速生成HTML骨架"><a href="#1、快速生成HTML骨架" class="headerlink" title="1、快速生成HTML骨架"></a>1、快速生成HTML骨架</h4><p>新建一个.html文件（如example.html），然后通过以下方式可快速生成HTML骨架：</p>
+<ol>
+<li>输入<code>!</code>（英文感叹号），然后按下<code>Enter</code>键</li>
+<li>输入<code>html:5</code>，然后按住<code>Tab</code>键<br>生成的骨架如下：<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>小技巧：</strong>在HTML文件中输入<code>lorem</code>可生成一段占位文本。</p>
+<h4 id="2、并排编辑：上下左右显示多个文件窗口"><a href="#2、并排编辑：上下左右显示多个文件窗口" class="headerlink" title="2、并排编辑：上下左右显示多个文件窗口"></a>2、并排编辑：上下左右显示多个文件窗口</h4><p>Windows用户按住快捷键<code>Ctrl + \</code>（反斜杠，在你的<code>Enter</code>回车键上方），即可同时打开多个编辑器窗口，进行并排编辑。按快捷键<code>Ctrl + 1</code>切换到左侧窗口，<code>Ctrl + 2</code>切换到右侧窗口，以此类推。</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031012609.png"></p>
+<h3 id="部分插件推荐"><a href="#部分插件推荐" class="headerlink" title="部分插件推荐"></a>部分插件推荐</h3><h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031015953.png"></p>
+<p>我们可通过点击上图中红框部分，即可在顶部输入框中查找想要安装的插件名，然后进行安装。安装完毕后部分插件会需要重启软件，插件才会生效。<br>另外，我们也可以通过访问官网的插件市场来安装插件：<br>VS Code 官网插件市场：<span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL3ZzY29kZQ==">https://marketplace.visualstudio.com/vscode<i class="fa fa-external-link-alt"></i></span></p>
+<h4 id="推荐的插件"><a href="#推荐的插件" class="headerlink" title="推荐的插件"></a>推荐的插件</h4><h5 id="0、基本插件"><a href="#0、基本插件" class="headerlink" title="0、基本插件"></a>0、基本插件</h5><h6 id="Chinese-Simplified-Language-Pack-for-Visual-Studio-Code"><a href="#Chinese-Simplified-Language-Pack-for-Visual-Studio-Code" class="headerlink" title="Chinese (Simplified) Language Pack for Visual Studio Code"></a>Chinese (Simplified) Language Pack for Visual Studio Code</h6><p>中文语言插件，不必多言。</p>
+<h5 id="1、Git相关"><a href="#1、Git相关" class="headerlink" title="1、Git相关"></a>1、Git相关</h5><p>还不熟悉Git？没事，先安装再说，后续我们一定会讲到or用上。</p>
+<h6 id="GitLens"><a href="#GitLens" class="headerlink" title="GitLens"></a>GitLens</h6><p>Git管理神器，可视化仓库。</p>
+<h6 id="Local-History"><a href="#Local-History" class="headerlink" title="Local History"></a>Local History</h6><p>维护文件的本地历史记录，妈妈再也不用担心我代码忘记保存了。</p>
+<h5 id="2、代码显示增强"><a href="#2、代码显示增强" class="headerlink" title="2、代码显示增强"></a>2、代码显示增强</h5><h6 id="highlight-icemode"><a href="#highlight-icemode" class="headerlink" title="highlight-icemode"></a>highlight-icemode</h6><p>选中相同代码时高亮显示。安装后请关闭 VS Code 自带高亮，于用户设置添加<code>&quot;editor.selectionHighlight&quot;: false</code>。</p>
+<h6 id="TODO-Highlight"><a href="#TODO-Highlight" class="headerlink" title="TODO Highlight"></a>TODO Highlight</h6><p>什么，手上的 bug 还没修完突然有事，正巧这时候有了思路？按照代码规范，可以在代码中加上 TODO 注释（区分大小写）。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// TODO:发现跳转bug，可能的解决思路为：······</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// FIXME: 如没有万分把握请勿删去此行注释，可能导致程序崩溃。</span><br></pre></td></tr></table></figure>
+<p>安装此插件后，打开命令面板（还记得快捷键吗？）输入<code>TODO-Highlight</code>，选择相关命令，我们就可以看到 todoList 清单。</p>
+<h5 id="3、图片相关插件"><a href="#3、图片相关插件" class="headerlink" title="3、图片相关插件"></a>3、图片相关插件</h5><h6 id="Polacode-2022"><a href="#Polacode-2022" class="headerlink" title="Polacode-2022"></a>Polacode-2022</h6><p>可优雅地分享你的代码截图，如下所示：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031036600.png"></p>
+<p>我们谴责愚蠢的拍屏主义者，<code>Win+Shift+S</code>截图为可接受的。</p>
+<h5 id="4、Markdown相关"><a href="#4、Markdown相关" class="headerlink" title="4、Markdown相关"></a>4、Markdown相关</h5><p>本网站所有博客均由 Markdown 写成，其优点在于不用操心格式，随想随写，解放右手。推荐 VS Code + Markdown ，最好的笔记组合。</p>
+<h6 id="Markdown-Preview-Github-Styling"><a href="#Markdown-Preview-Github-Styling" class="headerlink" title="Markdown Preview Github Styling"></a>Markdown Preview Github Styling</h6><p>以 Github 风格预览 Markdown 样式，简洁且优雅。左侧书写右侧预览。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031047619.png"></p>
+<h5 id="5、通用工具"><a href="#5、通用工具" class="headerlink" title="5、通用工具"></a>5、通用工具</h5><h6 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h6><p>在本地启动服务器，代码修改时实现<strong>热更新</strong>，不需要手动刷新页面。<br>使用方式：于代码页面点击右键，选择<code>Open with Live Server</code>。</p>
+<h6 id="WakaTime"><a href="#WakaTime" class="headerlink" title="WakaTime"></a>WakaTime</h6><p>统计在各安装了 WakaTime 插件的编程环境中写代码的时间，发现真实的自己。网站统计效果如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031051230.png"></p>
+<h5 id="6、软件主题"><a href="#6、软件主题" class="headerlink" title="6、软件主题"></a>6、软件主题</h5><p>想给你的 VS Code 换个皮肤？欢迎来到海澜之家！</p>
+<ul>
+<li><p>Dracula Theme</p>
+</li>
+<li><p>Material Theme</p>
+</li>
+<li><p>Nebula Theme</p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPXpodWFuZ3RvbmdmYS5NYXRlcmlhbC10aGVtZQ==">One Dark Pro<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p>One Monokai Theme</p>
+</li>
+<li><p>Monokai Pro</p>
+</li>
+<li><p>Ayu</p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFrYXJsc3Rlbi52c2NvZGUtc25henp5LWFrYXJsc3Rlbg==">Snazzy Plus<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPWFsZXhhbmRlcnRlLmRhaW50eS12c2NvZGU=">Dainty<i class="fa fa-external-link-alt"></i></span></p>
+</li>
+<li><p>GitHub Plus Theme：白色主题</p>
+</li>
+<li><p>Horizon Theme：红色主题</p>
+</li>
+</ul>
+<h3 id="多端协作：-VS-Code-云同步"><a href="#多端协作：-VS-Code-云同步" class="headerlink" title="多端协作： VS Code 云同步"></a>多端协作： VS Code 云同步</h3><ol>
+<li>上方菜单栏选择<code>文件-首选项-打开设置同步</code></li>
+<li>选择需要同步的配置，全选即可</li>
+<li>通过 GitHub 账号登录</li>
+<li>同步完成后，菜单栏显示“设置同步已打开”</li>
+</ol>
+<p>什么，你还没有 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==">GitHub<i class="fa fa-external-link-alt"></i></span> 账号？注册啊！</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308031041381.jpg"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3FpYW5ndXlpaGFvL1dlYi9ibG9iL21hc3Rlci8wMC0lRTUlODklOEQlRTclQUIlQUYlRTUlQjclQTUlRTUlODUlQjcvMDEtVlMlMjBDb2RlJUU3JTlBJTg0JUU0JUJEJUJGJUU3JTk0JUE4Lm1k">Web-Master&#x2F;00-前端工具<i class="fa fa-external-link-alt"></i></span><br>多有参考，如想进一步了解 VS Code 如快捷键及更进一步的配置，可阅读全文。<br><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85MjMxMjY0Mg==">为什么要学Markdown？有什么用？<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+      <categories>
+        <category>recruitment</category>
+      </categories>
+      <tags>
+        <tag>frontend</tag>
+        <tag>software-engineering</tag>
       </tags>
   </entry>
   <entry>
