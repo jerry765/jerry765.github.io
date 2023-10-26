@@ -32,12 +32,12 @@
         <category>experience</category>
       </categories>
       <tags>
+        <tag>backend</tag>
         <tag>csu</tag>
         <tag>advice</tag>
         <tag>university</tag>
         <tag>software engineering</tag>
         <tag>frontend</tag>
-        <tag>backend</tag>
       </tags>
   </entry>
   <entry>
@@ -94,6 +94,63 @@
       <tags>
         <tag>C</tag>
         <tag>data structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络笔记</title>
+    <url>/2023/10/08/computer-network/</url>
+    <content><![CDATA[<blockquote>
+<p> 参考书籍：计算机网络——自顶向下方法（原书第 8 版）</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2><p>端系统（end system）通过通信链路（communication link）和分组交换机（packet switch）的网络连接到一起。</p>
+<p>端系统通过因特网服务提供商（Internet Service Provider，ISP）接入因特网。每一个 ISP 网络都是独立管理的。</p>
+<ul>
+<li>TCP（Transmission Control Protocol，传输控制协议）</li>
+<li>IP（Internet Protoc，网络协议）</li>
+</ul>
+<p>分布式应用（distributed application）：涉及多个相互交换数据的端系统。</p>
+<p>与因特网相连的端系统提供了一个套接字接口（socket interface），因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
+<p>为了完成一项工作，要求两个（或多个）通信实体运行相同的协议。<br>&#x2F;&#x2F; TODO：附图计算机网络协议 P5</p>
+<p><strong>向一个 Web 服务器发出请求（即在 Web 浏览器中键入一个 Web 网页的 URL）所发生的情况</strong>：<br>首先，计算机向该 Web 服务器发送一条连接请求报文，并等待回答。该 Web 服务器最终能接收到连接请求报文，并返回一条连接响应报文。得知请求该 Web 文档正常后，计算机则在一条 GET 报文中发送该网页的名字，而该网页的名字要从这台 Web 服务器上取回。最后，Web 服务器向你的计算机返回该 Web 网页（文件）。</p>
+<p>协议（protocol）定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文的发送&#x2F;接收或其他事件所采取的操作。</p>
+<p>WiFi：基于 IEEE 802.11 技术的无线 LAN（局域网）接入</p>
+<p>为了从源端系统向目的端系统发送一个报文（message），源将长报文划分为较小的数据块，称为分组（packet）。在源和目的地之间，每个分组都通过通信链路（communication link）和分组交换机（packet switch）传送，交换机主要有路由器（router）和链路层交换机（link-layer switch）两类。</p>
+<p>存储转发传输（store-and-forward transmission）：交换机在开始向输出链路传输该分组的第一个比特之前，必须接受到整个分组。</p>
+<p>分组交换机具有一个输出缓存【output buffer，也称为输出队列（output queue）】，缓存充满时将出现分组丢失（丢包）（packet loss），到达的分组或已经排队的分组之一将被丢弃。</p>
+<p>转发表（forwarding table）用于将目的地址（或目的地址的一部分）映射为输出链路。</p>
+<p>通过网络链路和交换机移动数据有两种基本方法：电路交换（circuit switching）和分组交换（packet switching）。<br>在电路交换网络中，在端系统间通信会话期间，预留了端系统间沿路径通信所需要的资源（缓存，链路传输速率）。在分组交换网络中，这些数据不是预留的。<br>因特网尽最大努力以及时方式交付分组，但它不做任何保证。</p>
+<p><strong>电路交换网络中的复用</strong></p>
+<ul>
+<li>频分复用（Frequency-Division Multiplexing, FDM）：链路的频谱由跨越链路创建的所有连接共享。特别是，在连接期间为每条连接专设一个频段。该频段的宽度称为带宽（band-width）。</li>
+<li>时分复用（Time-Division Multiplexing, TDM）：时间被划分为固定的帧，而且每个帧又被划分为固定数量的时隙。当网络跨越链路创建一条连接时，网络在每个帧中为该连接指定一个时隙。</li>
+</ul>
+<p>电路交换不够经济：静默期 （silent period）专用电路是空闲的。</p>
+<p>端到端电路传输时间与链路数量无关。</p>
+<p>对比：</p>
+<ol>
+<li>分组交换不适合实时服务</li>
+<li>比电路交换更好的带宽共享，更简单有效，实现成本更低</li>
+</ol>
+<p>&#x2F;&#x2F; TODO：ISP 互联图</p>
+<p>位于相同等级结构层次的临近的一对 ISP 能够对等（peer），当两个 ISP 对等时，为减少费用通常不进行结算，即任何一个 ISP 都不对其对等付费。<br>因特网交换点（Internet Exchange Point，IXP）是一个汇合点，多个 ISP 能够在这里一起对等。<br>谷歌专用网络通过与较低层 ISP 对等（无结算），尝试“绕过”互联网的较高层。通过创建自己的网络，内容提供商不仅减少了向顶层 ISP 支付的费用，而且对其服务最终如何交付给端用户有了更多的控制。</p>
+<p>节点总时延（total nodal delay）：</p>
+<ul>
+<li>节点处理时延（nodal processing delay）</li>
+<li>排队时延（queuing delay）</li>
+<li>传输时延（transmission delay）</li>
+<li>传播时延（propagation delay）<br>传输时延事路由器推出分组所需要的时间，它是分组长度和链路传输速率的函数，而与两台路由器之间的距离无关。而传播时延是一个比特从一台路由器传播到另一台路由器所需要的时间，它是两台路由器之间的距离的函数，与分组长度或链路传输速率无关。</li>
+</ul>
+<p>排队时延很大程度取决于流量到达队列的速率、链路的传输速率和到达流量的性质，即流量是周期性到达还是以突发形式到达。</p>
+<p>a - 分组到达队列的平均速率（分组&#x2F;秒，pkt&#x2F;s）<br>R - 传输速率，即从队列中推出比特的速率（bps）<br>假设所有分组由 L bit 组成，则比特到达队列的平均速率是<code>La bps</code>，流量强度（traffic intensity）为<code>La/R</code><br><em>sh</em></p>
+]]></content>
+      <categories>
+        <category>GEE</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>computer network</tag>
       </tags>
   </entry>
   <entry>
@@ -212,6 +269,57 @@
         <tag>university</tag>
         <tag>software engineering</tag>
         <tag>frontend</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>教程其二之git</title>
+    <url>/2023/08/04/tutorial-git/</url>
+    <content><![CDATA[<h2 id="开源为王-git安装与github初入门"><a href="#开源为王-git安装与github初入门" class="headerlink" title="开源为王- git安装与github初入门"></a>开源为王- git安装与github初入门</h2><p>“开源（open source）”——人人可审查、修改与增强，可以从这篇文章稍作了解<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNzUwMTA3MA==">什么是开源？<i class="fa fa-external-link-alt"></i></span>。<br>至于git——世界上<strong>目前最先进</strong>的分布式版本控制系统，详见廖雪峰大佬的<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>以下内容不对其上概念和重要性做过多阐述，请自行选择阅读上述文章，以下仅从安装配置讨论。</p>
+<span id="more"></span>
+
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows 上安装方法有几种，对于新手推荐以下两种。</p>
+<h4 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h4><p>官网下载地址（通过科学上网访问）：<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZC93aW4=">https://git-scm.com/download/win<i class="fa fa-external-link-alt"></i></span><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041758468.png"></p>
+<blockquote>
+<p>小提示：如果你对你的英语水平不自信，edge&#x2F;chrome浏览器可以安装<code>沉浸式翻译</code>插件。<br>官网安装的详细步骤详见<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L211a2VzL2FydGljbGUvZGV0YWlscy8xMTU2OTM4MzM=">Git详细安装教程<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h4 id="Github-Desktop-安装"><a href="#Github-Desktop-安装" class="headerlink" title="Github Desktop 安装"></a>Github Desktop 安装</h4><p>该安装程序包含图形化和命令行版本的 Git。它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。前往 Github for Windows 网站下载，网址为<span class="exturl" data-url="aHR0cHM6Ly9kZXNrdG9wLmdpdGh1Yi5jb20v">https://desktop.github.com/<i class="fa fa-external-link-alt"></i></span>。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开 Git Bash ，命令行界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041813146.png"></p>
+<p>配置用户名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;username&quot;</span> // 将<span class="string">&quot;username&quot;</span>替换为你的账户名</span><br></pre></td></tr></table></figure>
+<p>邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;user@email.com&quot;</span> // 将<span class="string">&quot;user@email.com&quot;</span>替换为你的邮箱</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你不清楚为什么要配置用户名和邮箱，请重新阅读<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>并找到相关部分。</p>
+</blockquote>
+<p>以上命令执行完毕后，可以用如下命令查看配置是否正确。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --list</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041817797.png"></p>
+<p>确认完毕后，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>此时有三个配置问题，第一次使用保持默认配置即可，<strong>请连按三次回车键</strong>。<br>结束后你可以看到两个目录地址，如你保持默认配置则前往系统盘目录<code>C:\Users(用户)\&quot;username&quot;\.ssh</code>文件夹查看 ssh 文件是否生成成功，分别为<code>id_rsa</code>和<code>id_rsa.pub</code>。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041826736.png"></p>
+<p>此时 git 的配置暂时告一段落，让我们将目光转向 github ，世界上最大的开源仓库平台。</p>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>如果你对注册账号的流程抱有疑问，请查看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82MTY1OTQ1MjA=">注册Github账号详细教程<i class="fa fa-external-link-alt"></i></span>，本博客不再详述。</p>
+<blockquote>
+<p>如若可以，建议用非 qq 邮箱注册，出于 qq 号可能被封禁考虑。</p>
+</blockquote>
+<p>你的 github 主页如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041832965.png"></p>
+<h3 id="绑定-git"><a href="#绑定-git" class="headerlink" title="绑定 git"></a>绑定 git</h3><p>点击右上角你的头像，选择<code>Settings</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041833037.png"></p>
+<p>于左侧<code>Access</code>下选择<code>SSH and GPG keys</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041835639.png"></p>
+<p>点击<code>New SSH Key</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041840544.png"></p>
+<p>title随意取好，个人建议为<code>你的电脑型号-Windows</code>（如<code>ThinkBook16p-Windows</code>），方便日后管理不同电脑&#x2F;虚拟机&#x2F;系统的 git 密钥。 Key Type 保持不变为<code>Authentication Key</code>。将<strong>公钥（<code>id_rsa.pub</code>）</strong>文件中的内容用 vscode 打开后复制粘贴到key中，然后点击<code>Add SSH key</code>即可。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041841111.png">。</p>
+<blockquote>
+<p>如果你对 SSH 公钥与私钥之分很感兴趣，可以阅读<span class="exturl" data-url="aHR0cHM6Ly9zb25nbGVlMjQuZ2l0aHViLmlvLzIwMTUvMDUvMDMvcHVibGljLWtleS1hbmQtcHJpdmF0ZS1rZXkv">理解公钥与私钥<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p>测试一下你的配置是否成功，在 Git Bash 终端中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041848555.png"><br>看到如上字样则你的 github 与 git 已经配置成功。欢迎来到开源世界！</p>
+]]></content>
+      <categories>
+        <category>recruitment</category>
+      </categories>
+      <tags>
+        <tag>software-engineering</tag>
       </tags>
   </entry>
   <entry>
@@ -355,59 +463,8 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
         <category>recruitment</category>
       </categories>
       <tags>
+        <tag>software-engineering</tag>
         <tag>git</tag>
-        <tag>software-engineering</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>教程其二之git</title>
-    <url>/2023/08/04/tutorial-git/</url>
-    <content><![CDATA[<h2 id="开源为王-git安装与github初入门"><a href="#开源为王-git安装与github初入门" class="headerlink" title="开源为王- git安装与github初入门"></a>开源为王- git安装与github初入门</h2><p>“开源（open source）”——人人可审查、修改与增强，可以从这篇文章稍作了解<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNzUwMTA3MA==">什么是开源？<i class="fa fa-external-link-alt"></i></span>。<br>至于git——世界上<strong>目前最先进</strong>的分布式版本控制系统，详见廖雪峰大佬的<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>以下内容不对其上概念和重要性做过多阐述，请自行选择阅读上述文章，以下仅从安装配置讨论。</p>
-<span id="more"></span>
-
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Windows 上安装方法有几种，对于新手推荐以下两种。</p>
-<h4 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h4><p>官网下载地址（通过科学上网访问）：<span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9kb3dubG9hZC93aW4=">https://git-scm.com/download/win<i class="fa fa-external-link-alt"></i></span><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041758468.png"></p>
-<blockquote>
-<p>小提示：如果你对你的英语水平不自信，edge&#x2F;chrome浏览器可以安装<code>沉浸式翻译</code>插件。<br>官网安装的详细步骤详见<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L211a2VzL2FydGljbGUvZGV0YWlscy8xMTU2OTM4MzM=">Git详细安装教程<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-<h4 id="Github-Desktop-安装"><a href="#Github-Desktop-安装" class="headerlink" title="Github Desktop 安装"></a>Github Desktop 安装</h4><p>该安装程序包含图形化和命令行版本的 Git。它也能支持 Powershell，提供了稳定的凭证缓存和健全的换行设置。前往 Github for Windows 网站下载，网址为<span class="exturl" data-url="aHR0cHM6Ly9kZXNrdG9wLmdpdGh1Yi5jb20v">https://desktop.github.com/<i class="fa fa-external-link-alt"></i></span>。</p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开 Git Bash ，命令行界面如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041813146.png"></p>
-<p>配置用户名：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;username&quot;</span> // 将<span class="string">&quot;username&quot;</span>替换为你的账户名</span><br></pre></td></tr></table></figure>
-<p>邮箱：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;user@email.com&quot;</span> // 将<span class="string">&quot;user@email.com&quot;</span>替换为你的邮箱</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果你不清楚为什么要配置用户名和邮箱，请重新阅读<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvODk2MDQzNDg4MDI5NjAw">Git教程<i class="fa fa-external-link-alt"></i></span>并找到相关部分。</p>
-</blockquote>
-<p>以上命令执行完毕后，可以用如下命令查看配置是否正确。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --list</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041817797.png"></p>
-<p>确认完毕后，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>此时有三个配置问题，第一次使用保持默认配置即可，<strong>请连按三次回车键</strong>。<br>结束后你可以看到两个目录地址，如你保持默认配置则前往系统盘目录<code>C:\Users(用户)\&quot;username&quot;\.ssh</code>文件夹查看 ssh 文件是否生成成功，分别为<code>id_rsa</code>和<code>id_rsa.pub</code>。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041826736.png"></p>
-<p>此时 git 的配置暂时告一段落，让我们将目光转向 github ，世界上最大的开源仓库平台。</p>
-<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>如果你对注册账号的流程抱有疑问，请查看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82MTY1OTQ1MjA=">注册Github账号详细教程<i class="fa fa-external-link-alt"></i></span>，本博客不再详述。</p>
-<blockquote>
-<p>如若可以，建议用非 qq 邮箱注册，出于 qq 号可能被封禁考虑。</p>
-</blockquote>
-<p>你的 github 主页如下：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041832965.png"></p>
-<h3 id="绑定-git"><a href="#绑定-git" class="headerlink" title="绑定 git"></a>绑定 git</h3><p>点击右上角你的头像，选择<code>Settings</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041833037.png"></p>
-<p>于左侧<code>Access</code>下选择<code>SSH and GPG keys</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041835639.png"></p>
-<p>点击<code>New SSH Key</code>：<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041840544.png"></p>
-<p>title随意取好，个人建议为<code>你的电脑型号-Windows</code>（如<code>ThinkBook16p-Windows</code>），方便日后管理不同电脑&#x2F;虚拟机&#x2F;系统的 git 密钥。 Key Type 保持不变为<code>Authentication Key</code>。将<strong>公钥（<code>id_rsa.pub</code>）</strong>文件中的内容用 vscode 打开后复制粘贴到key中，然后点击<code>Add SSH key</code>即可。<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041841111.png">。</p>
-<blockquote>
-<p>如果你对 SSH 公钥与私钥之分很感兴趣，可以阅读<span class="exturl" data-url="aHR0cHM6Ly9zb25nbGVlMjQuZ2l0aHViLmlvLzIwMTUvMDUvMDMvcHVibGljLWtleS1hbmQtcHJpdmF0ZS1rZXkv">理解公钥与私钥<i class="fa fa-external-link-alt"></i></span></p>
-</blockquote>
-<p>测试一下你的配置是否成功，在 Git Bash 终端中输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202308041848555.png"><br>看到如上字样则你的 github 与 git 已经配置成功。欢迎来到开源世界！</p>
-]]></content>
-      <categories>
-        <category>recruitment</category>
-      </categories>
-      <tags>
-        <tag>software-engineering</tag>
       </tags>
   </entry>
   <entry>
@@ -742,60 +799,20 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
       </tags>
   </entry>
   <entry>
-    <title>计算机网络笔记</title>
-    <url>/2023/10/08/computer-network/</url>
-    <content><![CDATA[<blockquote>
-<p> 参考书籍：计算机网络——自顶向下方法（原书第 8 版）</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="第-1-章-计算机网络和因特网"><a href="#第-1-章-计算机网络和因特网" class="headerlink" title="第 1 章 计算机网络和因特网"></a>第 1 章 计算机网络和因特网</h2><p>端系统（end system）通过通信链路（communication link）和分组交换机（packet switch）的网络连接到一起。</p>
-<p>端系统通过因特网服务提供商（Internet Service Provider，ISP）接入因特网。每一个 ISP 网络都是独立管理的。</p>
-<ul>
-<li>TCP（Transmission Control Protocol，传输控制协议）</li>
-<li>IP（Internet Protoc，网络协议）</li>
-</ul>
-<p>分布式应用（distributed application）：涉及多个相互交换数据的端系统。</p>
-<p>与因特网相连的端系统提供了一个套接字接口（socket interface），因特网套接字接口是一套发送程序必须遵循的规则集合。</p>
-<p>为了完成一项工作，要求两个（或多个）通信实体运行相同的协议。<br>&#x2F;&#x2F; TODO：附图计算机网络协议 P5</p>
-<p><strong>向一个 Web 服务器发出请求（即在 Web 浏览器中键入一个 Web 网页的 URL）所发生的情况</strong>：<br>首先，计算机向该 Web 服务器发送一条连接请求报文，并等待回答。该 Web 服务器最终能接收到连接请求报文，并返回一条连接响应报文。得知请求该 Web 文档正常后，计算机则在一条 GET 报文中发送该网页的名字，而该网页的名字要从这台 Web 服务器上取回。最后，Web 服务器向你的计算机返回该 Web 网页（文件）。</p>
-<p>协议（protocol）定义了在两个或多个通信实体之间交换的报文的格式和顺序，以及报文的发送&#x2F;接收或其他事件所采取的操作。</p>
-<p>WiFi：基于 IEEE 802.11 技术的无线 LAN（局域网）接入</p>
-<p>为了从源端系统向目的端系统发送一个报文（message），源将长报文划分为较小的数据块，称为分组（packet）。在源和目的地之间，每个分组都通过通信链路（communication link）和分组交换机（packet switch）传送，交换机主要有路由器（router）和链路层交换机（link-layer switch）两类。</p>
-<p>存储转发传输（store-and-forward transmission）：交换机在开始向输出链路传输该分组的第一个比特之前，必须接受到整个分组。</p>
-<p>分组交换机具有一个输出缓存【output buffer，也称为输出队列（output queue）】，缓存充满时将出现分组丢失（丢包）（packet loss），到达的分组或已经排队的分组之一将被丢弃。</p>
-<p>转发表（forwarding table）用于将目的地址（或目的地址的一部分）映射为输出链路。</p>
-<p>通过网络链路和交换机移动数据有两种基本方法：电路交换（circuit switching）和分组交换（packet switching）。<br>在电路交换网络中，在端系统间通信会话期间，预留了端系统间沿路径通信所需要的资源（缓存，链路传输速率）。在分组交换网络中，这些数据不是预留的。<br>因特网尽最大努力以及时方式交付分组，但它不做任何保证。</p>
-<p><strong>电路交换网络中的复用</strong></p>
-<ul>
-<li>频分复用（Frequency-Division Multiplexing, FDM）：链路的频谱由跨越链路创建的所有连接共享。特别是，在连接期间为每条连接专设一个频段。该频段的宽度称为带宽（band-width）。</li>
-<li>时分复用（Time-Division Multiplexing, TDM）：时间被划分为固定的帧，而且每个帧又被划分为固定数量的时隙。当网络跨越链路创建一条连接时，网络在每个帧中为该连接指定一个时隙。</li>
-</ul>
-<p>电路交换不够经济：静默期 （silent period）专用电路是空闲的。</p>
-<p>端到端电路传输时间与链路数量无关。</p>
-<p>对比：</p>
-<ol>
-<li>分组交换不适合实时服务</li>
-<li>比电路交换更好的带宽共享，更简单有效，实现成本更低</li>
+    <title>VSCode 下的 PR 流程</title>
+    <url>/2023/10/26/vscode-PR/</url>
+    <content><![CDATA[<h1 id="VSCode-下的-PR-流程"><a href="#VSCode-下的-PR-流程" class="headerlink" title="VSCode 下的 PR 流程"></a>VSCode 下的 PR 流程</h1><ol>
+<li>VSCode 安装 <code>Github Pull Request 插件</code><span id="more"></span>
+<img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202310261942360.png"></li>
+<li>于源代码管理处点击<code>创建拉取请求</code><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202310261943040.png"></li>
+<li>提交 PR 后等待其余协同开发者审核<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202310261945217.png"></li>
 </ol>
-<p>&#x2F;&#x2F; TODO：ISP 互联图</p>
-<p>位于相同等级结构层次的临近的一对 ISP 能够对等（peer），当两个 ISP 对等时，为减少费用通常不进行结算，即任何一个 ISP 都不对其对等付费。<br>因特网交换点（Internet Exchange Point，IXP）是一个汇合点，多个 ISP 能够在这里一起对等。<br>谷歌专用网络通过与较低层 ISP 对等（无结算），尝试“绕过”互联网的较高层。通过创建自己的网络，内容提供商不仅减少了向顶层 ISP 支付的费用，而且对其服务最终如何交付给端用户有了更多的控制。</p>
-<p>节点总时延（total nodal delay）：</p>
-<ul>
-<li>节点处理时延（nodal processing delay）</li>
-<li>排队时延（queuing delay）</li>
-<li>传输时延（transmission delay）</li>
-<li>传播时延（propagation delay）<br>传输时延事路由器推出分组所需要的时间，它是分组长度和链路传输速率的函数，而与两台路由器之间的距离无关。而传播时延是一个比特从一台路由器传播到另一台路由器所需要的时间，它是两台路由器之间的距离的函数，与分组长度或链路传输速率无关。</li>
-</ul>
-<p>排队时延很大程度取决于流量到达队列的速率、链路的传输速率和到达流量的性质，即流量是周期性到达还是以突发形式到达。</p>
-<p>a - 分组到达队列的平均速率（分组&#x2F;秒，pkt&#x2F;s）<br>R - 传输速率，即从队列中推出比特的速率（bps）<br>假设所有分组由 L bit 组成，则比特到达队列的平均速率是<code>La bps</code>，流量强度（traffic intensity）为<code>La/R</code><br><em>sh</em></p>
 ]]></content>
       <categories>
-        <category>GEE</category>
+        <category>experience</category>
       </categories>
       <tags>
-        <tag>C</tag>
-        <tag>computer network</tag>
+        <tag>vscode</tag>
       </tags>
   </entry>
 </search>
