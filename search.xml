@@ -1340,6 +1340,49 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 <h3 id="兼容性和迁移"><a href="#兼容性和迁移" class="headerlink" title="兼容性和迁移"></a>兼容性和迁移</h3><ul>
 <li>Vue 3 考虑到了向后兼容性，提供了从 Vue 2 迁移到 Vue 3 的工具和指南。</li>
 </ul>
+<h2 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a>nextTick</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><ol>
+<li><p><strong>事件循环</strong>:</p>
+<ul>
+<li>Node.js 运行时基于事件循环。事件循环负责处理异步回调，如 I&#x2F;O 操作、计时器、网络请求等。</li>
+</ul>
+</li>
+<li><p><strong>微任务队列</strong>:</p>
+<ul>
+<li><code>process.nextTick</code> 将回调函数放入微任务队列。这个队列在事件循环的每个阶段之间执行，甚至在事件循环的当前阶段完成之前。</li>
+</ul>
+</li>
+<li><p><strong>优先级</strong>:</p>
+<ul>
+<li>通过 <code>process.nextTick</code> 调度的任务比通过 <code>setImmediate</code> 或 <code>setTimeout</code>、<code>setInterval</code> 调度的任务优先级更高。这意味着 <code>nextTick</code> 回调在任何 I&#x2F;O 事件（包括定时器）之前执行。</li>
+</ul>
+</li>
+</ol>
+<h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><ul>
+<li>当调用 <code>process.nextTick</code> 时，传入的回调函数不会立即执行。而是在当前操作完成后、事件循环继续进行之前执行。</li>
+<li>这意味着即使在 I&#x2F;O 操作或定时器触发之前，所有通过 <code>nextTick</code> 排队的回调都会首先执行。</li>
+</ul>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p><strong>错误处理</strong>:</p>
+<ul>
+<li><code>process.nextTick</code> 经常用于异步 API 中的错误处理。这是因为它允许在堆栈被解构之前抛出异常，从而可以捕获和处理错误。</li>
+</ul>
+</li>
+<li><p><strong>确保异步性</strong>:</p>
+<ul>
+<li>有时候，你可能需要确保代码总是以异步方式运行，即使是在同步代码块中。<code>process.nextTick</code> 可以用于确保回调总是异步调用，从而避免了同步操作和异步操作之间的潜在问题。</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;开始&#x27;</span>);</span><br><span class="line"></span><br><span class="line">process.<span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;nextTick 回调&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;计划的 nextTick&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，输出将会是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">开始</span><br><span class="line">计划的 nextTick</span><br><span class="line">nextTick 回调</span><br></pre></td></tr></table></figure>
+
+<p>即使 <code>process.nextTick</code> 的回调是在最后一行调用的，它仍然在当前事件循环的末尾执行，即在任何其他的 I&#x2F;O 事件或计时器之前执行。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>使用 <code>process.nextTick</code> 可能导致 I&#x2F;O 饿死，因为如果不断地添加 <code>nextTick</code> 回调，那么 I&#x2F;O 事件可能永远无法被处理。因此，适当地使用 <code>nextTick</code> 是非常重要的。</li>
+<li>对于绝大多数场景，<code>setImmediate</code> 是处理异步操作的更好选择，因为它更加公平地对待事件循环中的所有类型的事件。</li>
+</ul>
 ]]></content>
       <categories>
         <category>work</category>
