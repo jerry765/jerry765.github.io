@@ -133,7 +133,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VSCode-%E4%B8%8B%E7%9A%84-PR-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">VSCode 下的 PR 流程</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VSCode-%E4%B8%8B%E7%9A%84-PR-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">VSCode 下的 PR 流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commit-x2F-PR-%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">Commit&#x2F;PR 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Header"><span class="nav-number">2.1.</span> <span class="nav-text">Header</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Body"><span class="nav-number">2.2.</span> <span class="nav-text">Body</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Footer"><span class="nav-number">2.3.</span> <span class="nav-text">Footer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Breaking-Changes"><span class="nav-number">2.3.1.</span> <span class="nav-text">Breaking Changes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#issue"><span class="nav-number">2.3.2.</span> <span class="nav-text">issue</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,10 +201,10 @@
   </div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <a class="popular-posts-link" href="/2023/08/04/tutorial-git/" rel="bookmark">
-        <time class="popular-posts-time">2023-08-04</time>
+      <a class="popular-posts-link" href="/2023/08/16/tutorial-git-command/" rel="bookmark">
+        <time class="popular-posts-time">2023-08-16</time>
         <br>
-      教程其二之git
+      教程其三之常用git命令
       </a>
     </li>
   </ul>
@@ -261,6 +261,13 @@
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-07 16:58:25" itemprop="dateModified" datetime="2023-12-07T16:58:25+08:00">2023-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
@@ -297,14 +304,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>48</span>
+      <span>499</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -314,12 +321,63 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="VSCode-下的-PR-流程"><a href="#VSCode-下的-PR-流程" class="headerlink" title="VSCode 下的 PR 流程"></a>VSCode 下的 PR 流程</h1><ol>
+    <div class="post-body" itemprop="articleBody"><h2 id="VSCode-下的-PR-流程"><a href="#VSCode-下的-PR-流程" class="headerlink" title="VSCode 下的 PR 流程"></a>VSCode 下的 PR 流程</h2><ol>
 <li>VSCode 安装 <code>Github Pull Request 插件</code><span id="more"></span>
 <img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202310261942360.png"></li>
 <li>于源代码管理处点击<code>创建拉取请求</code><br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202310261943040.png"></li>
 <li>提交 PR 后等待其余协同开发者审核<br><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202310261945217.png"></li>
 </ol>
+<h2 id="Commit-x2F-PR-规范"><a href="#Commit-x2F-PR-规范" class="headerlink" title="Commit&#x2F;PR 规范"></a>Commit&#x2F;PR 规范</h2><blockquote>
+<p>参考：Angular commit 规范</p>
+</blockquote>
+<p>提交信息包括三个部分：</p>
+<ul>
+<li>Header</li>
+<li>Body</li>
+<li>footer<br>其中 header 为必填，其余可省略</li>
+</ul>
+<h3 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h3><p>Header 部分只有一行，包含两个字段，均必填</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;type&gt;: &lt;subject&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>type：说明 commit 的类别，可以使用如下类别</li>
+</ol>
+<ul>
+<li>feat：新功能（feature）</li>
+<li>fix：修补 bug</li>
+<li>doc：文档（documentation）</li>
+<li>refactor：重构（不属于 feat 和 fix 的代码变动）</li>
+<li>test：增加测试</li>
+<li>chore：构建过程或辅助工具的变动</li>
+</ul>
+<ol start="2">
+<li>subject：对 commit 目的的简短描述</li>
+</ol>
+<ul>
+<li>以动词开头，使用第一人称现在时（改变 √ 改变了 ×）</li>
+<li>结尾不加句号（。）</li>
+</ul>
+<h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><p>Body 部分是对本次 commit 的详细描述，可以分成多行。下面是一个范例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">More detailed explanatory text, if necessary.  Wrap it to </span><br><span class="line">about 72 characters or so. </span><br><span class="line"></span><br><span class="line">Further paragraphs come after blank lines.</span><br><span class="line"></span><br><span class="line">- Bullet points are okay, too</span><br><span class="line">- Use a hanging indent</span><br></pre></td></tr></table></figure>
+
+<p>注意：应注意代码变动的动机，以及与以前行为的对比</p>
+<h3 id="Footer"><a href="#Footer" class="headerlink" title="Footer"></a>Footer</h3><p>Footer 部分应该包含：</p>
+<ol>
+<li>Breaking Changes</li>
+<li>关闭 issue</li>
+</ol>
+<h4 id="Breaking-Changes"><a href="#Breaking-Changes" class="headerlink" title="Breaking Changes"></a>Breaking Changes</h4><p>如果当前代码与上一个版本不兼容，则 Footer 部分以 BREAKING CHANGE 开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
+<h4 id="issue"><a href="#issue" class="headerlink" title="issue"></a>issue</h4><ol>
+<li>通过 commit 关联 issue ：如果当前提交信息关联了某个issue，那么可以在 Footer 部分关联这个 issue：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">issue #2</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>通过commit关闭issue，当提交到默认分支时，提交信息里可以使用 fix&#x2F;fixes&#x2F;fixed , close&#x2F;closes&#x2F;closed 或者 resolve&#x2F;resolves&#x2F;resolved等关键词，后面为 issue 编号，关闭对应Issue：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Closes #1</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果不是提交到默认分支，那么并不能关闭这个issue，但是在这个issue下面会显示相关的信息表示曾经想要关闭这个issue，当这个分支合并到默认分支时，就可以关闭这个issue了。</p>
 
     </div>
 
@@ -415,14 +473,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">22k</span>
+    <span title="站点总字数">23k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:21</span>
+    <span title="站点阅读时长">1:23</span>
   </span>
 </div>
 <div class="busuanzi-count">
