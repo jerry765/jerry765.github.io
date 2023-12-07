@@ -418,8 +418,8 @@
 </li>
 <li><p><strong>快恢复（Fast Recovery）</strong>:</p>
 <ul>
-<li>快恢复算法与快重传一起工作，当检测到丢包（通过三个重复的ACK）时，它会减少cwnd的大小而不是像慢启动时那样将其减至1，通常将cwnd设置为ssthresh的一半。</li>
-<li>在快恢复阶段，对于每个接收到的重复ACK，cwnd逐渐增加，直到收到新的数据确认。</li>
+<li>快恢复算法与快重传一起工作，当检测到丢包（通过三个重复的 ACK ）时，它会减少 cwnd 的大小而不是像慢启动时那样将其减至1，通常将 cwnd 设置为 ssthresh 的一半。</li>
+<li>在快恢复阶段，对于每个接收到的重复 ACK ， cwnd 逐渐增加，直到收到新的数据确认。</li>
 </ul>
 </li>
 <li><p><strong>TCP Tahoe 和 Reno</strong>:</p>
@@ -854,6 +854,599 @@
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
 <li>虽然 <code>v-model</code> 提供了方便的双向绑定，但它也可能导致数据流难以理解和追踪，特别是在复杂的应用中。因此，在一些场景下，推荐使用单向数据流（即数据的单向绑定和显式的事件处理）来保持数据流的清晰和可控。</li>
 <li>在 Vue 3 中，响应式系统从 <code>Object.defineProperty</code> 改为了基于 ES6 的 Proxy，这使得 Vue 的响应式系统更加强大和高效，同时消除了一些 Vue 2 中存在的限制。</li>
+</ul>
+<h2 id="Cookie-Session-localStorage"><a href="#Cookie-Session-localStorage" class="headerlink" title="Cookie Session localStorage"></a>Cookie Session localStorage</h2><p><code>Cookie</code>、<code>Session</code> 和 <code>localStorage</code> 是用于存储和管理网站数据的三种不同技术，每种技术都有其特定的用途和限制。</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><ol>
+<li><p><strong>定义</strong>:</p>
+<ul>
+<li>Cookie 是小段的数据，由服务器发送到用户浏览器，然后浏览器会将其存储，并在随后的每个请求中将其发送回服务器。</li>
+</ul>
+</li>
+<li><p><strong>特点</strong>:</p>
+<ul>
+<li>体积小（通常限制为4KB）。</li>
+<li>每次 HTTP 请求都会携带，包括静态资源请求，这可能影响性能。</li>
+<li>可以设置过期时间。</li>
+<li>支持同源策略。</li>
+</ul>
+</li>
+<li><p><strong>用途</strong>:</p>
+<ul>
+<li>用户认证。</li>
+<li>会话跟踪。</li>
+<li>个性化设置。</li>
+</ul>
+</li>
+<li><p><strong>安全性</strong>:</p>
+<ul>
+<li>支持设置为 HttpOnly（无法通过 JS 访问）和 Secure（只在 HTTPS 下传输）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><ol>
+<li><p><strong>定义</strong>:</p>
+<ul>
+<li>Session 是服务器端用来存储用户信息的一种机制，通常用于识别用户和存储用户特定的数据。</li>
+</ul>
+</li>
+<li><p><strong>特点</strong>:</p>
+<ul>
+<li>存储在服务器端，对客户端是透明的。</li>
+<li>可以存储较大量的数据。</li>
+<li>生命周期通常取决于用户的会话（浏览器关闭，Session 结束）。</li>
+</ul>
+</li>
+<li><p><strong>用途</strong>:</p>
+<ul>
+<li>管理用户会话（如登录状态）。</li>
+<li>存储用户相关的敏感信息。</li>
+</ul>
+</li>
+<li><p><strong>安全性</strong>:</p>
+<ul>
+<li>相比于 Cookie，Session 更安全，因为数据存储在服务器端。</li>
+</ul>
+</li>
+</ol>
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><ol>
+<li><p><strong>定义</strong>:</p>
+<ul>
+<li>localStorage 是 HTML5 提供的一种在客户端存储数据的方式。</li>
+</ul>
+</li>
+<li><p><strong>特点</strong>:</p>
+<ul>
+<li>存储容量较大（最多 5MB）。</li>
+<li>仅在客户端存储，不随 HTTP 请求发送。</li>
+<li>没有过期时间，数据永久保存，直到手动清除。</li>
+</ul>
+</li>
+<li><p><strong>用途</strong>:</p>
+<ul>
+<li>存储不经常变化的大量数据。</li>
+<li>保存用户偏好设置。</li>
+<li>缓存应用程序数据以提高性能。</li>
+</ul>
+</li>
+<li><p><strong>安全性</strong>:</p>
+<ul>
+<li>由于存储在客户端，可能受到跨站脚本攻击（XSS）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><ul>
+<li><p><strong>存储位置</strong>:</p>
+<ul>
+<li>Cookie 和 localStorage 存储在客户端。</li>
+<li>Session 存储在服务器端。</li>
+</ul>
+</li>
+<li><p><strong>安全性</strong>:</p>
+<ul>
+<li>Session 比 Cookie 更安全。</li>
+<li>localStorage 适用于非敏感数据的存储。</li>
+</ul>
+</li>
+<li><p><strong>生命周期</strong>:</p>
+<ul>
+<li>Cookie 可以设置过期时间。</li>
+<li>Session 通常与用户会话绑定。</li>
+<li>localStorage 永久存储，直到被清除。</li>
+</ul>
+</li>
+<li><p><strong>容量</strong>:</p>
+<ul>
+<li>Cookie 容量最小。</li>
+<li>localStorage 提供最大的存储空间。</li>
+</ul>
+</li>
+<li><p><strong>性能</strong>:</p>
+<ul>
+<li>Cookie 每次请求都会发送，可能影响性能。</li>
+<li>Session 和 localStorage 不影响网络性能。</li>
+</ul>
+</li>
+</ul>
+<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h2><p>跨域是 Web 开发中常见的安全问题之一，它是由浏览器的同源策略引起的。同源策略是浏览器的一种安全措施，它限制了一个域的脚本与另一个域的资源进行交互。如果协议、端口（如果有指定）或主机对于两个页面不同，则这两个页面具有不同的源。</p>
+<h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h3><p>当一个网页尝试请求另一个与自己域名、端口号或协议不同的网页的资源时，就会发生跨域。例如，由 <code>http://example.com</code> 发起的 AJAX 请求尝试访问 <code>https://api.anotherdomain.com</code> 的资源，由于协议和域名不同，这将是一个跨域请求。</p>
+<h3 id="常见的解决方法"><a href="#常见的解决方法" class="headerlink" title="常见的解决方法"></a>常见的解决方法</h3><ol>
+<li><p><strong>CORS（跨源资源共享）</strong>:</p>
+<ul>
+<li>最常用的解决跨域问题的方法是在服务器端设置 CORS。这种方法通过在服务器的响应头中添加 <code>Access-Control-Allow-Origin</code> 来允许特定的外部域访问资源。</li>
+<li>例如，<code>Access-Control-Allow-Origin: *</code> 允许所有域名访问资源，而 <code>Access-Control-Allow-Origin: http://example.com</code> 只允许 <code>http://example.com</code> 访问资源。</li>
+</ul>
+</li>
+<li><p><strong>JSONP（JSON with Padding）</strong>:</p>
+<ul>
+<li>早期解决跨域问题的一种技术，主要用于 GET 请求。</li>
+<li>它通过动态创建 <code>&lt;script&gt;</code> 标签来向不同源的服务器请求数据。服务器端返回的数据被包装在一个函数调用中。</li>
+<li>JSONP 的缺点是它只支持 GET 请求，并且安全性较低。</li>
+</ul>
+</li>
+<li><p><strong>代理服务器</strong>:</p>
+<ul>
+<li>使用代理服务器进行跨域请求。在这种情况下，浏览器向代理服务器发送请求，代理服务器将请求发送到目标服务器，并将响应返回给浏览器。</li>
+<li>这种方法的优点是可以控制和缓存请求，但缺点是增加了服务器端的复杂性和成本。</li>
+</ul>
+</li>
+<li><p><strong>PostMessage</strong>:</p>
+<ul>
+<li><code>window.postMessage</code> 是 HTML5 引入的一种安全的跨源通信方法。</li>
+<li>这种方法允许不同源之间的窗口相互通信，适用于在不同域之间传递信息。</li>
+</ul>
+</li>
+<li><p><strong>服务器端配置</strong>:</p>
+<ul>
+<li>对于某些服务，如字体或一些 API，可以在服务器配置文件（如 <code>.htaccess</code> 或 Nginx 配置文件）中设置允许跨域。</li>
+</ul>
+</li>
+<li><p><strong>WebSockets</strong>:</p>
+<ul>
+<li>WebSockets 本身不受同源策略的限制，可以用于跨域通信。</li>
+</ul>
+</li>
+</ol>
+<h3 id="选择合适的方法"><a href="#选择合适的方法" class="headerlink" title="选择合适的方法"></a>选择合适的方法</h3><p>在选择解决跨域问题的方法时，需要考虑安全性、易用性和环境兼容性。对于大多数现代 Web 应用程序，推荐使用 CORS，因为它既安全又灵活。JSONP 可以作为旧系统的一种后备方案，但应谨慎使用，因为它容易受到 XSS 攻击。代理服务器在需要控制或缓存请求时非常有效，但会增加复杂性和成本。</p>
+<h2 id="XSS-攻击"><a href="#XSS-攻击" class="headerlink" title="XSS 攻击"></a>XSS 攻击</h2><h3 id="XSS-攻击是什么？"><a href="#XSS-攻击是什么？" class="headerlink" title="XSS 攻击是什么？"></a>XSS 攻击是什么？</h3><p>XSS（跨站脚本攻击，Cross-Site Scripting）是一种在网页上执行恶意脚本的攻击方式，主要目标是在用户的浏览器中执行未经授权的代码。它允许攻击者注入可执行的脚本代码到合法的网页中，这些脚本在其他用户的浏览器中运行时，攻击者可以窃取用户的会话令牌、登录凭证，或者对用户进行其他恶意操作。</p>
+<p>XSS 攻击通常分为以下几种类型：</p>
+<ol>
+<li><p><strong>存储型 XSS</strong>:</p>
+<ul>
+<li>恶意脚本被永久地存储在目标服务器上（如数据库、消息论坛、访客留言等），当用户访问含有恶意脚本的页面时，脚本就会执行。</li>
+</ul>
+</li>
+<li><p><strong>反射型 XSS</strong>:</p>
+<ul>
+<li>恶意脚本作为请求的一部分发送给服务器，然后服务器将其作为响应的一部分返回，脚本在用户浏览器执行。这通常涉及到欺骗用户点击一个恶意链接。</li>
+</ul>
+</li>
+<li><p><strong>DOM 型 XSS</strong>:</p>
+<ul>
+<li>通过恶意脚本修改页面的 DOM 结构实现的攻击，这种攻击完全在客户端进行，不涉及到服务器端的数据处理。</li>
+</ul>
+</li>
+</ol>
+<h3 id="如何防范-XSS-攻击？"><a href="#如何防范-XSS-攻击？" class="headerlink" title="如何防范 XSS 攻击？"></a>如何防范 XSS 攻击？</h3><ol>
+<li><p><strong>转义输入内容</strong>:</p>
+<ul>
+<li>对用户输入的内容进行适当的转义处理，特别是在插入到 HTML 页面、JavaScript 代码或 URL 中时。例如，转义 HTML 特殊字符（如 <code>&lt;</code> 变为 <code>&amp;lt;</code>、<code>&gt;</code> 变为 <code>&amp;gt;</code>）。</li>
+</ul>
+</li>
+<li><p><strong>使用内容安全策略（CSP）</strong>:</p>
+<ul>
+<li>实施内容安全策略（CSP）是防止 XSS 的一种有效方法。CSP 允许网站管理员定义哪些内容源是可信的，可以有效阻止恶意脚本的加载和执行。</li>
+</ul>
+</li>
+<li><p><strong>验证和过滤输入</strong>:</p>
+<ul>
+<li>对所有用户输入进行严格的验证和过滤，确保输入的内容不包含恶意脚本。</li>
+</ul>
+</li>
+<li><p><strong>使用 HTTP 的 Cookie <code>HttpOnly</code> 属性</strong>:</p>
+<ul>
+<li>将敏感的 cookie 标记为 <code>HttpOnly</code>，可以阻止 JavaScript 访问这些 cookie，从而减少某些类型的 XSS 攻击。</li>
+</ul>
+</li>
+<li><p><strong>避免直接在 JavaScript 中嵌入用户输入</strong>:</p>
+<ul>
+<li>避免在 JavaScript 代码中直接使用用户输入的数据，特别是在构建动态 HTML 或执行其他动态操作时。</li>
+</ul>
+</li>
+<li><p><strong>框架的内置 XSS 防护</strong>:</p>
+<ul>
+<li>许多现代的 Web 开发框架提供了自动的 XSS 防护。了解并正确使用这些框架的安全特性是非常重要的。</li>
+</ul>
+</li>
+<li><p><strong>正则表达式过滤</strong>:</p>
+<ul>
+<li>使用正则表达式或其他方法过滤可能的攻击向量。</li>
+</ul>
+</li>
+</ol>
+<h2 id="git-flow"><a href="#git-flow" class="headerlink" title="git flow"></a>git flow</h2><p>Git Flow 是一种基于 Git 的分支管理策略，由 Vincent Driessen 在 2010 年提出。它定义了一组规范化的分支操作，旨在帮助团队更有效地进行版本控制和软件发布。Git Flow 中的主要分支包括：<code>master</code>、<code>develop</code>、<code>feature</code>、<code>release</code> 和 <code>hotfix</code> 分支。</p>
+<h3 id="主要分支"><a href="#主要分支" class="headerlink" title="主要分支"></a>主要分支</h3><ol>
+<li><p><strong>Main 分支</strong>:</p>
+<ul>
+<li>用于存储正式发布的历史。</li>
+<li>每次在 main 分支上进行提交，都应该对应一个版本发布。</li>
+</ul>
+</li>
+<li><p><strong>Develop 分支</strong>:</p>
+<ul>
+<li>开发分支，是为了开发新功能、改进和日常工作而设置的。</li>
+<li>通常所有新功能都会首先合并到这个分支。</li>
+</ul>
+</li>
+</ol>
+<h3 id="辅助分支"><a href="#辅助分支" class="headerlink" title="辅助分支"></a>辅助分支</h3><ol>
+<li><p><strong>Feature 分支</strong>:</p>
+<ul>
+<li>从 <code>develop</code> 分支派生出来。</li>
+<li>用于开发新功能。</li>
+<li>完成开发后，会合并回 <code>develop</code> 分支。</li>
+<li>分支命名通常遵循 <code>feature/</code> 的模式。</li>
+</ul>
+</li>
+<li><p><strong>Release 分支</strong>:</p>
+<ul>
+<li>从 <code>develop</code> 分支派生出来，用于准备即将发布的版本。</li>
+<li>允许进行最后的调整（如 bug 修复、文档编写等）。</li>
+<li>完成后，应该合并到 <code>main</code> 和 <code>develop</code> 分支。</li>
+<li>分支命名通常遵循 <code>release/</code> 的模式。</li>
+</ul>
+</li>
+<li><p><strong>Hotfix 分支</strong>:</p>
+<ul>
+<li>从 <code>main</code> 分支派生出来，用于修复生产环境中的紧急问题。</li>
+<li>修复完成后，应该合并到 <code>main</code> 和 <code>develop</code> 分支。</li>
+<li>分支命名通常遵循 <code>hotfix/</code> 的模式。</li>
+</ul>
+</li>
+</ol>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><ol>
+<li><p><strong>新功能开发</strong>:</p>
+<ul>
+<li>从 <code>develop</code> 分支创建新的 <code>feature</code> 分支。</li>
+<li>完成开发后，将 <code>feature</code> 分支合并回 <code>develop</code>。</li>
+</ul>
+</li>
+<li><p><strong>发布准备</strong>:</p>
+<ul>
+<li>当 <code>develop</code> 分支达到一个稳定点，从中创建一个 <code>release</code> 分支。</li>
+<li>在 <code>release</code> 分支上完成最后的测试和修订。</li>
+<li>完成后，将 <code>release</code> 分支合并到 <code>main</code> 和 <code>develop</code>。</li>
+</ul>
+</li>
+<li><p><strong>紧急修复</strong>:</p>
+<ul>
+<li>当在生产版本中发现紧急问题时，从 <code>main</code> 分支创建 <code>hotfix</code> 分支。</li>
+<li>完成修复后，将 <code>hotfix</code> 分支合并到 <code>main</code> 和 <code>develop</code>。</li>
+</ul>
+</li>
+<li><p><strong>发布</strong>:</p>
+<ul>
+<li>在 <code>main</code> 分支上的每次合并都应该对应一个新的版本发布。</li>
+</ul>
+</li>
+</ol>
+<h3 id="优点与缺点"><a href="#优点与缺点" class="headerlink" title="优点与缺点"></a>优点与缺点</h3><ul>
+<li><p><strong>优点</strong>:</p>
+<ul>
+<li>清晰定义了不同类型的分支和它们的用途。</li>
+<li>适合大型项目和需要严格发布管理的场景。</li>
+</ul>
+</li>
+<li><p><strong>缺点</strong>:</p>
+<ul>
+<li>流程相对复杂，可能不适合小团队或轻量级项目。</li>
+<li>需要团队成员理解并遵循规定的流程。</li>
+</ul>
+</li>
+</ul>
+<h2 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h2><p>中间人攻击（Man-in-the-Middle Attack，简称 MITM ）是一种常见的网络安全威胁，其中攻击者秘密地拦截并可能更改通信双方之间的通信。在这种攻击中，攻击者插入自己到受害者之间的通信过程，使受害者认为他们正在直接与预期的通信对象进行通信。</p>
+<h3 id="如何进行中间人攻击"><a href="#如何进行中间人攻击" class="headerlink" title="如何进行中间人攻击"></a>如何进行中间人攻击</h3><ol>
+<li><p><strong>拦截通信</strong>:</p>
+<ul>
+<li>攻击者首先需要找到一种方式拦截双方之间的通信。这可以通过多种方式实现，比如在无线网络中拦截 Wi-Fi 信号，或者在网络路由中插入恶意设备。</li>
+</ul>
+</li>
+<li><p><strong>监听和&#x2F;或篡改数据</strong>:</p>
+<ul>
+<li>一旦通信被拦截，攻击者就能够监听通信内容，并且在必要时更改传输的数据。</li>
+</ul>
+</li>
+<li><p><strong>伪装和欺骗</strong>:</p>
+<ul>
+<li>攻击者可能会伪装成通信的一方，向另一方发送消息。在受害者看来，这些消息看起来是从他们预期的通信对象发送的。</li>
+</ul>
+</li>
+</ol>
+<h3 id="常见的中间人攻击类型"><a href="#常见的中间人攻击类型" class="headerlink" title="常见的中间人攻击类型"></a>常见的中间人攻击类型</h3><ol>
+<li><p><strong>电子邮件劫持</strong>:</p>
+<ul>
+<li>攻击者拦截并更改电子邮件内容。</li>
+</ul>
+</li>
+<li><p><strong>Wi-Fi 欺骗</strong>:</p>
+<ul>
+<li>在公共 Wi-Fi 中，攻击者可以创建一个假冒的 Wi-Fi 热点，诱使用户连接，并拦截通过该网络的数据。</li>
+</ul>
+</li>
+<li><p><strong>HTTPS 欺骗</strong>:</p>
+<ul>
+<li>攻击者通过伪造证书来拦截和解密 HTTPS 加密的通信。</li>
+</ul>
+</li>
+<li><p><strong>DNS 劫持</strong>:</p>
+<ul>
+<li>攻击者篡改 DNS 服务器的响应，将用户重定向到恶意网站。</li>
+</ul>
+</li>
+<li><p><strong>会话劫持</strong>:</p>
+<ul>
+<li>攻击者窃取用户的会话令牌，以获取对用户账户的访问权限。</li>
+</ul>
+</li>
+</ol>
+<h3 id="如何防范中间人攻击"><a href="#如何防范中间人攻击" class="headerlink" title="如何防范中间人攻击"></a>如何防范中间人攻击</h3><ol>
+<li><p><strong>使用加密协议</strong>:</p>
+<ul>
+<li>使用 HTTPS、SSL&#x2F;TLS 等加密协议可以保护数据传输的安全。</li>
+</ul>
+</li>
+<li><p><strong>验证证书</strong>:</p>
+<ul>
+<li>确保网站的证书是有效的，并且由可信的证书颁发机构签发。</li>
+</ul>
+</li>
+<li><p><strong>VPN 使用</strong>:</p>
+<ul>
+<li>使用虚拟私人网络（VPN）可以在公共网络上提供加密的通信通道。</li>
+</ul>
+</li>
+<li><p><strong>强化 Wi-Fi 安全</strong>:</p>
+<ul>
+<li>使用强密码和最新的 Wi-Fi 安全协议（如 WPA3）。</li>
+</ul>
+</li>
+</ol>
+<h2 id="单点登录-SSO"><a href="#单点登录-SSO" class="headerlink" title="单点登录 SSO"></a>单点登录 SSO</h2><h3 id="单点登录（SSO）的理解"><a href="#单点登录（SSO）的理解" class="headerlink" title="单点登录（SSO）的理解"></a>单点登录（SSO）的理解</h3><p>单点登录（Single Sign-On，简称 SSO）是一种身份验证服务，它允许用户使用一组登录凭证（例如用户名和密码）来访问多个应用程序。目的是通过减少用户需要记住的密码数量和登录次数，来提高用户体验和安全性。</p>
+<h3 id="SSO-的工作原理"><a href="#SSO-的工作原理" class="headerlink" title="SSO 的工作原理"></a>SSO 的工作原理</h3><ol>
+<li><p><strong>中央认证</strong>:</p>
+<ul>
+<li>在 SSO 系统中，存在一个中央认证服务器。用户首次尝试访问应用时，会被重定向到这个认证服务器。</li>
+</ul>
+</li>
+<li><p><strong>身份验证</strong>:</p>
+<ul>
+<li>用户在认证服务器上输入登录凭证（如用户名和密码）。如果凭证有效，认证服务器会创建一个认证令牌（通常是一个临时的、加密的令牌）。</li>
+</ul>
+</li>
+<li><p><strong>令牌颁发</strong>:</p>
+<ul>
+<li>认证服务器将令牌发放给用户，令牌表明用户已被验证。</li>
+</ul>
+</li>
+<li><p><strong>访问应用</strong>:</p>
+<ul>
+<li>用户再次尝试访问原来的应用或其他应用时，会携带这个令牌。应用会向认证服务器验证令牌的有效性。</li>
+</ul>
+</li>
+<li><p><strong>授权访问</strong>:</p>
+<ul>
+<li>如果认证服务器确认令牌有效，用户将被授权访问应用。这一过程对用户来说是透明的，无需再次输入登录凭证。</li>
+</ul>
+</li>
+<li><p><strong>会话创建</strong>:</p>
+<ul>
+<li>每个应用会为用户创建一个会话，允许用户在不再输入凭证的情况下访问。</li>
+</ul>
+</li>
+</ol>
+<h3 id="SSO-的流程"><a href="#SSO-的流程" class="headerlink" title="SSO 的流程"></a>SSO 的流程</h3><ol>
+<li><p><strong>登录请求</strong>:</p>
+<ul>
+<li>用户首次访问某个应用时，会被重定向到 SSO 的认证服务器。</li>
+</ul>
+</li>
+<li><p><strong>输入凭证</strong>:</p>
+<ul>
+<li>用户在认证服务器上输入登录凭证。</li>
+</ul>
+</li>
+<li><p><strong>身份验证</strong>:</p>
+<ul>
+<li>认证服务器验证用户凭证。如果验证成功，则生成认证令牌。</li>
+</ul>
+</li>
+<li><p><strong>重定向回应用</strong>:</p>
+<ul>
+<li>用户携带令牌返回应用。</li>
+</ul>
+</li>
+<li><p><strong>令牌验证</strong>:</p>
+<ul>
+<li>应用向认证服务器验证令牌的有效性。</li>
+</ul>
+</li>
+<li><p><strong>授权与访问</strong>:</p>
+<ul>
+<li>一旦令牌被确认有效，应用将允许用户访问，用户无需再次登录。</li>
+</ul>
+</li>
+<li><p><strong>访问其他应用</strong>:</p>
+<ul>
+<li>当用户访问其他集成了 SSO 的应用时，只需重复令牌验证步骤，无需再次登录。</li>
+</ul>
+</li>
+</ol>
+<h3 id="SSO-的优势和挑战"><a href="#SSO-的优势和挑战" class="headerlink" title="SSO 的优势和挑战"></a>SSO 的优势和挑战</h3><ul>
+<li><p><strong>优势</strong>:</p>
+<ul>
+<li>提高用户体验：用户只需记住一套凭证。</li>
+<li>增加安全性：减少密码泄露的风险，便于集中管理。</li>
+<li>减少管理工作：为管理员提供集中的用户管理和审计。</li>
+</ul>
+</li>
+<li><p><strong>挑战</strong>:</p>
+<ul>
+<li>集成复杂性：对现有系统进行 SSO 集成可能复杂。</li>
+<li>单点故障：认证服务器出现问题可能导致所有应用不可用。</li>
+<li>安全风险：如果认证服务器被攻破，所有关联应用都可能受到影响。</li>
+</ul>
+</li>
+</ul>
+<h2 id="TypeScript-interface-type"><a href="#TypeScript-interface-type" class="headerlink" title="TypeScript interface type"></a>TypeScript interface type</h2><h3 id="语法和功能"><a href="#语法和功能" class="headerlink" title="语法和功能"></a>语法和功能</h3><ol>
+<li><p><strong>扩展方式</strong>:</p>
+<ul>
+<li><code>interface</code> 可以被扩展和实现（extends 和 implements）。这使得它们非常适合定义对象的形状或类的契约。</li>
+<li><code>type</code> 可以通过交集（<code>&amp;</code>）来组合现有类型，但不能使用 <code>extends</code> 或 <code>implements</code>。这使得 <code>type</code> 更适合联合类型或特定函数的签名。</li>
+</ul>
+</li>
+<li><p><strong>声明合并</strong>:</p>
+<ul>
+<li><code>interface</code> 支持声明合并，即同名的 <code>interface</code> 会被自动合并为一个。</li>
+<li><code>type</code> 不支持声明合并。</li>
+</ul>
+</li>
+</ol>
+<h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><ol>
+<li><p><strong>Interface</strong>:</p>
+<ul>
+<li>当定义对象的结构或类的契约时，推荐使用 <code>interface</code>。尤其是在定义库的类型或外部 API 的类型定义时，<code>interface</code> 由于其可扩展性，更加合适。</li>
+<li>示例：<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">    <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Employee</span> <span class="keyword">extends</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">salary</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>Type</strong>:</p>
+<ul>
+<li>当需要使用联合类型或元组类型时，或者你的类型不适合通过一个简单的接口来表示时，应该使用 <code>type</code>。</li>
+<li>示例：<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Operation</span> = <span class="string">&#x27;add&#x27;</span> | <span class="string">&#x27;subtract&#x27;</span> | <span class="string">&#x27;multiply&#x27;</span>;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Result</span> = [<span class="built_in">boolean</span>, <span class="built_in">string</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h3 id="性能考虑"><a href="#性能考虑" class="headerlink" title="性能考虑"></a>性能考虑</h3><ul>
+<li>在大多数情况下，<code>interface</code> 和 <code>type</code> 在性能上没有显著差异。</li>
+<li>但在某些大型项目中，<code>interface</code> 由于其声明合并的特性，可能会稍微提高编译速度。</li>
+</ul>
+<h3 id="兼容性和扩展性"><a href="#兼容性和扩展性" class="headerlink" title="兼容性和扩展性"></a>兼容性和扩展性</h3><ul>
+<li><code>interface</code> 更适合在声明 API 或库的类型定义时使用，因为它们更容易在不同的代码库中被扩展和维护。</li>
+<li><code>type</code> 由于其能够表达更复杂的类型组合，提供了更多的灵活性。</li>
+</ul>
+<h2 id="函数入参实现类型映射"><a href="#函数入参实现类型映射" class="headerlink" title="函数入参实现类型映射"></a>函数入参实现类型映射</h2><p>在 TypeScript 中，你可以使用高级类型特性来实现函数入参的类型映射。这主要涉及到泛型和条件类型的使用。以下是一些实现类型映射的方法：</p>
+<h3 id="1-使用泛型"><a href="#1-使用泛型" class="headerlink" title="1. 使用泛型"></a>1. 使用泛型</h3><p>泛型允许你定义一个函数，它可以适用于多种类型而不仅仅是一个。你可以在函数定义时声明一个泛型类型参数，然后在函数体内或作为参数类型使用它。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> identity&lt;T&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> output = identity&lt;<span class="built_in">string</span>&gt;(<span class="string">&quot;myString&quot;</span>);  <span class="comment">// 输出类型为 &#x27;string&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>T</code> 是一个泛型类型变量，它捕获传递给 <code>identity</code> 的参数类型。这样，你就可以使用这个类型来保证函数的输入和输出类型是一致的。</p>
+<h3 id="2-条件类型"><a href="#2-条件类型" class="headerlink" title="2. 条件类型"></a>2. 条件类型</h3><p>条件类型（Conditional Types）允许你根据类型关系创建更复杂的类型表达式。它们在类型映射中非常有用，特别是当你想根据输入类型生成不同的输出类型时。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">TypeName</span>&lt;T&gt; =</span><br><span class="line">    T <span class="keyword">extends</span> <span class="built_in">string</span> ? <span class="string">&quot;string&quot;</span> :</span><br><span class="line">    T <span class="keyword">extends</span> <span class="built_in">number</span> ? <span class="string">&quot;number&quot;</span> :</span><br><span class="line">    T <span class="keyword">extends</span> <span class="built_in">boolean</span> ? <span class="string">&quot;boolean&quot;</span> :</span><br><span class="line">    T <span class="keyword">extends</span> <span class="literal">undefined</span> ? <span class="string">&quot;undefined&quot;</span> :</span><br><span class="line">    T <span class="keyword">extends</span> <span class="title class_">Function</span> ? <span class="string">&quot;function&quot;</span> :</span><br><span class="line">    <span class="string">&quot;object&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> typeOf&lt;T&gt;(<span class="attr">arg</span>: T): <span class="title class_">TypeName</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> arg <span class="keyword">as</span> <span class="title class_">TypeName</span>&lt;T&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str = <span class="title function_">typeOf</span>(<span class="string">&quot;Hello&quot;</span>); <span class="comment">// str 类型为 &quot;string&quot;</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="title function_">typeOf</span>(<span class="number">123</span>);     <span class="comment">// num 类型为 &quot;number&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>TypeName</code> 是一个条件类型，它根据传入的类型 <code>T</code> 返回不同的字符串字面量类型。</p>
+<h3 id="3-映射类型"><a href="#3-映射类型" class="headerlink" title="3. 映射类型"></a>3. 映射类型</h3><p>映射类型（Mapped Types）允许你根据旧类型创建新类型。它们通过对一个已知的类型的每个属性应用某种变换来工作。</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">ReadOnly</span>&lt;T&gt; = &#123; <span class="keyword">readonly</span> [K <span class="keyword">in</span> keyof T]: T[K] &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> freeze&lt;T&gt;(<span class="attr">obj</span>: T): <span class="title class_">ReadOnly</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Object</span>.<span class="title function_">freeze</span>(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> original = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> frozen = <span class="title function_">freeze</span>(original); <span class="comment">// frozen 类型为 ReadOnly&lt;&#123; a: number; b: number; &#125;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>ReadOnly</code> 是一个映射类型，它将 <code>T</code> 的所有属性标记为 <code>readonly</code>。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>根据你的具体需求，你可以选择使用泛型、条件类型或映射类型来实现函数参数的类型映射。这些高级类型特性提供了强大的工具，可以帮助你创建灵活且类型安全的代码。</p>
+<h2 id="HTTPS-工作原理"><a href="#HTTPS-工作原理" class="headerlink" title="HTTPS 工作原理"></a>HTTPS 工作原理</h2><p>HTTPS（全称为 Hyper Text Transfer Protocol Secure）是 HTTP 的安全版本。它主要通过 SSL&#x2F;TLS 协议来提供身份验证和加密通信，以保护数据在互联网上的传输。以下是 HTTPS 的主要工作原理：</p>
+<h3 id="1-加密"><a href="#1-加密" class="headerlink" title="1. 加密"></a>1. 加密</h3><p>HTTPS 使用对称加密和非对称加密相结合的方式来保护数据传输的安全：</p>
+<ul>
+<li><strong>非对称加密</strong>：在建立连接阶段使用，用于安全地交换对称密钥。</li>
+<li><strong>对称加密</strong>：在交换密钥之后，对传输的数据进行加密。</li>
+</ul>
+<h3 id="2-SSL-x2F-TLS-握手"><a href="#2-SSL-x2F-TLS-握手" class="headerlink" title="2. SSL&#x2F;TLS 握手"></a>2. SSL&#x2F;TLS 握手</h3><p>当你的浏览器连接到一个 HTTPS 网站时，会发生一个叫做 SSL&#x2F;TLS 握手的过程，它包括以下步骤：</p>
+<ol>
+<li><p><strong>客户端发送加密偏好</strong>：</p>
+<ul>
+<li>浏览器（客户端）向服务器发送一个“Client Hello”消息，其中包含支持的 SSL&#x2F;TLS 版本、加密算法选项等。</li>
+</ul>
+</li>
+<li><p><strong>服务器响应</strong>：</p>
+<ul>
+<li>服务器选择一组最合适的加密算法和 SSL&#x2F;TLS 版本，并且发送一个“Server Hello”消息给客户端。同时，服务器还会发送它的公钥和证书。</li>
+</ul>
+</li>
+<li><p><strong>验证服务器证书</strong>：</p>
+<ul>
+<li>客户端验证服务器的 SSL&#x2F;TLS 证书（通常是由第三方证书机构 CA 颁发的）。证书验证包括检查证书是否过期、是否被撤销，以及是否由可信的 CA 签发。</li>
+</ul>
+</li>
+<li><p><strong>客户端响应</strong>：</p>
+<ul>
+<li>一旦验证了服务器的证书，客户端生成一个随机的对称加密密钥，并使用服务器的公钥加密这个密钥，然后发送给服务器。</li>
+</ul>
+</li>
+<li><p><strong>服务器解密密钥</strong>：</p>
+<ul>
+<li>服务器使用其私钥解密客户端发送的对称密钥。</li>
+</ul>
+</li>
+<li><p><strong>加密通信</strong>：</p>
+<ul>
+<li>从这一步开始，客户端和服务器使用对称密钥来加密通信数据，确保数据传输的安全性。</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-安全通信"><a href="#3-安全通信" class="headerlink" title="3. 安全通信"></a>3. 安全通信</h3><p>一旦 SSL&#x2F;TLS 握手完成，客户端和服务器之间的通信就会使用对称加密保护。这意味着即使通信被拦截，没有密钥的第三方也无法解读通信内容。</p>
+<h3 id="4-会话结束"><a href="#4-会话结束" class="headerlink" title="4. 会话结束"></a>4. 会话结束</h3><p>当通信结束时，会话密钥会被丢弃。如果用户再次访问服务器，将进行新的握手过程和密钥交换。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>HTTPS 通过结合使用对称和非对称加密，以及通过可信的 CA 验证服务器的身份，有效保护了数据传输的安全性。虽然 HTTPS 在性能上有一定的开销，但它显著提升了网络通信的安全性，对于保护敏感数据，如登录凭据、支付信息等，是非常重要的。</p>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>在网络通信中，端口的作用主要是区分同一台主机上的不同服务或进程。端口是一种数字标记，它与 IP 地址一起使用，以标识主机上运行的特定应用程序或服务的实例。端口位于 OSI 七层模型的传输层（第四层），该层还包括定义传输协议，如 TCP（传输控制协议）和 UDP（用户数据报协议）。</p>
+<h3 id="端口的作用"><a href="#端口的作用" class="headerlink" title="端口的作用"></a>端口的作用</h3><ol>
+<li><p><strong>区分服务</strong>:</p>
+<ul>
+<li>在一台主机上可能运行着多种网络服务，如 HTTP 服务器、FTP 服务器、邮件服务器等。端口用于区分这些服务，例如，HTTP 默认使用端口 80，而 FTP 默认使用端口 21。</li>
+</ul>
+</li>
+<li><p><strong>通信管理</strong>:</p>
+<ul>
+<li>端口允许同一物理网络上的多个应用程序同时进行通信，每个应用程序都可以有自己的端口号。</li>
+</ul>
+</li>
+<li><p><strong>连接指定</strong>:</p>
+<ul>
+<li>在一个网络连接中，一个端口号与一个 IP 地址组合在一起，可以精确地指定通信的发送方和接收方。</li>
+</ul>
+</li>
+</ol>
+<h2 id="ESLint-Prettier-Husky-Lint-Staged"><a href="#ESLint-Prettier-Husky-Lint-Staged" class="headerlink" title="ESLint Prettier Husky Lint-Staged"></a>ESLint Prettier Husky Lint-Staged</h2><p>这些工具是现代前端开发中常用的代码质量和风格一致性工具。它们各自扮演着不同的角色：</p>
+<h3 id="1-ESLint"><a href="#1-ESLint" class="headerlink" title="1. ESLint"></a>1. ESLint</h3><ul>
+<li><strong>用途</strong>：ESLint 是一个静态代码分析工具，用于识别 JavaScript 中的问题。它不仅能找出错误，还能检测出代码风格的问题，如不一致的缩进、未使用的变量等。</li>
+<li><strong>特点</strong>：<ul>
+<li>可配置性高，可以根据项目需求自定义规则。</li>
+<li>可以集成到多数编辑器和构建过程中。</li>
+<li>支持 ES6+、React、Vue 等现代 JavaScript 特性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Prettier"><a href="#2-Prettier" class="headerlink" title="2. Prettier"></a>2. Prettier</h3><ul>
+<li><strong>用途</strong>：Prettier 是一个代码格式化工具，它支持多种语言和文件格式。它强制执行一致的代码风格，确保整个团队的代码看起来和感觉一致。</li>
+<li><strong>特点</strong>：<ul>
+<li>重点关注代码的外观。</li>
+<li>支持 JavaScript、TypeScript、CSS、HTML 等多种语言。</li>
+<li>与 ESLint 不同，Prettier 不会检查代码错误。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Husky"><a href="#3-Husky" class="headerlink" title="3. Husky"></a>3. Husky</h3><ul>
+<li><strong>用途</strong>：Husky 是一个用于创建 Git 钩子（hooks）的工具。它可以在执行诸如提交（commit）或推送（push）等 Git 操作时自动运行脚本。</li>
+<li><strong>特点</strong>：<ul>
+<li>常用于在提交代码前自动运行 Lint 或测试。</li>
+<li>防止不符合标准或有问题的代码被提交到仓库。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-Lint-Staged"><a href="#4-Lint-Staged" class="headerlink" title="4. Lint-Staged"></a>4. Lint-Staged</h3><ul>
+<li><strong>用途</strong>：Lint-Staged 是一个在 Git 暂存文件（即即将被提交的文件）上运行 Linters 或其他工具的工具。</li>
+<li><strong>特点</strong>：<ul>
+<li>结合 Husky 使用，只对即将提交的更改执行 Lint 操作，而不是整个项目。</li>
+<li>提高了代码质量，确保提交的代码符合预定义的规则。</li>
+</ul>
+</li>
+</ul>
+<h3 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h3><p>这些工具常常一起使用，以提高代码质量和提升开发效率：</p>
+<ul>
+<li>使用 ESLint 来检测代码中的问题和不一致性。</li>
+<li>使用 Prettier 来格式化代码，确保一致的风格。</li>
+<li>使用 Husky 创建 Git 钩子，在代码提交前自动运行 Lint 和测试。</li>
+<li>使用 Lint-Staged 确保只检查和格式化被修改并准备提交的文件，而不是整个代码库。</li>
 </ul>
 ]]></content>
       <categories>
