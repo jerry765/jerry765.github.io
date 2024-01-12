@@ -1415,6 +1415,8 @@
 <li>通过Internet连接在一起的异构企业应用软件系统的集成、交互与互操作</li>
 <li>当业务(Business)发生变化时，IT系统能够快速响应</li>
 </ol>
+<span id="more"></span>
+
 <h3 id="什么是SOA、核心要素及其理解"><a href="#什么是SOA、核心要素及其理解" class="headerlink" title="什么是SOA、核心要素及其理解"></a>什么是SOA、核心要素及其理解</h3><p><strong>SOA&#x3D;Service(服务)+体系结构(Architecture)</strong></p>
 <ul>
 <li>业务模型：企业向其客户暴露的一系列<strong>业务</strong>——服务</li>
@@ -2045,6 +2047,8 @@
 <li>使用人工或自动手段，来运行或测试某个系统的过程。其目的在于检验它是否满足规定的需求或弄清预期结果与实际结果之间的差别</li>
 <li>软件测试是以检验是否满足需求为目标</li>
 </ul>
+<span id="more"></span>
+
 <h3 id="对缺陷的理解"><a href="#对缺陷的理解" class="headerlink" title="对缺陷的理解"></a>对缺陷的理解</h3><p>Bug：Bug是软件中（包括程序和文档）不符合用户需求的问题</p>
 <ul>
 <li><p>完全没有实现的功能</p>
