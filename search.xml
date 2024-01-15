@@ -4609,6 +4609,243 @@
 <li>发送请求的对象<strong>只需要知道如何发送请求，而不必知道如何完成请求</strong></li>
 </ul>
 <p>命令模式：<strong>将一个请求封装为一个对象</strong>，从而让你可以用不同的请求<strong>对客户进行参数化</strong>，<strong>对请求排队或者记录请求日志</strong>，以及<strong>支持可撤销的操作</strong>。</p>
+<ul>
+<li>别名为动作(Action)模式或事务(Transaction)模式</li>
+<li>“用不同的请求对客户进行参数化”</li>
+<li>“对请求排队”</li>
+<li>“记录请求日志”</li>
+<li>“支持可撤销操作”</li>
+</ul>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152224695.png"></p>
+<ul>
+<li>命令模式的本质是<strong>对请求进行封装</strong></li>
+<li><strong>一个请求对应于一个命令</strong>，将发出命令的责任和执行命令的责任分开</li>
+<li>命令模式<strong>允许请求的一方和接收的一方独立开来</strong>，使得<strong>请求的一方不必知道接收请求的一方的接口</strong>，更不必知道<strong>请求如何被接收、操作是否被执行、何时被执行，以及是怎么被执行的</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 抽象命令类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Command</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用者（请求发送者类）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Invoker</span> &#123;</span><br><span class="line">   <span class="keyword">private</span> Command command;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 构造注入</span></span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">Invoker</span><span class="params">(Command command)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.command = command;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 设值注入</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCommand</span><span class="params">(Command command)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.command = command;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 业务方法，用于调用命令类的execute()方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">call</span><span class="params">()</span> &#123;</span><br><span class="line">      command.execute();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体命令类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteCommand</span> <span class="keyword">extends</span> <span class="title class_">Command</span> &#123;</span><br><span class="line">   <span class="keyword">private</span> Receiver receiver; <span class="comment">//维持一个对请求接收者对象的引用</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">()</span> &#123;</span><br><span class="line">      receiver.action(); <span class="comment">//调用请求接收者的业务处理方法action()</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求接收者类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Receiver</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">action</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//具体操作</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例-15"><a href="#实例-15" class="headerlink" title="实例"></a>实例</h3><p>为了用户使用方便，某系统提供了一系列功能键，用户可以自定义功能键的功能，例如功能键FunctionButton可以用于退出系统（由SystemExitClass类来实现），也可以用于显示帮助文档（ 由DisplayHelpClass类来实现）。<br>用户可以通过修改配置文件来改变功能键的用途，现使用命令模式来设计该系统，使得功能键类与功能类之间解耦，可为同一个功能键设置不同的功能。</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152232779.png"></p>
+<p>结果及分析</p>
+<ul>
+<li>如果需要更换具体命令类，无须修改源代码，<strong>只需修改配置文件，完全符合开闭原则</strong></li>
+<li>每一个<strong>具体命令类</strong>对应一个<strong>请求的处理者（接收者）</strong>，通过向请求发送者注入不同的具体命令对象可以使相同的发送者对应不同的接收者，从而实现“<strong>将一个请求封装为一个对象，用不同的请求对客户进行参数化</strong>”，<strong>客户端只需要将具体命令对象作为参数注入请求发送者，无须直接操作请求的接收者</strong></li>
+</ul>
+<h3 id="记录请求日志"><a href="#记录请求日志" class="headerlink" title="记录请求日志"></a>记录请求日志</h3><ul>
+<li>将请求的历史记录保存下来，通常以日志文件(Log File)的形式永久存储在计算机中</li>
+<li><ul>
+<li>为系统提供一种恢复机制</li>
+</ul>
+</li>
+<li><ul>
+<li>可以用于实现批处理</li>
+</ul>
+</li>
+<li><ul>
+<li>防止因为断电或者系统重启等原因造成请求丢失，而且可以避免重新发送全部请求时造成某些命令的重复执行</li>
+</ul>
+</li>
+<li>将发送请求的命令对象通过序列化写到日志文件中</li>
+<li>命令类必须实现接口Serializable</li>
+</ul>
+<h3 id="宏命令"><a href="#宏命令" class="headerlink" title="宏命令"></a>宏命令</h3><ul>
+<li>宏命令(Macro Command)又称为**组合命令(Composite Command)**，它是组合模式和命令模式联用的产物</li>
+<li>宏命令是一个具体命令类，它<strong>拥有一个集合</strong>，在该集合中包含了对其他命令对象的引用</li>
+<li>当调用宏命令的execute()方法时，<strong>将递归调用它所包含的每个成员命令的execute()方法</strong>。一个宏命令的成员可以是简单命令，还可以继续是宏命令</li>
+<li>执行一个宏命令将触发多个具体命令的执行，从而<strong>实现对命令的批处理</strong></li>
+</ul>
+<h3 id="优缺点与适用环境-10"><a href="#优缺点与适用环境-10" class="headerlink" title="优缺点与适用环境"></a>优缺点与适用环境</h3><p>模式优点</p>
+<ul>
+<li><strong>降低系统的耦合度</strong></li>
+<li>新的命令可以很容易地加入到系统中，<strong>符合开闭原则</strong></li>
+<li>可以比较容易地设计一个<strong>命令队列或宏命令（组合命令）</strong></li>
+<li>为请求的**撤销(Undo)和恢复(Redo)**操作提供了一种设计和实现方案</li>
+</ul>
+<p>模式缺点</p>
+<ul>
+<li>使用命令模式<strong>可能会导致某些系统有过多的具体命令类</strong>（针对每一个对请求接收者的调用操作都需要设计一个具体命令类）</li>
+</ul>
+<p>模式适用环境</p>
+<ul>
+<li>系统需要<strong>将请求调用者和请求接收者解耦</strong>，使得调用者和接收者不直接交互</li>
+<li>系统需要<strong>在不同的时间指定请求、将请求排队和执行请求</strong></li>
+<li>系统需要<strong>支持命令的撤销(Undo)操作和恢复(Redo)操作</strong></li>
+<li>系统需要<strong>将一组操作组合在一起形成宏命令</strong></li>
+</ul>
+<h3 id="习题-7"><a href="#习题-7" class="headerlink" title="习题"></a>习题</h3><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152237050.png"></p>
+<ol>
+<li>D</li>
+<li>C</li>
+</ol>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><h3 id="概述-7"><a href="#概述-7" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>软件系统：<strong>一个对象的状态或行为的变化将导致其他对象的状态或行为也发生改变</strong>，它们之间将产生<strong>联动</strong></li>
+<li>观察者模式：</li>
+<li><ul>
+<li>定义了对象之间一种<strong>一对多</strong>的依赖关系，让一个对象的改变能够影响其他对象</li>
+</ul>
+</li>
+<li><ul>
+<li>发生改变的对象称为<strong>观察目标</strong>，被通知的对象称为<strong>观察者</strong></li>
+</ul>
+</li>
+<li><ul>
+<li><strong>一个观察目标可以对应多个观察者</strong></li>
+</ul>
+</li>
+</ul>
+<p>观察者模式：定义对象之间的一种<strong>一对多依赖关系</strong>，使得每当<strong>一个对象状态发生改变</strong>时，其相关依赖对象<strong>都得到通知并被自动更新</strong>。</p>
+<ul>
+<li>发布-订阅(Publish&#x2F;Subscribe)模式</li>
+<li>模型-视图(Model&#x2F;View)模式</li>
+<li>源-监听器(Source&#x2F;Listener)模式</li>
+<li>从属者(Dependents)模式</li>
+</ul>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152244972.png"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 抽象目标类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">   <span class="comment">//定义一个观察者集合用于存储所有观察者对象</span></span><br><span class="line">   <span class="keyword">protected</span> ArrayList observers&lt;Observer&gt; = <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//注册方法，用于向观察者集合中增加一个观察者</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">attach</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">      observers.add(observer);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//注销方法，用于在观察者集合中删除一个观察者</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">detach</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">      observers.remove(observer);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//声明抽象通知方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">notify</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体目标类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">   <span class="comment">//实现通知方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notify</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//遍历观察者集合，调用每一个观察者的响应方法</span></span><br><span class="line">      <span class="keyword">for</span>(Object obs:observers) &#123;</span><br><span class="line">         ((Observer)obs).update();</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象观察者</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">   <span class="comment">//声明响应方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体观察者</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">   <span class="comment">//实现响应方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//具体响应代码</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端代码片段</span></span><br><span class="line">……</span><br><span class="line"><span class="type">Subject</span> <span class="variable">subject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteSubject</span>();</span><br><span class="line"><span class="type">Observer</span> <span class="variable">observer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteObserver</span>();</span><br><span class="line">subject.attach(observer); <span class="comment">//注册观察者</span></span><br><span class="line">subject.notify();<span class="comment">//调用在其观察者集合中注册的观察者对象update()方法</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有时候<strong>在具体观察者类ConcreteObserver中需要使用到具体目标类ConcreteSubject中的状态（属性）</strong>，会存在<strong>关联或依赖关系</strong></li>
+<li><strong>如果在具体层之间具有关联关系</strong>，系统的扩展性将受到一定的影响，<strong>增加新的具体目标类有时候需要修改原有观察者的代码</strong>，在一定程度上违背了开闭原则</li>
+</ul>
+<h3 id="实例-16"><a href="#实例-16" class="headerlink" title="实例"></a>实例</h3><p>在某多人联机对战游戏中，多个玩家可以加入同一战队组成联盟，当战队中的某一成员受到敌人攻击时将给所有其他盟友发送通知，盟友收到通知后将做出响应。<br>现使用观察者模式设计并实现该过程，以实现战队成员之间的联动。</p>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152248007.png"></p>
+<h3 id="观察者模式与Java事件处理"><a href="#观察者模式与Java事件处理" class="headerlink" title="观察者模式与Java事件处理"></a>观察者模式与Java事件处理</h3><ul>
+<li>事件源对象充当观察目标角色</li>
+<li>事件监听器充当抽象观察者角色</li>
+<li>事件处理对象充当具体观察者角色</li>
+</ul>
+<h3 id="观察者模式与MVC"><a href="#观察者模式与MVC" class="headerlink" title="观察者模式与MVC"></a>观察者模式与MVC</h3><p>MVC(Model-View-Controller)架构</p>
+<ul>
+<li>模型(Model)，视图(View)和控制器(Controller)</li>
+<li>模型可对应于观察者模式中的观察目标，而视图对应于观察者，控制器可充当两者之间的中介者</li>
+<li>当模型层的数据发生改变时，视图层将自动改变其显示内容</li>
+</ul>
+<h3 id="优缺点与适用环境-11"><a href="#优缺点与适用环境-11" class="headerlink" title="优缺点与适用环境"></a>优缺点与适用环境</h3><p>模式优点</p>
+<ul>
+<li>可以<strong>实现表示层和数据逻辑层的分离</strong></li>
+<li>在观察目标和观察者之间<strong>建立一个抽象的耦合</strong></li>
+<li>支持<strong>广播通信，简化了一对多系统设计的难度</strong></li>
+<li><strong>符合开闭原则</strong>，增加新的具体观察者无须修改原有系统代码，在具体观察者与观察目标之间不存在关联关系的情况下，增加新的观察目标也很方便</li>
+</ul>
+<p>模式缺点</p>
+<ul>
+<li>将所有的观察者都通知到会<strong>花费很多时间</strong></li>
+<li>如果存在<strong>循环依赖</strong>时可能导致<strong>系统崩溃</strong></li>
+<li><strong>没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的</strong>，而只是知道观察目标发生了变化</li>
+</ul>
+<p>模式适用环境</p>
+<ul>
+<li>一个抽象模型有两个方面，其中<strong>一个方面依赖于另一个方面</strong>，将这两个方面封装在独立的对象中使它们<strong>可以各自独立地改变和复用</strong></li>
+<li><strong>一个对象的改变将导致一个或多个其他对象发生改变，且并不知道具体有多少对象将发生改变，也不知道这些对象是谁</strong></li>
+<li>需要在系统中创建一个<strong>触发链</strong></li>
+</ul>
+<h3 id="习题-8"><a href="#习题-8" class="headerlink" title="习题"></a>习题</h3><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152252026.png"></p>
+<ol>
+<li>D</li>
+<li>A</li>
+<li>C</li>
+</ol>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><h3 id="概述-8"><a href="#概述-8" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>实现某个目标的途径不止一条，可根据实际情况选择一条合适的途径</li>
+<li>软件开发：</li>
+<li><ul>
+<li>多种算法，例如排序、查找、打折等</li>
+</ul>
+</li>
+<li><ul>
+<li>使用**硬编码(Hard Coding)**实现将导致系统违背开闭原则，扩展性差，且维护困难</li>
+</ul>
+</li>
+<li><ul>
+<li>可以定义一些独立的类来封装不同的算法，<strong>每一个类封装一种具体的算法-&gt;策略类</strong></li>
+</ul>
+</li>
+</ul>
+<p>策略模式：定义<strong>一系列算法，将每一个算法封装起来</strong>，并让它们可以相互替换。策略模式让算法可以独立于使用它的客户变化。</p>
+<ul>
+<li>又称为政策(Policy)模式</li>
+<li>每一个封装算法的类称之为策略(Strategy)类</li>
+<li>策略模式提供了一种<strong>可插入式(Pluggable)算法</strong>的实现方案</li>
+</ul>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152256301.png"></p>
+<h3 id="结构与实现-8"><a href="#结构与实现-8" class="headerlink" title="结构与实现"></a>结构与实现</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 抽象策略类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">algorithm</span><span class="params">()</span>; <span class="comment">//声明抽象算法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体策略类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">extends</span> <span class="title class_">Strategy</span> &#123;</span><br><span class="line">   <span class="comment">//算法的具体实现</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">algorithm</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//算法A</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 环境类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Context</span> &#123;</span><br><span class="line">   <span class="keyword">private</span> Strategy strategy; <span class="comment">//维持一个对抽象策略类的引用</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">//注入策略对象</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setStrategy</span><span class="params">(Strategy strategy)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.strategy= strategy;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//调用策略类中的算法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">algorithm</span><span class="params">()</span> &#123;</span><br><span class="line">      strategy.algorithm();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端</span></span><br><span class="line">……</span><br><span class="line"><span class="type">Context</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Context</span>();</span><br><span class="line">Strategy strategy;</span><br><span class="line">strategy = <span class="keyword">new</span> <span class="title class_">ConcreteStrategyA</span>(); <span class="comment">//可在运行时指定类型，通过配置</span></span><br><span class="line">文件和反射机制实现</span><br><span class="line">context.setStrategy(strategy);</span><br><span class="line">context.algorithm();</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例-17"><a href="#实例-17" class="headerlink" title="实例"></a>实例</h3><p>某软件公司为某电影院开发了一套影院售票系统，在该系统中需要为<br>不同类型的用户提供不同的电影票打折方式，具体打折方案如下：</p>
+<ol>
+<li>学生凭学生证可享受票价8折优惠。</li>
+<li>年龄在10周岁及以下的儿童可享受每张票减免10元的优惠（原始票价需大于等于20元）。</li>
+<li>影院VIP用户除享受票价半价优惠外还可进行积分，积分累计到一定额度可换取电影院赠送的奖品。<br>该系统在将来可能还要根据需要引入新的打折方式。现使用策略模式<br>设计该影院售票系统的打折方案。</li>
+</ol>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152300679.png"></p>
+<p>结果及分析</p>
+<ul>
+<li>如果需要更换具体策略类，无须修改源代码，只需修改配置文件即可，完全<strong>符合开闭原则</strong></li>
+<li>如果需要增加新的打折方式，原有代码均无须修改，只要增加一个新的折扣类作为抽象折扣类的子类，实现在抽象折扣类中声明的打折方法，然后修改配置文件，将原有具体折扣类的类名改为新增折扣类的类名即可，完全符合开闭原则。</li>
+</ul>
+<h3 id="优缺点与适用环境-12"><a href="#优缺点与适用环境-12" class="headerlink" title="优缺点与适用环境"></a>优缺点与适用环境</h3><p>模式优点</p>
+<ul>
+<li>提供了<strong>对开闭原则的完美支持</strong>，用户可以在不修改原有系统的基础上选择算法或行为，也可以灵活地增加新的算法或行为</li>
+<li>提供了<strong>管理相关的算法族的办法</strong></li>
+<li>提供了一种<strong>可以替换继承关系的办法</strong></li>
+<li>可以<strong>避免多重条件选择语句</strong></li>
+<li>提供了一种<strong>算法的复用机制</strong>，不同的环境类可以方便地复用策略类</li>
+</ul>
+<p>模式缺点</p>
+<ul>
+<li>客户端<strong>必须知道所有的策略类</strong>，并自行决定使用哪一个策略类</li>
+<li>将造成系统<strong>产生很多具体策略类</strong></li>
+<li><strong>无法同时在客户端使用多个策略类</strong></li>
+</ul>
+<p>模式适用环境</p>
+<ul>
+<li>一个系统需要<strong>动态地在几种算法中选择一种</strong></li>
+<li><strong>避免使用难以维护的多重条件选择语句</strong></li>
+<li>不希望客户端知道复杂的、与算法相关的数据结构，<strong>提高算法的保密性与安全性</strong></li>
+</ul>
+<h3 id="习题-9"><a href="#习题-9" class="headerlink" title="习题"></a>习题</h3><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152302808.png"></p>
+<ol>
+<li>B</li>
+<li>B</li>
+<li>A</li>
+</ol>
+<h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2><h3 id="概述-9"><a href="#概述-9" class="headerlink" title="概述"></a>概述</h3><p>模板方法模式：定义一个操作中<strong>算法的框架</strong>，而将<strong>一些步骤延迟到子类中</strong>。模板方法模式使得子类不改变一个算法的结构即可<strong>重定义</strong>该算法的<strong>某些特定步骤</strong>。</p>
+<ul>
+<li>是一种<strong>基于继承的代码复用技术（类行为型模式）</strong></li>
+<li>最简单的行为型设计模式：只存在父类与子类之间的继承关系。</li>
+<li>通过使用模板方法模式可以将一些<strong>复杂流程</strong>的实现步骤封装在一系列<strong>基本方法</strong>中</li>
+<li>在抽象父类中提供一个称之为<strong>模板方法</strong>的方法来<strong>定义这些基本方法的执行次序</strong>，而通过其子类来覆盖某些步骤，从而使得<strong>相同的算法框架</strong>可以有<strong>不同的执行结果</strong></li>
+</ul>
+<h3 id="结构与实现-9"><a href="#结构与实现-9" class="headerlink" title="结构与实现"></a>结构与实现</h3><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152307093.png"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 抽象类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AbstractClass</span> &#123;</span><br><span class="line">   <span class="comment">//模板方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">templateMethod</span><span class="params">()</span> &#123;</span><br><span class="line">      primitiveOperation1();</span><br><span class="line">      primitiveOperation2();</span><br><span class="line">      primitiveOperation3();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//基本方法—具体方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">primitiveOperation1</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//实现代码</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//基本方法—抽象方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">primitiveOperation2</span><span class="params">()</span>;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//基本方法—钩子方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">primitiveOperation3</span><span class="params">()</span></span><br><span class="line">   &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteClass</span> <span class="keyword">extends</span> <span class="title class_">AbstractClass</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">primitiveOperation2</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//实现代码</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">primitiveOperation3</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//实现代码</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例-18"><a href="#实例-18" class="headerlink" title="实例"></a>实例</h3><p>某软件公司要为某银行的业务支撑系统开发一个利息计算模块，利息的计算流程如下：</p>
+<ol>
+<li>系统根据账号和密码验证用户信息，如果用户信息错误，则系统显示出错提示。</li>
+<li>如果用户信息正确，则根据用户类型的不同使用不同的利息计算公式计算利息（如活期账户和定期账户具有不同的利息计算公式）。</li>
+<li>系统显示利息。<br>现使用模板方法模式设计该利息计算模块。</li>
+</ol>
+<p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152310026.png"></p>
+<h3 id="优缺点与适用环境-13"><a href="#优缺点与适用环境-13" class="headerlink" title="优缺点与适用环境"></a>优缺点与适用环境</h3><p>模式优点</p>
+<ul>
+<li>在父类中形式化地定义一个算法，而由它的子类来实现细节的处理，<strong>在子类实现详细的处理算法时并不会改变算法中步骤的执行次序</strong></li>
+<li>提取了类库中的公共行为，<strong>将公共行为放在父类中</strong>，而通过其子类来实现不同的行为</li>
+<li>可实现一种<strong>反向控制结构</strong>，通过子类覆盖父类的钩子方法来决定某一特定步骤是否需要执行</li>
+<li>更换和增加新的子类很方便，<strong>符合单一职责原则和开闭原则</strong></li>
+</ul>
+<p>模式缺点</p>
+<ul>
+<li>需要为每一个基本方法的不同实现提供一个子类，<strong>如果父类中可变的基本方法太多，将会导致类的个数增加</strong>，系统会更加庞大，设计也更加抽象（可结合桥接模式）</li>
+</ul>
+<p>模式适用环境</p>
+<ul>
+<li><strong>一次性实现一个算法的不变部分</strong>，并将<strong>可变的行为留给子类来实现</strong></li>
+<li>各子类中<strong>公共的行为</strong>应被提取出来，并集中到一个<strong>公共父类</strong>中，以<strong>避免代码重复</strong></li>
+<li>需要<strong>通过子类来决定父类算法中某个步骤是否执行</strong>，实现<strong>子类对父类的反向控制</strong></li>
+</ul>
+<h3 id="习题-10"><a href="#习题-10" class="headerlink" title="习题"></a>习题</h3><p><img data-src="https://blog-1319684755.cos.ap-guangzhou.myqcloud.com/blog-images/202401152313297.png"></p>
+<ol>
+<li>C </li>
+<li>D</li>
+</ol>
 ]]></content>
       <categories>
         <category>note</category>
