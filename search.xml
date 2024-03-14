@@ -1624,6 +1624,78 @@
 <li><strong>灵活性和学习曲线</strong>：React提供了更多的JavaScript表达能力，给开发者带来了更高的灵活性，但相应的学习成本也更高。Vue的学习曲线通常认为更平滑，尤其是对于那些熟悉HTML和JavaScript基础的开发者。</li>
 </ul>
 <p>两者都提供了高效的方式来构建现代Web应用，选择哪一个主要取决于项目需求、团队熟悉度和个人偏好。</p>
+<h2 id="同源策略和跨域"><a href="#同源策略和跨域" class="headerlink" title="同源策略和跨域"></a>同源策略和跨域</h2><h3 id="为什么要有同源策略"><a href="#为什么要有同源策略" class="headerlink" title="为什么要有同源策略"></a>为什么要有同源策略</h3><p>同源策略（Same-Origin Policy）是一种约定，它是Web安全的基石。同源策略确保了来自不同源的文档或脚本，在没有明确授权的情况下，不能进行某些交互。这里的“源”指的是协议、域名和端口这三者的组合。同源策略的目的是为了保护用户的数据安全，防止恶意文档窃取数据、会话劫持等安全威胁。</p>
+<p>如果没有同源策略，脚本可以无限制地访问跨域的文档和API，这将导致严重的安全问题。例如，恶意网站可能读取另一个网站上的敏感数据，或者在不知情的情况下代表用户执行操作。</p>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>跨域（Cross-Origin）是指在不同源之间进行资源共享或通信的行为。由于同源策略的限制，不同源的网页默认无法直接访问对方的资源。然而，在现代Web应用中，经常需要从不同的源加载资源或调用API，这就需要一些方法来安全地实现跨域请求。</p>
+<h3 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h3><ol>
+<li><p><strong>CORS（跨源资源共享）</strong>：CORS是一种机制，它允许服务器指定哪些源可以访问其资源。这是通过在HTTP响应头中设置<code>Access-Control-Allow-Origin</code>来实现的。如果服务器允许来自某个源的请求，它会在响应中包含这个源，浏览器接收到响应后会允许请求成功。</p>
+</li>
+<li><p><strong>JSONP（JSON with Padding）</strong>：JSONP是一种较老的技术，利用<code>&lt;script&gt;</code>标签没有跨域限制的特性来绕过同源策略。通过动态创建<code>&lt;script&gt;</code>标签来请求一个带有回调函数的URL，服务器响应该请求时会将数据作为参数传递给回调函数，从而实现跨域。JSONP只支持GET请求。</p>
+</li>
+<li><p><strong>代理服务器</strong>：在服务器端设置一个代理，前端发送请求到同源的服务器代理上，由代理服务器转发请求到目标服务器，并将响应返回给前端。这样，实际的跨域请求是在服务器端完成的，绕过了浏览器的同源策略限制。</p>
+</li>
+<li><p><strong>Web Sockets</strong>：Web Sockets提供了全双工的通信通道，它在建立连接时不受同源策略的限制。一旦建立了WebSocket连接，服务器和客户端就可以自由通信，不论它们的源是否相同。</p>
+</li>
+<li><p><strong>PostMessage</strong>：<code>window.postMessage</code>方法允许来自不同源的窗口进行安全的双向通信。它可以用于跨文档、多窗口、跨域消息传递。</p>
+</li>
+</ol>
+<p>同源策略是为了保护用户信息安全而设计的，但通过上述方法，我们可以在确保安全的前提下，实现跨域资源共享和通信。</p>
+<h2 id="vue3-computed-和-watch"><a href="#vue3-computed-和-watch" class="headerlink" title="vue3 computed 和 watch"></a>vue3 computed 和 watch</h2><p>Vue 3中的<code>computed</code>和<code>watch</code>是两种响应式特性，用于处理数据变化，但它们在用途、响应方式和实现机制上有所不同。理解这些差异有助于在实际开发中更合理地选择使用它们。</p>
+<h3 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h3><p><code>computed</code>属性用于声明基于响应式状态变化而变化的计算属性。它是基于它们的响应式依赖进行缓存的。只有当依赖项发生变化时，计算属性才会重新计算。这使得<code>computed</code>非常适合用于复杂逻辑的计算，特别是当这些计算操作依赖于响应式状态，并且这些状态变化不频繁时。</p>
+<ul>
+<li><strong>缓存</strong>：Vue会缓存<code>computed</code>属性的结果，只有当它依赖的响应式属性变化时，它才会重新计算。</li>
+<li><strong>用途</strong>：适用于需要根据响应式数据计算得出新数据的场景。</li>
+<li><strong>性能</strong>：由于缓存，当依赖数据没有变化时，访问<code>computed</code>属性不会重新进行计算，性能较好。</li>
+</ul>
+<h3 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h3><p><code>watch</code>用于观察Vue实例上的数据变化，然后执行相应的回调函数。与<code>computed</code>相比，<code>watch</code>更适合执行数据变化时的异步操作或较为复杂的业务逻辑，如数据请求或在数据变化时执行副作用。</p>
+<ul>
+<li><strong>无缓存</strong>：每当监听的数据变化时，<code>watch</code>都会执行回调函数。</li>
+<li><strong>用途</strong>：适用于数据变化时需要执行异步操作或比较复杂的业务逻辑的场景。</li>
+<li><strong>灵活性</strong>：<code>watch</code>提供了更多的配置选项，如立即执行、深度监听等。</li>
+</ul>
+<h3 id="主要区别-2"><a href="#主要区别-2" class="headerlink" title="主要区别"></a>主要区别</h3><ol>
+<li><p><strong>设计目的</strong>：<code>computed</code>用于根据依赖的响应式数据计算新的结果，并且会根据依赖数据的变化自动更新。<code>watch</code>则用于监听响应式数据的变化，然后执行一些特定的回调函数，适合处理更复杂的业务逻辑或异步操作。</p>
+</li>
+<li><p><strong>缓存与重计算</strong>：<code>computed</code>是基于它们的响应式依赖进行缓存的，只有依赖项改变时才会重新计算。而<code>watch</code>每次监听的数据变化时都会执行回调，不涉及缓存。</p>
+</li>
+<li><p><strong>使用场景</strong>：当你需要基于一些数据动态计算新数据时，使用<code>computed</code>更合适。如果你需要在数据变化时执行异步操作或较为复杂的逻辑，使用<code>watch</code>会更加适合。</p>
+</li>
+</ol>
+<p>总之，<code>computed</code>和<code>watch</code>都是Vue中处理数据变化的重要工具，选择使用哪一个取决于你的具体需求和场景。</p>
+<h2 id="Vue3-生命周期"><a href="#Vue3-生命周期" class="headerlink" title="Vue3 生命周期"></a>Vue3 生命周期</h2><p>Vue 3引入了对Vue 2生命周期钩子的一些改变，包括新的命名方式以及Composition API下的生命周期函数。以下是Vue 3中的生命周期钩子，首先列出的是Vue 3中的新命名方式，括号内是Vue 2中对应的命名。</p>
+<h3 id="挂载阶段"><a href="#挂载阶段" class="headerlink" title="挂载阶段"></a>挂载阶段</h3><ul>
+<li>**<code>setup()</code>**：在Composition API中，这是一个新的生命周期钩子，它在组件创建之前执行，是声明响应式状态和生命周期钩子的地方。</li>
+<li>**<code>beforeCreate</code>**（<code>beforeCreate</code>）：在实例初始化之后，数据观测（响应式）和事件&#x2F;生命周期钩子配置之前同步调用。</li>
+<li>**<code>created</code>**（<code>created</code>）：在实例创建完成后被立即调用。在这一步，实例已完成数据观测（即响应式数据）、计算属性、方法、watch&#x2F;event回调的配置。</li>
+<li>**<code>beforeMount</code>**（<code>beforeMount</code>）：在挂载开始之前被调用：相关的渲染函数首次被调用。</li>
+<li>**<code>mounted</code>**（<code>mounted</code>）：在实例被挂载后调用。如果组件是函数式组件，那么它将不会有<code>mounted</code>函数。</li>
+</ul>
+<h3 id="更新阶段"><a href="#更新阶段" class="headerlink" title="更新阶段"></a>更新阶段</h3><ul>
+<li>**<code>beforeUpdate</code>**（<code>beforeUpdate</code>）：在数据发生变化之后，DOM被重新渲染和更新之前调用，可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。</li>
+<li>**<code>updated</code>**（<code>updated</code>）：在数据更改导致的虚拟DOM重新渲染和打补丁之后调用。</li>
+</ul>
+<h3 id="卸载阶段"><a href="#卸载阶段" class="headerlink" title="卸载阶段"></a>卸载阶段</h3><ul>
+<li>**<code>beforeUnmount</code>**（<code>beforeDestroy</code>）：在卸载组件实例之前调用。在这一步，实例仍然完全可用。</li>
+<li>**<code>unmounted</code>**（<code>destroyed</code>）：在卸载组件实例之后调用。</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>**<code>activated</code>**（<code>activated</code>）：被<code>&lt;keep-alive&gt;</code>缓存的组件激活时调用。</li>
+<li>**<code>deactivated</code>**（<code>deactivated</code>）：被<code>&lt;keep-alive&gt;</code>缓存的组件停用时调用。</li>
+<li>**<code>errorCaptured</code>**（<code>errorCaptured</code>）：当捕获一个来自子孙组件的错误时被调用。</li>
+</ul>
+<h3 id="Composition-API生命周期钩子"><a href="#Composition-API生命周期钩子" class="headerlink" title="Composition API生命周期钩子"></a>Composition API生命周期钩子</h3><p>在Vue 3的Composition API中，生命周期钩子有对应的函数形式，允许在<code>setup()</code>函数中使用。这些是：</p>
+<ul>
+<li><code>onBeforeMount</code></li>
+<li><code>onMounted</code></li>
+<li><code>onBeforeUpdate</code></li>
+<li><code>onUpdated</code></li>
+<li><code>onBeforeUnmount</code></li>
+<li><code>onUnmounted</code></li>
+<li><code>onActivated</code></li>
+<li><code>onDeactivated</code></li>
+<li><code>onErrorCaptured</code></li>
+</ul>
+<p>使用这些函数可以使得在使用Composition API时，代码更加模块化和可重用。</p>
 ]]></content>
       <categories>
         <category>note</category>
