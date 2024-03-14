@@ -748,9 +748,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-12-07 16:29:16 / 修改时间：22:48:00" itemprop="dateCreated datePublished" datetime="2023-12-07T16:29:16+08:00">2023-12-07</time>
+      <time title="创建时间：2023-12-07 16:29:16" itemprop="dateCreated datePublished" datetime="2023-12-07T16:29:16+08:00">2023-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-14 15:42:23" itemprop="dateModified" datetime="2024-03-14T15:42:23+08:00">2024-03-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -783,14 +789,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>15k</span>
+      <span>20k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>56 分钟</span>
+      <span>1:13</span>
     </span>
 </div>
 
@@ -801,25 +807,40 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="视频播放器进度条"><a href="#视频播放器进度条" class="headerlink" title="视频播放器进度条"></a>视频播放器进度条</h2><p>视频播放器的进度条是一种用户界面组件，它显示了视频播放的当前位置和总时长，并允许用户通过拖动或点击进度条来跳转到视频的不同位置。实现这一功能通常涉及以下几个关键步骤：</p>
+          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Node-js-单线程如何保证线程不中断？"><a href="#Node-js-单线程如何保证线程不中断？" class="headerlink" title="Node.js 单线程如何保证线程不中断？"></a>Node.js 单线程如何保证线程不中断？</h2><p>Node.js 被广泛认为是单线程的，但这个说法需要更准确的解释。Node.js 的主执行线程是单线程的，它运行在 V8 JavaScript 引擎上。然而，Node.js 使用多线程来处理 I&#x2F;O 密集型任务，这是通过其底层的 libuv 库实现的。以下是 Node.js 保证其单线程不中断的几个关键方面：</p>
 <ol>
-<li><p><strong>HTML结构</strong>: 使用HTML创建进度条的基本结构。通常包括一个容器（如<code>div</code>元素），内部可能有用于显示进度的子元素。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;progress-bar-container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;progress-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>CSS样式</strong>: 通过CSS对进度条进行样式设计，如宽度、高度、颜色等。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#progress-bar-container</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: grey;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#progress-bar</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: blue;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0%</span>; <span class="comment">/* 初始宽度 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>JavaScript交互</strong>:</p>
+<li><p><strong>异步非阻塞 I&#x2F;O</strong>:</p>
 <ul>
-<li><p><strong>播放进度更新</strong>: 使用JavaScript监听视频播放器的<code>timeupdate</code>事件。当事件触发时，根据视频的<code>currentTime</code>和<code>duration</code>属性计算进度，并更新进度条的宽度。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> video = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;my-video&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> progressBar = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;progress-bar&#x27;</span>);</span><br><span class="line"></span><br><span class="line">video.<span class="title function_">addEventListener</span>(<span class="string">&#x27;timeupdate&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> progress = (video.<span class="property">currentTime</span> / video.<span class="property">duration</span>) * <span class="number">100</span>;</span><br><span class="line">    progressBar.<span class="property">style</span>.<span class="property">width</span> = progress + <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<li>Node.js 主要依靠事件循环和回调函数来处理 I&#x2F;O 操作（如文件读写、网络请求等），这些操作是异步和非阻塞的。</li>
+<li>当一个 I&#x2F;O 操作开始时，它会被发送到事件循环，并继续执行后续的代码，而不是等待 I&#x2F;O 操作完成。当 I&#x2F;O 操作完成时，相应的回调函数会被放入事件队列中，等待主线程空闲时执行。</li>
+</ul>
 </li>
-<li><p><strong>用户交互处理</strong>: 允许用户通过点击或拖动进度条来跳转视频。这通常涉及监听进度条的点击事件，计算点击位置相对于进度条的百分比，然后将视频的<code>currentTime</code>设置为<code>duration</code>乘以这个百分比。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> progressBarContainer = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;progress-bar-container&#x27;</span>);</span><br><span class="line"></span><br><span class="line">progressBarContainer.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> percent = e.<span class="property">offsetX</span> / progressBarContainer.<span class="property">offsetWidth</span>;</span><br><span class="line">    video.<span class="property">currentTime</span> = percent * video.<span class="property">duration</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>事件驱动架构</strong>:</p>
+<ul>
+<li>Node.js 使用事件驱动模型来处理各种异步操作。每当有事件发生时（如数据到达、超时、处理完成），相应的回调函数会被触发。</li>
+<li>这种模型使得 Node.js 能够在不被阻塞的情况下高效地处理大量的并发请求。</li>
+</ul>
+</li>
+<li><p><strong>libuv 库</strong>:</p>
+<ul>
+<li>尽管 JavaScript 代码在单个主线程上运行，Node.js 使用 libuv 库在背后管理一个线程池。</li>
+<li>对于一些复杂的操作（如文件系统操作、某些加密操作），libuv 会在后台的多个线程上执行这些任务，而主线程继续执行 JavaScript 代码。</li>
+</ul>
+</li>
+<li><p><strong>错误处理机制</strong>:</p>
+<ul>
+<li>Node.js 提供了异常处理机制，比如 <code>try-catch</code> 块和全局的 <code>uncaughtException</code> 事件，来处理同步和异步代码中的错误。</li>
+<li>正确的错误处理能够防止异常导致主线程崩溃。</li>
+</ul>
+</li>
+<li><p><strong>进程管理</strong>:</p>
+<ul>
+<li>对于 CPU 密集型任务，可以使用 Node.js 的 <code>child_process</code> 模块来创建子进程，分担主线程的负载。</li>
+<li>还可以使用集群（Cluster）模块来创建多个进程，每个进程都有自己的事件循环和 V8 实例，可以更好地利用多核 CPU。</li>
 </ul>
 </li>
 </ol>
-<p>这些步骤展示了一个基本的视频播放器进度条的实现方式。当然，实际应用中可能需要更复杂的处理，比如考虑缓冲状态的显示、拖动操作的优化等。</p>
+<p>通过这些机制，Node.js 能够确保即使是在单个主线程上运行，也能高效地处理大量的并发 I&#x2F;O 操作，同时避免线程中断和阻塞。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/12/07/note-interview/#more" rel="contents">
@@ -1476,14 +1497,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">107k</span>
+    <span title="站点总字数">112k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">6:30</span>
+    <span title="站点阅读时长">6:47</span>
   </span>
 </div>
 <div class="busuanzi-count">
