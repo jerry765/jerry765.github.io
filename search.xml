@@ -1696,6 +1696,167 @@
 <li><code>onErrorCaptured</code></li>
 </ul>
 <p>使用这些函数可以使得在使用Composition API时，代码更加模块化和可重用。</p>
+<h2 id="Vue-Diff-算法"><a href="#Vue-Diff-算法" class="headerlink" title="Vue Diff 算法"></a>Vue Diff 算法</h2><p>Diff算法是用来比较两个对象（如虚拟DOM树）并找出它们之间差异的算法。在前端框架中，比如React和Vue，Diff算法是实现高效更新DOM的关键。Diff算法的核心目标是尽可能高效地识别出由数据变化引起的具体DOM操作，从而最小化真实DOM的操作次数，提升应用的性能。</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ol>
+<li><p><strong>树比较</strong>：由于直接对真实DOM树进行比较成本过高，现代前端框架使用虚拟DOM技术，即用JavaScript对象来表示DOM树，然后在这些JavaScript对象上应用Diff算法。</p>
+</li>
+<li><p><strong>层级比较</strong>：大多数Diff算法只在同一层级上进行比较，忽略跨层级的DOM元素移动，因为跨层级移动的情况相对较少，而且增加跨层级的比较会极大地提高算法的复杂度。</p>
+</li>
+</ol>
+<h3 id="React中的Diff算法"><a href="#React中的Diff算法" class="headerlink" title="React中的Diff算法"></a>React中的Diff算法</h3><p>React的Diff算法可以分为三个层次的比较：</p>
+<ol>
+<li><strong>树的Diff</strong>：比较两棵树时，首先比较根节点。如果根节点的类型不同，那么整棵树将会被替换。</li>
+<li><strong>组件的Diff</strong>：当比较两个相同类型的React组件时，会比较它们的属性（props），然后更新必要的部分。</li>
+<li><strong>元素列表的Diff</strong>：处理列表元素时，React使用了一种称为“Reconciliation”的过程。在这个过程中，React会尝试重用DOM节点而非创建新的节点，以此来提高性能。为了识别哪些元素是新的，哪些被移动了位置，React推荐使用唯一的<code>key</code>属性来标识每个元素。</li>
+</ol>
+<h3 id="Vue中的Diff算法"><a href="#Vue中的Diff算法" class="headerlink" title="Vue中的Diff算法"></a>Vue中的Diff算法</h3><p>Vue的Diff算法同样基于虚拟DOM，它的实现有以下特点：</p>
+<ol>
+<li><strong>双端比较</strong>：Vue在比较新旧虚拟DOM节点时，采用了双端比较的策略。它同时从虚拟DOM树的两端（头部和尾部）开始比较，根据比较结果逐步向中间靠拢，这种方式可以更有效地识别节点的增加、删除和移动。</li>
+<li><strong>Patch过程</strong>：在确定需要更新的节点后，Vue会进行Patch操作，即应用差异，更新真实DOM。Patch过程中会尽可能重用DOM节点，以减少DOM操作。</li>
+</ol>
+<h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><ol>
+<li><strong>添加与删除</strong>：如果新的虚拟DOM树中有新添加的节点，那么在真实DOM中相应地添加新节点；如果有节点在旧树中而不在新树中，则在真实DOM中删除这些节点。</li>
+<li><strong>更新</strong>：如果节点在两棵树中都存在，但是节点的某些属性或子节点有变化，那么仅更新有变化的部分。</li>
+<li><strong>列表对比</strong>：使用“key”来优化列表的对比过程，识别哪些元素是新的，哪些元素仅仅是移动了位置。</li>
+</ol>
+<p>Diff算法是现代前端框架中非常关键的一个环节，它直接关系到应用的性能和用户体验。尽管具体实现可能有所不同，但基本原理和目标是一致的：通过智能的算法最小化对真实DOM的操作，从而提高效率。</p>
+<h2 id="HTTP-版本"><a href="#HTTP-版本" class="headerlink" title="HTTP 版本"></a>HTTP 版本</h2><p>HTTP（超文本传输协议）是互联网上应用最为广泛的协议之一，它定义了客户端与服务器之间交换信息的格式和规则。自从1991年HTTP&#x2F;0.9首次提出以来，HTTP经历了多次重要的更新和改进。以下是HTTP的主要版本及其特点：</p>
+<h3 id="HTTP-x2F-0-9"><a href="#HTTP-x2F-0-9" class="headerlink" title="HTTP&#x2F;0.9"></a>HTTP&#x2F;0.9</h3><ul>
+<li><strong>发布时间</strong>：1991年。</li>
+<li><strong>特点</strong>：<ul>
+<li>只有一个命令GET。</li>
+<li>没有HEADER等描述数据的信息。</li>
+<li>服务器发送完毕，就关闭TCP连接。</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-x2F-1-0"><a href="#HTTP-x2F-1-0" class="headerlink" title="HTTP&#x2F;1.0"></a>HTTP&#x2F;1.0</h3><ul>
+<li><strong>发布时间</strong>：1996年，正式规范化为RFC 1945。</li>
+<li><strong>特点</strong>：<ul>
+<li>引入了HEAD、POST等新方法。</li>
+<li>引入了状态码，描述请求的处理结果。</li>
+<li>支持多种类型的MIME类型。</li>
+<li>引入了HTTP Header，允许传输关于请求和响应的额外信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-x2F-1-1"><a href="#HTTP-x2F-1-1" class="headerlink" title="HTTP&#x2F;1.1"></a>HTTP&#x2F;1.1</h3><ul>
+<li><strong>发布时间</strong>：1997年，定义在RFC 2068中，后经过修订发布为RFC 2616（1999年），最新修订版为RFC 7230-RFC 7235（2014年）。</li>
+<li><strong>特点</strong>：<ul>
+<li>支持持久连接（Connection: keep-alive），提高了传输效率。</li>
+<li>引入了更多的缓存控制策略（如ETag，Cache-Control）。</li>
+<li>引入了分块传输编码，允许发送方在完全生成响应内容之前就开始发送响应。</li>
+<li>引入了虚拟主机的概念，允许一台服务器上托管多个域名。</li>
+<li>支持管道化的请求处理，进一步优化性能。</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-x2F-2"><a href="#HTTP-x2F-2" class="headerlink" title="HTTP&#x2F;2"></a>HTTP&#x2F;2</h3><ul>
+<li><strong>发布时间</strong>：2015年，定义在RFC 7540。</li>
+<li><strong>特点</strong>：<ul>
+<li>所有数据包为二进制格式，提高了解析效率。</li>
+<li>多路复用（Multiplexing），一个连接中可以并行交换多个请求和响应，消除了因多个连接造成的延迟。</li>
+<li>服务器推送（Server Push），服务器可以对一个客户端请求发送多个响应。</li>
+<li>头信息压缩，减少了传输数据的体积。</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-x2F-3"><a href="#HTTP-x2F-3" class="headerlink" title="HTTP&#x2F;3"></a>HTTP&#x2F;3</h3><ul>
+<li><strong>发布时间</strong>：尚在开发中，草案阶段。</li>
+<li><strong>特点</strong>：<ul>
+<li>基于QUIC协议，QUIC是一种基于UDP的传输层协议，解决了TCP的头阻塞问题，减少了连接和传输延迟。</li>
+<li>继续使用和HTTP&#x2F;2相似的高级功能，如头信息压缩、服务器推送等。</li>
+</ul>
+</li>
+</ul>
+<p>随着网络技术的发展，HTTP协议不断进化以适应新的需求和挑战。从简单的请求&#x2F;响应模型到现在的复杂多功能性协议，HTTP已经成为现代网络不可或缺的部分。</p>
+<h2 id="视频传输"><a href="#视频传输" class="headerlink" title="视频传输"></a>视频传输</h2><p>为视频内容网站（如Netflix）设计前端视频传输系统时，需要考虑多个关键因素，以确保高效、稳定且具有良好用户体验的视频流服务。这些设计考虑包括但不限于内容的适配性、网络状况的应对、安全性、兼容性和用户体验。</p>
+<h3 id="1-内容适配与自适应流"><a href="#1-内容适配与自适应流" class="headerlink" title="1. 内容适配与自适应流"></a>1. 内容适配与自适应流</h3><ul>
+<li><strong>自适应比特率流</strong>：采用HLS（HTTP Live Streaming）或DASH（Dynamic Adaptive Streaming over HTTP）协议，根据用户的网络状况动态调整视频质量。这可以最小化缓冲延迟，提供平滑的播放体验。</li>
+<li><strong>预处理和多比特率编码</strong>：视频内容应预先被转码成多个不同比特率的版本。这样，自适应流技术可以在多个版本之间切换，选择最适合当前网络条件的版本。</li>
+</ul>
+<h3 id="2-网络性能优化"><a href="#2-网络性能优化" class="headerlink" title="2. 网络性能优化"></a>2. 网络性能优化</h3><ul>
+<li><strong>CDN（内容分发网络）</strong>：利用CDN可以将视频内容缓存于世界各地的边缘服务器，减少传输距离，降低延迟，提高加载速度。</li>
+<li><strong>数据预加载</strong>：智能地预加载视频的下一部分内容，以减少播放时的等待时间。</li>
+<li><strong>网络状况检测</strong>：实时监测用户的网络状况，并据此调整视频流的质量。</li>
+</ul>
+<h3 id="3-安全性"><a href="#3-安全性" class="headerlink" title="3. 安全性"></a>3. 安全性</h3><ul>
+<li><strong>传输加密</strong>：使用HTTPS保证数据在传输过程中的安全性，防止中间人攻击。</li>
+<li><strong>DRM（数字版权管理）</strong>：实现DRM保护，以防止内容的未经授权的访问和复制。常见的DRM解决方案包括Widevine（Google）、PlayReady（Microsoft）和FairPlay Streaming（Apple）。</li>
+</ul>
+<h3 id="4-兼容性与跨平台支持"><a href="#4-兼容性与跨平台支持" class="headerlink" title="4. 兼容性与跨平台支持"></a>4. 兼容性与跨平台支持</h3><ul>
+<li><strong>广泛支持的视频格式</strong>：选择广泛支持的视频编码格式（如H.264&#x2F;AVC）确保视频内容能在多数设备和浏览器上播放。</li>
+<li><strong>响应式设计</strong>：确保视频播放界面在不同大小和分辨率的屏幕上均能良好显示，提供响应式的用户界面。</li>
+</ul>
+<h3 id="5-用户体验"><a href="#5-用户体验" class="headerlink" title="5. 用户体验"></a>5. 用户体验</h3><ul>
+<li><strong>用户界面设计</strong>：简洁直观的播放控制、清晰的质量选择、无缝的全屏切换等，都能显著提升用户体验。</li>
+<li><strong>错误处理和反馈</strong>：优雅地处理播放错误，如网络问题或格式不支持等，并给予用户明确的错误信息和建议的操作。</li>
+</ul>
+<h3 id="6-分析与优化"><a href="#6-分析与优化" class="headerlink" title="6. 分析与优化"></a>6. 分析与优化</h3><ul>
+<li><strong>用户行为分析</strong>：收集用户播放行为数据，如播放质量、缓冲次数、观看时长等，分析这些数据来进一步优化视频流服务。</li>
+<li><strong>A&#x2F;B测试</strong>：通过A&#x2F;B测试不同的播放策略或用户界面设计，找出最优化的方案。</li>
+</ul>
+<p>视频内容网站的前端视频传输设计是一项复杂的工程，需要跨多个领域的技术协同工作，从而实现高效、稳定且用户友好的视频流服务。</p>
+<h2 id="Vue-Loader"><a href="#Vue-Loader" class="headerlink" title="Vue Loader"></a>Vue Loader</h2><p>Vue Loader 是一个webpack的loader，它允许你以一种名为单文件组件（Single-File Components，SFCs）的格式来编写Vue组件。这种文件通常保存为<code>.vue</code>后缀，包含三种类型的顶级语言块 <code>&lt;template&gt;</code>、<code>&lt;script&gt;</code>和<code>&lt;style&gt;</code>，分别用于标记组件的结构、逻辑和样式。</p>
+<h3 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a>主要特性</h3><ul>
+<li><strong>模块化的单文件组件</strong>：每个<code>.vue</code>文件包含了一个组件的完整定义，包括它的HTML模板、JavaScript逻辑和CSS样式。这种模块化方式使得组件更加整洁和可维护。</li>
+<li><strong>预处理支持</strong>：Vue Loader 支持使用预处理器，如Pug（HTML模板预处理器）、Babel（JavaScript编译器）或Sass（CSS预处理器）。这意味着你可以在<code>.vue</code>文件中直接使用这些工具扩展的语言特性。</li>
+<li><strong>作用域CSS</strong>：通过在<code>&lt;style&gt;</code>标签中添加<code>scoped</code>属性，Vue Loader 可以自动将CSS作用域应用到当前组件，避免样式冲突。</li>
+<li><strong>热重载</strong>：在开发过程中，当<code>.vue</code>文件中的组件发生变化时，Vue Loader 支持热重载，即无需刷新页面就可以更新组件。</li>
+</ul>
+<h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><p>当webpack遇到<code>.vue</code>文件时，Vue Loader会解析文件，并把每个语言块（如<code>&lt;template&gt;</code>、<code>&lt;script&gt;</code>、<code>&lt;style&gt;</code>）提取出来。然后，根据配置，它会使用相应的loader来处理这些块。例如，<code>&lt;template&gt;</code>块可能会通过<code>html-loader</code>处理，<code>&lt;script&gt;</code>块通过<code>babel-loader</code>，而<code>&lt;style&gt;</code>块通过<code>css-loader</code>和<code>style-loader</code>。</p>
+<h3 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h3><p>在webpack配置文件中，你需要添加Vue Loader及其插件<code>VueLoaderPlugin</code>的配置，示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">VueLoaderPlugin</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;vue-loader&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">        <span class="attr">loader</span>: <span class="string">&#x27;vue-loader&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// 配置其他loader...</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 确保引入这个插件来处理.vue文件</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">VueLoaderPlugin</span>()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>Vue Loader 为Vue.js开发提供了强大的支持，它让开发者能够以单文件组件的形式高效地开发Vue应用。通过与webpack的紧密集成，Vue Loader使得项目的构建过程既灵活又高效。</p>
+<h2 id="Sass"><a href="#Sass" class="headerlink" title="Sass"></a>Sass</h2><p>Sass（Syntactically Awesome Style Sheets）是一种强大的CSS扩展语言，它使得CSS的使用变得更加高效和有趣。Sass提供了许多高级功能，如变量、嵌套规则、混入（Mixins）、继承、模块等，这些功能可以帮助开发者以更结构化的方式编写可重用且易于维护的样式代码。</p>
+<h3 id="主要特性-1"><a href="#主要特性-1" class="headerlink" title="主要特性"></a>主要特性</h3><ol>
+<li><p><strong>变量</strong>：允许你定义样式的一些通用属性（如颜色、字体大小等），然后在整个样式表中复用它们。这样，在需要修改样式时，只需更改变量的值即可。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$primary-color</span>: <span class="number">#333</span>;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$primary-color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>嵌套规则</strong>：Sass允许你将CSS规则嵌套在另一个规则内部，这样可以减少重复代码，使结构更清晰。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">  <span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">li</span> &#123; <span class="attribute">display</span>: inline-block; &#125;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">6px</span> <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>混入（Mixins）</strong>：它们是可以重用的代码块，可以接受参数，从而让你能够定义一组样式并在多处使用，还可以根据参数定制样式。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> border-radius(<span class="variable">$radius</span>) &#123;</span><br><span class="line">  -webkit-<span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</span><br><span class="line">     -moz-<span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</span><br><span class="line">      -ms-<span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</span><br><span class="line">          <span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123; <span class="keyword">@include</span> border-radius(<span class="number">10px</span>); &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>模块</strong>：Sass支持模块化，允许将样式分割到不同的文件中，然后通过<code>@use</code>和<code>@forward</code>规则导入和使用。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// _variables.scss</span></span><br><span class="line"><span class="variable">$primary-color</span>: <span class="number">#333</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.scss</span></span><br><span class="line"><span class="keyword">@use</span> <span class="string">&#x27;variables&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: variables.<span class="variable">$primary-color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>继承</strong>：通过<code>@extend</code>指令，一个选择器可以继承另一个选择器的样式，有助于避免代码重复。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.message</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.success-message</span> &#123;</span><br><span class="line">  <span class="keyword">@extend</span> .message;</span><br><span class="line">  <span class="attribute">border-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="使用Sass"><a href="#使用Sass" class="headerlink" title="使用Sass"></a>使用Sass</h3><p>Sass支持两种格式：SCSS（Sassy CSS）和缩进语法（原Sass语法）。SCSS的语法完全兼容CSS，而缩进语法是一种简化的语法风格。大多数情况下，开发者倾向于使用SCSS因为它更接近原生CSS。</p>
+<p>要使用Sass，你需要将Sass文件编译成标准的CSS。这可以通过Sass的命令行工具、Webpack等模块打包工具，或是其他构建工具和任务运行器（如Gulp或Grunt）来完成。</p>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p>Sass通过提供一套丰富的语言特性，极大地增强了CSS的能力，帮助开发者以更快、更模块化的方式构建复杂的样式表。随着前端项目的不断增长和复杂化，Sass成为了现代Web开发工具箱中不可或缺的一部分。</p>
+<h2 id="小程序-x2F-Web-鉴权"><a href="#小程序-x2F-Web-鉴权" class="headerlink" title="小程序&#x2F; Web 鉴权"></a>小程序&#x2F; Web 鉴权</h2><p>在小程序和Web项目中实现鉴权，通常涉及到用户的身份认证和授权。OpenID和JWT（JSON Web Tokens）是两种常用的技术用于处理这些问题。下面是如何在小程序和Web项目中使用它们进行鉴权的概述：</p>
+<h3 id="OpenID"><a href="#OpenID" class="headerlink" title="OpenID"></a>OpenID</h3><p>OpenID主要用于身份认证。在小程序中，特别是微信小程序，OpenID用来唯一标识一个用户。当用户第一次登录小程序时，后端会通过微信提供的API获取用户的OpenID，并将其与用户的账号绑定。这样，以后用户每次请求时，只需要通过OpenID就能识别出用户身份。</p>
+<p><strong>使用OpenID的步骤</strong>：</p>
+<ol>
+<li><strong>用户登录</strong>：用户在小程序中登录，小程序通过微信提供的接口获取到用户的code。</li>
+<li><strong>获取OpenID</strong>：小程序将code发送到服务器，服务器再调用微信的API换取用户的OpenID。</li>
+<li><strong>创建&#x2F;查询用户信息</strong>：服务器根据OpenID创建新用户或查询现有用户信息，并生成一个会话或令牌（如JWT）返回给小程序。</li>
+</ol>
+<h3 id="JWT（JSON-Web-Tokens）"><a href="#JWT（JSON-Web-Tokens）" class="headerlink" title="JWT（JSON Web Tokens）"></a>JWT（JSON Web Tokens）</h3><p>JWT是一种开放标准（RFC 7519），用于在网络应用环境间安全地传递声明（如认证信息）。JWT可以用于任何Web应用或服务的身份验证和信息交换，它使得从客户端到服务器的单点登录（SSO）变得简单。</p>
+<p><strong>使用JWT的步骤</strong>：</p>
+<ol>
+<li><strong>用户登录</strong>：用户在Web页面或小程序中提交登录表单。</li>
+<li><strong>生成JWT</strong>：服务器验证用户的登录信息（如用户名和密码）。如果认证成功，服务器会生成一个JWT，其中包含用户信息和签名，并将这个JWT返回给客户端。</li>
+<li><strong>客户端存储JWT</strong>：客户端收到JWT后，会将其存储在本地（如localStorage、sessionStorage或小程序的storage中）。</li>
+<li><strong>发送请求</strong>：客户端每次向服务器发送请求时，都会在HTTP头中携带这个JWT。</li>
+<li><strong>服务器验证JWT</strong>：服务器接收到请求后，会验证JWT的签名。如果验证成功，服务器会处理该请求，并根据JWT中的信息提供相应的服务。</li>
+</ol>
+<h3 id="鉴权流程"><a href="#鉴权流程" class="headerlink" title="鉴权流程"></a>鉴权流程</h3><ol>
+<li><strong>身份认证</strong>：用户登录系统，系统验证用户身份后发放一个JWT作为身份凭证。</li>
+<li><strong>身份鉴权</strong>：用户在后续的请求中携带JWT，系统通过验证JWT来确认用户身份和权限。</li>
+</ol>
+<h3 id="安全性注意事项"><a href="#安全性注意事项" class="headerlink" title="安全性注意事项"></a>安全性注意事项</h3><ul>
+<li><strong>HTTPS</strong>：确保所有通信都通过HTTPS进行，以防止中间人攻击。</li>
+<li><strong>存储安全</strong>：在客户端安全地存储JWT，避免XSS攻击。</li>
+<li><strong>令牌过期</strong>：为JWT设置合理的过期时间，减少令牌被滥用的风险。</li>
+<li><strong>签名和加密</strong>：使用强签名算法，必要时对敏感信息进行加密。</li>
+</ul>
+<p>通过结合使用OpenID和JWT，可以在小程序和Web项目中实现安全可靠的鉴权机制，保障用户数据的安全和应用的安全性。</p>
 ]]></content>
       <categories>
         <category>note</category>
