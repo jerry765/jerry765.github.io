@@ -1,1 +1,1 @@
-{"title":"git 报错 empty reply 或 time out","id":"2024/02/16/git-proxy/","date_published":"02/16/2024","summary":"Windows 设置 git 代理查看代理地址和端口\n打开控制面板\n选择网络和Internet\n选择Internet选项\n弹出窗口中选择连接选项卡\n连接选项卡中选择局域网设置\n查看代理服务器设置（默认为本机地址7890端口）\n","url":"https://csumoke.com/2024/02/16/git-proxy/","tags":["vpn","proxy"],"categories":["git"]}
+{"title":"前端快速入门——基础","id":"2025/01/24/frontend-crash/","date_published":"01/24/2025","summary":"","url":"https://csumoke.com/2025/01/24/frontend-crash/","tags":["-frontend -beginner"],"categories":["tutorial"]}
